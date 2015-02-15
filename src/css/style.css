@@ -1,0 +1,195 @@
+.message_area {
+  background: white;
+  color: #444;
+  font-size: 1.3em;
+  padding: 20px;
+  text-align: center; }
+
+.development_page {
+  display: block; }
+
+.page_container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; }
+  .page_container h1 {
+    margin: 0; }
+  .page_container .page {
+    float: left;
+    height: 100%;
+    width: 100%; }
+    .page_container .page nav {
+      position: relative;
+      background: #273240;
+      height: 65px;
+      font-weight: 100;
+      padding-top: 30px;
+      text-align: center;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding-bottom: 5px; }
+      .page_container .page nav h1 {
+        font-weight: 100;
+        display: inline-block; }
+      .page_container .page nav a {
+        position: absolute;
+        line-height: 60px;
+        top: 10px;
+        font-size: 18px;
+        color: white;
+        font-weight: 100;
+        width: 60px;
+        height: 60px; }
+      .page_container .page nav a:nth-child(1) {
+        top: 20px;
+        left: -10px; }
+      .page_container .page nav a:nth-child(3) {
+        right: 0px; }
+    .page_container .page a.button {
+      display: block;
+      max-width: 100%;
+      background: #359CEC;
+      color: white;
+      padding: 10px;
+      margin-bottom: 10px;
+      text-decoration: none;
+      margin: 10px 0; }
+    .page_container .page video {
+      background: black;
+      height: 100%;
+      width: 100%; }
+    .page_container .page textarea.localstorage_test {
+      margin: 5px;
+      border: 0;
+      padding: 5px;
+      font-size: 2em;
+      resize: vertical;
+      border: 1px solid #f6f6f6; }
+    .page_container .page article.main {
+      height: 100%;
+      padding: 10px;
+      color: #444;
+      overflow-x: hidden;
+      overflow-y: scroll; }
+    .page_container .page .nav_icon {
+      margin-top: 20px; }
+  .page_container #STARTSCREEN {
+    background: blue; }
+    .page_container #STARTSCREEN a {
+      text-align: center;
+      display: block;
+      padding: 10px;
+      background: white;
+      text-decoration: none;
+      color: black; }
+  .page_container #INTRO {
+    background: black; }
+  .page_container #PAGE1 nav {
+    background: #112941; }
+  .page_container #PAGE2 nav {
+    background: #112941; }
+  .page_container #PAGE3 nav {
+    background: #112941; }
+  .page_container #CREDITS nav {
+    background: #112941; }
+  .page_container #NAV {
+    padding-top: 61px;
+    color: white;
+    z-index: 100000;
+    position: fixed;
+    width: 80%;
+    top: 0;
+    left: -80%;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8); }
+    .page_container #NAV h2 {
+      padding-left: 5px; }
+    .page_container #NAV a {
+      border-bottom: 1px solid #444;
+      color: #FFF;
+      padding: 10px;
+      display: block;
+      background: rgba(0, 0, 0, 0.1);
+      text-decoration: none;
+      font-weight: 100; }
+    .page_container #NAV .RETURN {
+      display: none;
+      position: absolute;
+      right: -30%;
+      top: 0;
+      bottom: 0;
+      width: 30%; }
+
+/*
+ *
+ * 
+ *
+ *
+ */
+.clear, section#news .news_container:after {
+  content: "";
+  display: block;
+  clear: both; }
+
+/*
+ * Framework Core SCSS Partial
+ * 
+ *
+ *
+ */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  /* Disable selection/copy in UIWebView */
+  -webkit-touch-callout: none; }
+
+html,
+body {
+  width: 100%;
+  height: 100%; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  font-family: sans-serif; }
+
+section.page {
+  color: #333; }
+  section.page nav {
+    color: white; }
+
+/*
+ *
+ * 
+ *
+ *
+ */
+section#news {
+  height: 100%;
+  position: relative; }
+  section#news header {
+    background: orange; }
+  section#news .news_container img {
+    width: 100%;
+    height: auto; }
+  section#news ul.article_list {
+    padding: 0;
+    margin: 0; }
+    section#news ul.article_list li a {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      display: block;
+      color: inherit;
+      text-decoration: none; }
+      section#news ul.article_list li a h4 {
+        margin: 0;
+        font-size: 30px; }
+      section#news ul.article_list li a time {
+        text-transform: uppercase;
+        font-size: 0.8em;
+        color: #666;
+        margin: 0; }
+      section#news ul.article_list li a p {
+        margin: 0; }
