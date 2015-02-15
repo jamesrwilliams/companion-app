@@ -14,6 +14,8 @@
 |
 */
 
+
+
 function getNews(){
 	
 	var feedurl = "http://wearekiwikiwi.co.uk/feed/";
@@ -137,7 +139,7 @@ function clearLocalStorage(){
 }
 
 /*
-==	
+==	Open Nav Utility Function
 ==	-----------
 ==
 ==	
@@ -153,7 +155,7 @@ function closeNav(){
 }
 
 /*
-==	Open Nav Utility Class
+==	Open Nav Utility Function
 ==	-----------
 ==
 ==	
@@ -196,6 +198,12 @@ function openNav(){
 
 
 $(document).ready(function(){
+		
+	$("img").error(function () {
+		
+	  var src = $(this).attr("src");
+	  $(this).unbind("error").attr("src", "img/" + src);
+	});
 	
 	if(localStorage.getItem("OTS_introVideoHasPlayed") === null){
 		
@@ -205,7 +213,7 @@ $(document).ready(function(){
 	}else {
 		
 		// If video has been played got to
-		window.location.href = "#PAGE1";
+		window.location.href = "#stats";
 
 		
 	}

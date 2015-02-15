@@ -16,6 +16,13 @@
 
 .page_container {
 	
+	overflow: hidden;
+	
+	// Fallback to iOS Default
+	background: url(../img/background.jpg), url(background.jpg);
+	background-position: center center;
+	background-size: cover;
+	
 	h1 {margin: 0;}
 	
 	height: 100%;
@@ -32,7 +39,7 @@
 
 			position: relative;
 
-			background: #273240;
+			background: rgba(0,0,0,0.5);
 
 			height: 65px;
 			font-weight: 100;
@@ -43,7 +50,7 @@
 			
 			h1 {
 				
-				font-weight: 100;
+				font-weight: 500;
 				display: inline-block;
 				
 			}
@@ -143,36 +150,6 @@
 		
 	}
 	
-	#INTRO {
-		
-		background: black;
-		
-	}
-	
-	#PAGE1 {
-		
-		nav { background: #112941; }
-		
-	}
-	
-	#PAGE2 { 
-		
-		nav { background: #112941; }
-		
-	}
-	
-	#PAGE3 {
-		
-		nav { background: #112941; }
-		
-	}
-	
-	#CREDITS {
-		
-		nav { background: #112941}
-		
-	}
-	
 	#NAV {
 		
 		padding-top: 61px;
@@ -223,7 +200,24 @@
 	
 }
 
+.img_background {
+	
+	position: absolute;
+	height: 100%;
+	display: block;
+	width: 100vw;
+  	height: 100vh;
+  	object-fit: cover;
+  	
+  	opacity: 0.3;
+	
+}
+
 @import "utility/helpers";
 @import "framework/core";
 
 @import "pages/news";
+@import "pages/profile";
+@import "pages/stats";
+@import "pages/about";
+@import "pages/hybrid";

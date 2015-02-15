@@ -9,6 +9,10 @@
   display: block; }
 
 .page_container {
+  overflow: hidden;
+  background: url(../img/background.jpg), url(background.jpg);
+  background-position: center center;
+  background-size: cover;
   height: 100%;
   width: 100%;
   overflow: hidden; }
@@ -20,7 +24,7 @@
     width: 100%; }
     .page_container .page nav {
       position: relative;
-      background: #273240;
+      background: rgba(0, 0, 0, 0.5);
       height: 65px;
       font-weight: 100;
       padding-top: 30px;
@@ -28,7 +32,7 @@
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       padding-bottom: 5px; }
       .page_container .page nav h1 {
-        font-weight: 100;
+        font-weight: 500;
         display: inline-block; }
       .page_container .page nav a {
         position: absolute;
@@ -81,16 +85,6 @@
       background: white;
       text-decoration: none;
       color: black; }
-  .page_container #INTRO {
-    background: black; }
-  .page_container #PAGE1 nav {
-    background: #112941; }
-  .page_container #PAGE2 nav {
-    background: #112941; }
-  .page_container #PAGE3 nav {
-    background: #112941; }
-  .page_container #CREDITS nav {
-    background: #112941; }
   .page_container #NAV {
     padding-top: 61px;
     color: white;
@@ -118,6 +112,15 @@
       top: 0;
       bottom: 0;
       width: 30%; }
+
+.img_background {
+  position: absolute;
+  height: 100%;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  opacity: 0.3; }
 
 /*
  *
@@ -147,7 +150,8 @@
 html,
 body {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  font-size: 16px; }
 
 body {
   margin: 0;
@@ -176,8 +180,10 @@ section#news {
     height: auto; }
   section#news ul.article_list {
     padding: 0;
-    margin: 0; }
+    margin: 0;
+    list-style: none; }
     section#news ul.article_list li a {
+      background: white;
       padding: 10px;
       border-bottom: 1px solid #ccc;
       display: block;
@@ -193,3 +199,75 @@ section#news {
         margin: 0; }
       section#news ul.article_list li a p {
         margin: 0; }
+
+section#profile {
+  position: relative;
+  position: relative; }
+  section#profile nav {
+    background: rgba(0, 0, 0, 0.5); }
+  section#profile .player {
+    float: left;
+    position: relative;
+    height: 100%;
+    width: 50%;
+    padding: 20px; }
+    section#profile .player .player_container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      margin-left: -40%;
+      bottom: 0; }
+      section#profile .player .player_container img {
+        width: 150%;
+        height: auto;
+        bottom: 0;
+        display: block;
+        margin-top: 90%; }
+  section#profile .info {
+    padding-right: 10px;
+    z-index: 10000;
+    float: right;
+    width: 50%;
+    color: white;
+    text-align: right; }
+    section#profile .info ul {
+      list-style: none;
+      padding: 0;
+      margin: 0; }
+
+section#stats {
+  background: rgba(0, 0, 0, 0.5); }
+  section#stats .stats_list {
+    margin: 0;
+    padding: 0; }
+    section#stats .stats_list h2 {
+      color: white; }
+    section#stats .stats_list li {
+      display: block;
+      width: 49%;
+      list-style: none;
+      background: rgba(255, 255, 255, 0.4);
+      padding: 5px;
+      float: right;
+      margin-bottom: 5px;
+      color: white; }
+      section#stats .stats_list li h4 {
+        font-size: 0.8em;
+        margin: 0;
+        text-transform: uppercase;
+        font-weight: bold; }
+      section#stats .stats_list li p.value {
+        margin: 0;
+        font-size: 2em;
+        font-weight: 100; }
+    section#stats .stats_list li:nth-child(odd) {
+      float: left;
+      margin-right: 1px; }
+
+section#about {
+  background: white; }
+  section#about nav {
+    background: #a9c322; }
+  section#about .main img {
+    width: 50%;
+    margin: 0 25%; }

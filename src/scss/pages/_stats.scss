@@ -1,0 +1,57 @@
+section#stats {
+	
+	background: rgba(0,0,0,0.5);
+	
+	.stats_list {
+	
+	h2 {
+		
+		color: white;
+		
+	}
+	
+	margin: 0;
+	padding: 0;
+	
+	li {
+		
+		display: block;
+		width: 49%;
+		list-style: none;
+		background: rgba(255,255,255,0.4);
+		//background: rgba(0,0,0,0.9);
+		padding: 5px;
+		float: right;
+		margin-bottom: 5px;
+		
+		color: white;
+		
+		h4 {
+			
+			font-size: 0.8em;
+			margin: 0;
+			text-transform: uppercase;
+			font-weight: bold;
+			
+		}
+		
+		p.value {
+			
+			margin: 0;
+			font-size: 2em;
+			font-weight: 100;
+			
+		}
+		
+	}
+	
+	li:nth-child(odd){
+		
+		float: left;
+		margin-right: 1px;
+	}
+	
+}
+	
+}
+
