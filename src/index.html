@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html manifest="cache.manifest">
 	<head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -39,6 +39,8 @@
 			<a class="button" href="#hybrid"	onclick="closeNav()">The Hybrid</a>
 			<a class="button" href="#settings" 	onclick="closeNav()">Settings</a>
 			
+			<p class="version"></p>
+			
 			<!- End Development Links ->
 			<div id="RETURN" class="RETURN"></div>
 			
@@ -49,53 +51,17 @@
 			<nav id="header">
 				<a id="NAVBTN" onclick="openNav()" ><img id="nav_icon" src="hamburger_icon.svg" height="25" width="25" /></a>
 				<h1>News</h1>
+				<a id="NAVBTN" onclick="getNews()"><img id="nav_icon" src="cycle.svg" height="25" width="25" /></a>
 			</nav>
 		
 				
 				<div class="news_container">
-					
-					<div class="col1">
-						
-						<a><img src="http://placehold.it/350x150"></a>
-						
-					</div>
-					
+					<ul class="article_list"><!-- News AJAX'd in here! --></ul>
 				</div>
 				
-				<ul class="article_list">
-					
-					<li>
-						<a href="">
-							<h4>Infection Update: Part 2</h4>
-							<time>Sunday 15 Feb</time>
-							
-							<p>
-							Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-							</p>
-						</a>
-					</li>
-					<li>
-						<a href="">
-							<h4>HotFix: v2.1.4</h4>
-							<time>Saturday 14 Feb</time>
-							
-							<p>
-							Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-							</p>
-						</a>
-					</li>
-					<li>
-						<a href="">
-							<h4>Infection Update: Part 1</h4>
-							<time>Friday 13 Feb</time>
-							
-							<p>
-							Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-							</p>
-						</a>
-					</li>
-					
-				</ul>
+				
+				
+			
 			
 		</section>
 		
@@ -106,31 +72,33 @@
 				<h1>Profile</h1>
 			</nav>
 			
-			<h2>
+			<section class="main">
 			
-			<div class="info">
+				<div class="info">
+					
+					<h3>[USERNAME]</h3>
 				
-				<h3>[USERNAME]</h3>
-			
-			<ul>
+				<ul>
+					
+					<li>Kills: 0</li>
+					<li>Pickups: 0</li>
+					<li>Specials: 0</li>	
 				
-				<li>Kills: 0</li>
-				<li>Pickups: 0</li>
-				<li>Specials: 0</li>	
-			
-			</ul>
-			
-			
+				</ul>
 				
-			</div>
-			
-			<div class="player">
 				
-				<div class="player_container">
-				<img src="player.png" />
+					
 				</div>
 				
-			</div>
+				<div class="player">
+					
+					<div class="player_container">
+					<img src="player.png" />
+					</div>
+					
+				</div>
+			
+			</section>
 
 			
 		</section>
@@ -142,7 +110,7 @@
 				<h1>Statistics</h1>
 			</nav>
 			
-			<article class="main">
+			<section class="main">
 				
 				<h2>Level 1</h2>
 				
@@ -213,7 +181,7 @@
 					
 				</ul>
 				
-			</article>
+			</section>
 			
 		</section>
 		
@@ -224,11 +192,11 @@
 				<h1>Game Guide</h1>
 			</nav>
 			
-			<article class="main">
+			<section class="main">
 				
 				
 				
-			</article>
+			</section>
 			
 		</section>
 		
@@ -239,7 +207,8 @@
 			<h1>About</h1>
 			</nav>
 			
-			<article class="main">
+			<section class="main">
+
 						
 				<img src="kiwi.svg">		
 							
@@ -250,7 +219,7 @@
 				
 				<p>Keep up to date with the latest kiwi banter on our twitter page:<a class="button" target="_new" href="twitter:///user?screen_name=James_RWilliams">@KiwiKiwi</a></p>
 				
-			</article>	
+			</section>
 		
 			
 		</section>
@@ -262,11 +231,11 @@
 			<h1>Settings</h1>
 			</nav>
 			
-			<article class="main">
+			<section class="main">
+					
+				<a href="#" onclick="clear_app_data()" class="button red">Clear App Data</a>
 				
-				
-				
-			</article>
+			</section>
 		
 		</section>
 		
@@ -277,11 +246,11 @@
 			<h1>The Hybrid</h1>
 			</nav>
 			
-			<article class="main">
+			<section class="main">
 				
 				<p></p>
 				
-			</article>
+			</section>
 		
 		</section>
 	

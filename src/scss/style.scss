@@ -31,6 +31,7 @@
 	
 	.page {
 		
+		overflow: hidden;
 		float: left;
 		height: 100%;
 		width: 100%;
@@ -79,6 +80,7 @@
 			
 			a:nth-child(3){
 				
+				top:20px;
 				right: 0px;
 			
 			}

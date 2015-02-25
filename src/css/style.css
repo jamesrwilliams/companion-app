@@ -19,6 +19,7 @@
   .page_container h1 {
     margin: 0; }
   .page_container .page {
+    overflow: hidden;
     float: left;
     height: 100%;
     width: 100%; }
@@ -47,6 +48,7 @@
         top: 20px;
         left: -10px; }
       .page_container .page nav a:nth-child(3) {
+        top: 20px;
         right: 0px; }
     .page_container .page a.button {
       display: block;
@@ -133,6 +135,27 @@
   display: block;
   clear: both; }
 
+.red {
+  background: red !important; }
+
+section.main {
+  position: relative;
+  margin: 0;
+  height: 95%;
+  overflow: hidden; }
+
+.modal {
+  position: absolute;
+  z-index: 100000000;
+  text-align: center;
+  width: 100%;
+  top: 0;
+  line-height: 70vh;
+  color: white;
+  font-size: 3em;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8); }
+
 /*
  * Framework Core SCSS Partial
  * 
@@ -164,6 +187,12 @@ section.page {
   section.page nav {
     color: white; }
 
+.version {
+  font-family: monospace;
+  position: absolute;
+  bottom: 0;
+  left: 20px; }
+
 /*
  *
  * 
@@ -175,17 +204,20 @@ section#news {
   position: relative; }
   section#news header {
     background: orange; }
-  section#news .news_container img {
-    width: 100%;
-    height: auto; }
+  section#news .news_container {
+    overflow-y: scroll;
+    height: 100%; }
+    section#news .news_container img {
+      width: 100%;
+      height: auto; }
   section#news ul.article_list {
+    background: white;
     padding: 0;
     margin: 0;
     list-style: none; }
     section#news ul.article_list li a {
       background: white;
       padding: 10px;
-      border-bottom: 1px solid #ccc;
       display: block;
       color: inherit;
       text-decoration: none; }
