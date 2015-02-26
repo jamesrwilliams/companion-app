@@ -1,60 +1,267 @@
 <!DOCTYPE html>
-<html>
+<html manifest="cache.manifest">
+	<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>OTS</title>
+        <meta name="description" content="yes">
+        
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Companion-app : ">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+        
+		<!-- Local Production Tests --> 
+        <link rel="stylesheet" href="css/style.css" />
+        
+        <!-- iOS Production -->
+        <link rel="stylesheet" href="style.css">
+         </head>
+    <body>
+   
+	<div class="page_container">
+		
+   
+		<!--<section class="page" id="INTRO">
+			
+			<video id="videoTrailer" src="//player.vimeo.com/video/118273310?title=0&byline=0&portrait=0" webkit-playsinline="webkit-playsinline">Your browser does not support the <code>video</code> element.</video>
+			
+		</section>-->
+		
+		<section id="NAV">
+			
+			<a class="button" href="#profile" 	onclick="closeNav()">Profile</a>
+			<a class="button" href="#stats" 	onclick="closeNav()">Statistics</a>
+			<a class="button" href="#lore" 		onclick="closeNav()">Game Guide</a>
+			<a class="button" href="#news" 		onclick="closeNav()">News</a>
+			<a class="button" href="#about" 	onclick="closeNav()">About</a>
+			<a class="button" href="#hybrid"	onclick="closeNav()">The Hybrid</a>
+			<a class="button" href="#settings" 	onclick="closeNav()">Settings</a>
+			
+			<p class="version"></p>
+			
+			<!- End Development Links ->
+			<div id="RETURN" class="RETURN"></div>
+			
+		</section>
+		
+		<section class="page" id="news">
+			
+			<nav id="header">
+				<a id="NAVBTN" onclick="openNav()" ><img id="nav_icon" src="hamburger_icon.svg" height="25" width="25" /></a>
+				<h1>News</h1>
+				<a id="NAVBTN" onclick="getNews()"><img id="nav_icon" src="cycle.svg" height="25" width="25" /></a>
+			</nav>
+		
+				
+				<div class="news_container">
+					<ul class="article_list"><!-- News AJAX'd in here! --></ul>
+				</div>
+				
+				
+				
+			
+			
+		</section>
+		
+		<section class="page" id="profile">
+			
+			<nav id="header">
+				<a id="NAVBTN" onclick="openNav()" ><img id="nav_icon" src="hamburger_icon.svg" height="25" width="25" /></a>
+				<h1>Profile</h1>
+			</nav>
+			
+			<section class="main">
+			
+				<div class="info">
+					
+					<h3>[USERNAME]</h3>
+				
+				<ul>
+					
+					<li>Kills: 0</li>
+					<li>Pickups: 0</li>
+					<li>Specials: 0</li>	
+				
+				</ul>
+				
+				
+					
+				</div>
+				
+				<div class="player">
+					
+					<div class="player_container">
+					<img src="player.png" />
+					</div>
+					
+				</div>
+			
+			</section>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+			
+		</section>
+		
+		<section class="page" id="stats">
+			
+			<nav id="header">
+				<a id="NAVBTN" onclick="openNav()" ><img id="nav_icon" src="hamburger_icon.svg" height="25" width="25" /></a>
+				<h1>Statistics</h1>
+			</nav>
+			
+			<section class="main">
+				
+				<h2>Level 1</h2>
+				
+				<img src="http://placehold.it/350x100" />
+				
+				<ul class="stats_list">
+					
+					<li>
+					
+						<h4>Kills</h4>
+						<p class="value">15326</p>
+					
+					</li>
+					<li>
+					
+						<h4>Precision Kills</h4>
+						<p class="value">5115</p>
+					
+					</li>
+					<li>
+					
+						<h4>Ability Kills</h4>
+						<p class="value">2689</p>
+					
+					</li>
+					<li>
+					
+						<h4>Deaths</h4>
+						<p class="value">27</p>
+					
+					</li>
+					<li>
+					
+						<h4>Activities Entered</h4>
+						<p class="value">127</p>
+					
+					</li>
+					<li>
+					
+						<h4>K/D Ratio</h4>
+						<p class="value">567.63</p>
+					
+					</li>
+					<li>
+					
+						<h4>Best Weapon</h4>
+						<p class="value">Scout Rifle</p>
+					
+					</li>
+					<li>
+					
+						<h4>Resurrections</h4>
+						<p class="value">1</p>
+					
+					</li>
+					<li>
+					
+						<h4>Orbs Dropped</h4>
+						<p class="value">912</p>
+					
+					</li>
+					<li>
+					
+						<h4>Best Single Game Kills</h4>
+						<p class="value">444</p>
+					
+					</li>
+					
+				</ul>
+				
+			</section>
+			
+		</section>
+		
+		<section class="page" id="lore">
+			
+			<nav id="header">
+				<a id="NAVBTN" onclick="openNav()" ><img id="nav_icon" src="hamburger_icon.svg" height="25" width="25" /></a>
+				<h1>Game Guide</h1>
+			</nav>
+			
+			<section class="main">
+				
+				
+				
+			</section>
+			
+		</section>
+		
+		<section class="page" id="about">
+			
+			<nav>
+			<a id="NAVBTN" onclick="openNav()" ><img id="nav_icon" src="hamburger_icon.svg" height="25" width="25" /></a>
+			<h1>About</h1>
+			</nav>
+			
+			<section class="main">
 
-    <title>Companion-app</title>
-  </head>
+						
+				<img src="kiwi.svg">		
+							
+				<h3>We are KiwiKiwi</h3>
+							
+				<!-- Cannot open Safari By Default through a UI Webview so will send a search query with the url instead to open it that way-->
+				<p>To find out more about KiwiKiwi and what we are developing please visit out website: <a class="button" target="_new" href="x-web-search://?www.wearekiwikiwi.co.uk">Visit Website</a></p>
+				
+				<p>Keep up to date with the latest kiwi banter on our twitter page:<a class="button" target="_new" href="twitter:///user?screen_name=James_RWilliams">@KiwiKiwi</a></p>
+				
+			</section>
+		
+			
+		</section>
+		
+		<section class="page" id="settings">
+			
+			<nav>
+			<a id="NAVBTN" onclick="openNav()" ><img id="nav_icon" src="hamburger_icon.svg" height="25" width="25" /></a>
+			<h1>Settings</h1>
+			</nav>
+			
+			<section class="main">
+					
+				<a href="#" onclick="clear_app_data()" class="button red">Clear App Data</a>
+				
+			</section>
+		
+		</section>
+		
+		<section class="page" id="hybrid">
+			
+			<nav>
+			<a id="NAVBTN" onclick="openNav()" ><img id="nav_icon" src="hamburger_icon.svg" height="25" width="25" /></a>
+			<h1>The Hybrid</h1>
+			</nav>
+			
+			<section class="main">
+				
+				<p></p>
+				
+			</section>
+		
+		</section>
+	
+	</div>
+		       	
+	<!-- Local Production Tests -->
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<script src="js/min/main-min.js"></script>
 
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/jamesrwilliams/companion-app">View on GitHub</a>
-
-          <h1 id="project_title">Companion-app</h1>
-          <h2 id="project_tagline"></h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/jamesrwilliams/companion-app/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/jamesrwilliams/companion-app/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
-<a id="ots-companion-application" class="anchor" href="#ots-companion-application" aria-hidden="true"><span class="octicon octicon-link"></span></a>OTS Companion Application</h1>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Companion-app maintained by <a href="https://github.com/jamesrwilliams">jamesrwilliams</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-              <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-26549429-8");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
-
-
-  </body>
+	<!-- iOS Production -->
+	<script src="jquery-2.1.1.min.js"></script>
+	<script src="main-min.js"></script>
+    </body>
 </html>

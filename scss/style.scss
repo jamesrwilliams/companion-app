@@ -1,0 +1,225 @@
+.message_area {
+	
+	background: white;
+	color: #444;
+	font-size: 1.3em;
+	padding: 20px;
+	text-align: center;
+	
+}
+
+.development_page {
+	
+	display:block;
+	
+}
+
+.page_container {
+	
+	overflow: hidden;
+	
+	// Fallback to iOS Default
+	background: url(../img/background.jpg), url(background.jpg);
+	background-position: center center;
+	background-size: cover;
+	
+	h1 {margin: 0;}
+	
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	
+	.page {
+		
+		overflow: hidden;
+		float: left;
+		height: 100%;
+		width: 100%;
+		
+		nav {
+
+			position: relative;
+
+			background: rgba(0,0,0,0.5);
+
+			height: 65px;
+			font-weight: 100;
+			padding-top: 30px;
+			text-align: center;
+			border-bottom: 1px solid rgba(0,0,0,0.1);
+			padding-bottom: 5px;
+			
+			h1 {
+				
+				font-weight: 500;
+				display: inline-block;
+				
+			}
+			
+			a {
+				
+				position: absolute;
+				line-height: 60px;
+				top:10px;
+				
+				font-size: 18px;
+				
+				color: white;
+				font-weight: 100;
+				width: 60px;
+				height: 60px;
+
+			}
+			
+			a:nth-child(1){
+				
+				top:20px;
+				left: -10px;
+			
+			}
+			
+			a:nth-child(3){
+				
+				top:20px;
+				right: 0px;
+			
+			}
+			
+		}
+		
+		a.button {
+			
+			display: block;
+			max-width: 100%;
+			background: #359CEC;
+			color: white;
+			padding: 10px;
+			margin-bottom: 10px;
+			text-decoration: none;
+			margin: 10px 0;
+			
+		}
+		
+		video {
+			background: black;
+			height: 100%;
+			width: 100%;
+			
+		}
+		
+		textarea.localstorage_test {
+			margin: 5px;
+			border: 0;
+			padding: 5px;
+			font-size: 2em;
+			resize: vertical;
+			border: 1px solid #f6f6f6;
+			
+		}
+		
+		article.main {
+			
+			height: 100%;
+			padding: 10px;
+			color: #444;
+			overflow-x: hidden;
+			overflow-y: scroll;
+			
+		}
+		
+		.nav_icon {
+			
+			margin-top: 20px;
+			
+		}
+		
+	}
+	
+	#STARTSCREEN {
+		
+		background: blue;
+		
+		a {
+			
+			text-align: center;
+			display: block;
+			padding: 10px;
+			background: white;
+			text-decoration: none;
+			color: black;
+			
+		}
+		
+	}
+	
+	#NAV {
+		
+		padding-top: 61px;
+		
+		color: white;
+		
+		z-index: 100000;
+		position: fixed;
+		
+		width: 80%;
+		top:0;
+		left: -80%;
+		bottom: 0;
+		background: rgba(0,0,0,0.8);
+		// box-shadow: 0.5px 0.5px 10px 1px rgba(0,0,0,0.5);
+		
+		h2 {
+			
+			padding-left: 5px;
+			
+		}
+		
+		a {
+			
+			border-bottom: 1px solid #444;
+			color: #FFF;
+			padding: 10px;
+			display: block;
+			background: rgba(0,0,0,0.1);
+			text-decoration: none;
+			font-weight: 100;
+			
+		}
+		
+		.RETURN {
+			
+			display: none;
+			position: absolute;
+			right: -30%;
+			top:0;
+			bottom:0;
+			width: 30%;
+
+		}
+	
+	}
+	
+	
+}
+
+.img_background {
+	
+	position: absolute;
+	height: 100%;
+	display: block;
+	width: 100vw;
+  	height: 100vh;
+  	object-fit: cover;
+  	
+  	opacity: 0.3;
+	
+}
+
+@import "utility/helpers";
+@import "framework/core";
+
+@import "pages/news";
+@import "pages/profile";
+@import "pages/stats";
+@import "pages/about";
+@import "pages/hybrid";

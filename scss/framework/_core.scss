@@ -1,0 +1,55 @@
+/*
+ * Framework Core SCSS Partial
+ * 
+ *
+ *
+ */	
+ 	
+* { 
+	
+	-moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	box-sizing: border-box; 
+	-webkit-font-smoothing: antialiased;
+
+	/* Disable selection/copy in UIWebView */		
+	-webkit-touch-callout: none;
+		
+}
+
+html,
+body {
+	
+	width: 100%;
+	height: 100%;
+	font-size: 16px;
+}
+
+body {
+	
+	margin: 0;
+	padding: 0;
+	font-size: 15px;
+	font-family: sans-serif;
+}
+
+section.page {
+	
+	color: #333;
+	
+	nav {
+		
+		color: white;
+		
+	}
+	
+}
+
+.version {
+	
+	font-family: monospace;
+	position: absolute;
+	bottom: 0;
+	left: 20px;
+	
+}

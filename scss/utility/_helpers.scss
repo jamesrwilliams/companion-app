@@ -1,0 +1,50 @@
+/*
+ *
+ * 
+ *
+ *
+ */		
+
+.clear {
+	
+	content: "";
+	display: block;
+	clear: both;
+	
+}
+
+.button {
+	
+	
+	
+}
+
+.red {
+	
+	background: red !important;
+	
+}
+
+section.main {
+	
+	position: relative;
+	margin: 0;
+	height: 95%;
+	overflow: hidden;
+	
+}
+
+.modal {
+	
+	position: absolute;
+	z-index: 100000000;
+	text-align: center;
+	width: 100%;
+	top:0;
+	line-height: 70vh;
+	color: white;
+	font-size: 3em;
+	bottom: 0;
+	background: rgba(0,0,0,0.8);
+	
+}
