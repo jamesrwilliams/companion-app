@@ -14,7 +14,36 @@
 var ots_news_array = window.localStorage.getItem("ots_news_array");
 var content_array = JSON.parse(ots_news_array);
 var debug_version = 0.1;
-var i;
+var i, player, story, settings;
+
+	/*
+	 *  Ajax the game api for player data.
+	 *	
+	 *  @returns null
+	 */		
+
+	function get_user_data(){
+		
+	    $.ajax({
+		   
+	        'async': false,
+	        'global': false,
+	        'url': "test_data.json",
+	        'dataType': "json",
+	        'success': function (temp_data) {
+	            
+	            settings = temp_data.settings;
+	            player = temp_data.player;
+	            story  = temp_data.story;
+	            
+	             console.log(player);
+	            
+	        }
+	    });
+	    
+	    render_user_data();
+		
+	}
 
 	/*
 	 *  Get News Function
@@ -97,8 +126,7 @@ var i;
 			
 		}
 		
-	}
-	
+	}	
 	
 	
 	/*
@@ -147,6 +175,17 @@ var i;
 		
 	}
 	
+	function render_user_data(){
+		
+		$("#profile .info h3").text(player.player_id);
+		$("#profile .info li:nth-child(1)").text(player.xp.xp_general);
+		$("#profile .info li:nth-child(2)").text(player.xp.xp_ghosts);
+		$("#profile .info li:nth-child(3)").text(player.xp.xp_vampire);
+		$("#profile .info li:nth-child(4)").text(player.xp.xp_werewolf);
+		$("#profile .info li:nth-child(5)").text(player.xp.xp_zombie);
+		
+	}
+	
 	/*
 	 * Document Init Function. Runs on page load. 
 	 *	
@@ -158,9 +197,9 @@ var i;
 		
 		if(content_array === null){
 	
-			content_array = [["","","","",""]];
-			var str = JSON.stringify(content_array);
-			window.localStorage.setItem("ContentArray",str);
+			ots_news_array = [["","","","",""]];
+			var str = JSON.stringify(ots_news_array);
+			window.localStorage.setItem("ots_news_array",str);
 			
 		}
 		
@@ -198,7 +237,7 @@ var i;
 		});
 		
 		writeDebug();
-	
+		get_user_data();
 		getNews();
 				
 	});

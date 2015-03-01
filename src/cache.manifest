@@ -14,8 +14,6 @@ img/hamburger_icon.svg
 img/cycle.svg
  
 NETWORK:
-# All URLs that start with the following lines
-# are whitelisted.
 *
  
 CACHE:
