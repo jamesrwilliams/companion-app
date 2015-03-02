@@ -5,45 +5,16 @@
  * @package		com.jamesrwilliams.OTS
  * @description	Web interface for a local iOS Game companoion app			
  * @author 		James Williams (@James_RWilliams)
- * @copyright 	Copyright (c) 20/02/2015
+ * @copyright 	Copyright (c) 29/02/2015
  *
  */		
 
-// http://stackoverflow.com/questions/9473582/ios-javascript-bridge
+// TODO - http://stackoverflow.com/questions/9473582/ios-javascript-bridge
 
 var ots_news_array = window.localStorage.getItem("ots_news_array");
 var content_array = JSON.parse(ots_news_array);
 var debug_version = 0.1;
 var i, player, story, settings;
-
-	/*
-	 *  Ajax the game api for player data.
-	 *	
-	 *  @returns null
-	 */		
-
-	function get_user_data(){
-		
-	    $.ajax({
-		   
-	        'async': false,
-	        'global': false,
-	        'url': "test_data.json",
-	        'dataType': "json",
-	        'success': function (temp_data) {
-	            
-	            settings = temp_data.settings;
-	            player = temp_data.player;
-	            story  = temp_data.story;
-	            
-	             console.log(player);
-	            
-	        }
-	    });
-	    
-	    render_user_data();
-		
-	}
 
 	/*
 	 *  Get News Function
@@ -52,7 +23,7 @@ var i, player, story, settings;
 	 *  @returns null
 	 */
 	 
-	function rednder_news(){
+	function render_news(){
 		
 		$(".article_list").html("");
 	
@@ -63,6 +34,12 @@ var i, player, story, settings;
 		}
 	
 	}
+	
+	/*
+	 * AJAX News Request from WordPress site. 
+	 *	
+	 *  @returns null
+	 */		
 	
 	function getNews(){
 		
@@ -113,7 +90,7 @@ var i, player, story, settings;
 				            				            		        
 				    });
 		            
-		            rednder_news();
+		            render_news();
 		            
 		        },
 		        // error: function(xhr, status) { rednder_news(); }
@@ -122,7 +99,7 @@ var i, player, story, settings;
 			
 		} else {
 			
-			rednder_news();	
+			render_news();	
 			
 		}
 		
@@ -169,6 +146,12 @@ var i, player, story, settings;
 		
 	}
 	
+	/*
+	 *	Clears the localStorage object.   
+	 *	
+	 *  @returns null
+	 */		
+	
 	function clear_app_data(){
 		
 		localStorage.removeItem(ots_news_array);
@@ -177,12 +160,35 @@ var i, player, story, settings;
 	
 	function render_user_data(){
 		
-		$("#profile .info h3").text(player.player_id);
-		$("#profile .info li:nth-child(1)").text(player.xp.xp_general);
-		$("#profile .info li:nth-child(2)").text(player.xp.xp_ghosts);
-		$("#profile .info li:nth-child(3)").text(player.xp.xp_vampire);
-		$("#profile .info li:nth-child(4)").text(player.xp.xp_werewolf);
-		$("#profile .info li:nth-child(5)").text(player.xp.xp_zombie);
+		$("section.master_nav a:nth-child(1)").text("Player ID: " + player.player_id);
+		$("#player nav#header h1").text("Player ID: " + player.player_id);
+		
+	}
+	
+	/*
+	 *  Ajax the game api for player data.
+	 *	
+	 *  @returns null
+	 */		
+
+	function get_user_data(){
+		
+	    $.ajax({
+		   
+	        'async': false,
+	        'global': false,
+	        'url': "test_data.json",
+	        'dataType': "json",
+	        'success': function (temp_data) {
+	            
+	            settings = temp_data.settings;
+	            player = temp_data.player;
+	            story  = temp_data.story;
+	            
+	        }
+	    });
+	    
+	    render_user_data();
 		
 	}
 	
@@ -192,8 +198,9 @@ var i, player, story, settings;
 	 *  @returns null
 	 */		
 	
-	
 	$(document).ready(function(){
+		
+		window.location.href = "#profile";
 		
 		if(content_array === null){
 	
@@ -204,37 +211,12 @@ var i, player, story, settings;
 		}
 		
 		// DEBUG - iOS Directory search fallback function.
-		
 		$("img").error(function(){$(this).unbind("error").attr("src","img/"+$(this).attr("src"));});
 		
-		if(localStorage.getItem("OTS_introVideoHasPlayed") === null){
-			
-			// Play video if not played before
-			window.location.href = "#STARTSCREEN";
-			
-		}else {
-			
-			// If video has been played got to
-			window.location.href = "#news";
-			
-		}
-		
-		$("#VIDEOSTART").click(function(){
-			
-			window.location.href = "#INTRO";
-			$("#videoTrailer").get(0).play();
-			
-		});
+		$(".clear_app_data").click(function(){clear_app_data();});
 		
 		$("#NAVBTN").click(function(){openNav();});
 		$("#RETURN").click(function(){closeNav();});
-		
-		$("#videoTrailer").bind("ended", function() {
-			
-			window.location.href = "#PAGE1";
-			localStorage.setItem("OTS_introVideoHasPlayed", "true");
-			
-		});
 		
 		writeDebug();
 		get_user_data();
