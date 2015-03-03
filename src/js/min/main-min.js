@@ -246,6 +246,7 @@ var i, player, story, settings;
 		
 		$("#NAVBTN").click(function(){openNav();});
 		$("#RETURN").click(function(){closeNav();});
+		$(".master_nav a").click(function(){closeNav();});
 		
 		check_system();
 		get_user_data();
