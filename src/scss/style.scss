@@ -1,52 +1,31 @@
-.message_area {
-	
-	background: white;
-	color: #444;
-	font-size: 1.3em;
-	padding: 20px;
-	text-align: center;
-	
-}
-
-.development_page {
-	
-	display:block;
-	
-}
-
 .page_container {
-	
-	overflow: hidden;
+	overflow-y: hidden;
 	
 	// Fallback to iOS Default
-	background: url(../img/background.jpg), url(background.jpg);
-	background-position: center center;
-	background-size: cover;
+	background: url(../img/bg/splash.png), url(splash.png), #19191f;
+	background-position: center top;
+	background-repeat: no-repeat;
 	
 	h1 {margin: 0;}
 	
 	height: 100%;
 	width: 100%;
-	overflow: hidden;
 	
 	.page {
 		
-		overflow: hidden;
-		float: left;
+		overflow-y: hidden;
 		height: 100%;
 		width: 100%;
+		
 		
 		nav {
 
 			position: relative;
 
-			background: rgba(0,0,0,0.5);
-
 			height: 65px;
 			font-weight: 100;
-			padding-top: 30px;
+			padding-top: 35px;
 			text-align: center;
-			border-bottom: 1px solid rgba(0,0,0,0.1);
 			padding-bottom: 5px;
 			
 			h1 {
@@ -135,38 +114,25 @@
 		
 	}
 	
-	#STARTSCREEN {
-		
-		background: blue;
-		
-		a {
-			
-			text-align: center;
-			display: block;
-			padding: 10px;
-			background: white;
-			text-decoration: none;
-			color: black;
-			
-		}
-		
-	}
-	
 	#NAV {
 		
 		padding-top: 61px;
 		
+		-webkit-box-shadow: inset -2px 0px 5px 0px rgba(0,0,0,0.75);
+		-moz-box-shadow: inset -2px 0px 5px 0px rgba(0,0,0,0.75);
+		box-shadow: inset -2px 0px 5px 0px rgba(0,0,0,0.75);
+		
+		background: rgba(0,0,0,0.7);
+		border-right: 1px solid black;
 		color: white;
 		
 		z-index: 100000;
 		position: fixed;
 		
-		width: 80%;
+		width: 90%;
 		top:0;
-		left: -80%;
+		left: -90%;
 		bottom: 0;
-		background: rgba(0,0,0,0.8);
-		// box-shadow: 0.5px 0.5px 10px 1px rgba(0,0,0,0.5);
 		
 		h2 {
 			
@@ -176,13 +142,13 @@
 		
 		a {
 			
-			border-bottom: 1px solid #444;
+			border-bottom: 	1px solid rgba(255,255,255,0.1);
+			border-top: 	1px solid rgba(0,0,0,1);
 			color: #FFF;
 			padding: 10px;
 			display: block;
-			background: rgba(0,0,0,0.1);
 			text-decoration: none;
-			font-weight: 100;
+			font-weight: bold;
 			
 		}
 		
@@ -190,7 +156,7 @@
 			
 			display: none;
 			position: absolute;
-			right: -30%;
+			right: -20%;
 			top:0;
 			bottom:0;
 			width: 30%;
@@ -202,20 +168,8 @@
 	
 }
 
-.img_background {
-	
-	position: absolute;
-	height: 100%;
-	display: block;
-	width: 100vw;
-  	height: 100vh;
-  	object-fit: cover;
-  	
-  	opacity: 0.3;
-	
-}
-
 @import "utility/helpers";
+@import "utility/loader";
 @import "framework/core";
 
 @import "pages/news";
@@ -223,3 +177,6 @@
 @import "pages/stats";
 @import "pages/about";
 @import "pages/hybrid";
+@import "pages/settings";
+
+@import "media/hdpi";

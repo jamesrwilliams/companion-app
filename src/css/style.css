@@ -1,36 +1,22 @@
-.message_area {
-  background: white;
-  color: #444;
-  font-size: 1.3em;
-  padding: 20px;
-  text-align: center; }
-
-.development_page {
-  display: block; }
-
 .page_container {
-  overflow: hidden;
-  background: url(../img/background.jpg), url(background.jpg);
-  background-position: center center;
-  background-size: cover;
+  overflow-y: hidden;
+  background: url(../img/bg/splash.png), url(splash.png), #19191f;
+  background-position: center top;
+  background-repeat: no-repeat;
   height: 100%;
-  width: 100%;
-  overflow: hidden; }
+  width: 100%; }
   .page_container h1 {
     margin: 0; }
   .page_container .page {
-    overflow: hidden;
-    float: left;
+    overflow-y: hidden;
     height: 100%;
     width: 100%; }
     .page_container .page nav {
       position: relative;
-      background: rgba(0, 0, 0, 0.5);
       height: 65px;
       font-weight: 100;
-      padding-top: 30px;
+      padding-top: 35px;
       text-align: center;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       padding-bottom: 5px; }
       .page_container .page nav h1 {
         font-weight: 500;
@@ -78,51 +64,37 @@
       overflow-y: scroll; }
     .page_container .page .nav_icon {
       margin-top: 20px; }
-  .page_container #STARTSCREEN {
-    background: blue; }
-    .page_container #STARTSCREEN a {
-      text-align: center;
-      display: block;
-      padding: 10px;
-      background: white;
-      text-decoration: none;
-      color: black; }
   .page_container #NAV {
     padding-top: 61px;
+    -webkit-box-shadow: inset -2px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset -2px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: inset -2px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 0.7);
+    border-right: 1px solid black;
     color: white;
     z-index: 100000;
     position: fixed;
-    width: 80%;
+    width: 90%;
     top: 0;
-    left: -80%;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.8); }
+    left: -90%;
+    bottom: 0; }
     .page_container #NAV h2 {
       padding-left: 5px; }
     .page_container #NAV a {
-      border-bottom: 1px solid #444;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid black;
       color: #FFF;
       padding: 10px;
       display: block;
-      background: rgba(0, 0, 0, 0.1);
       text-decoration: none;
-      font-weight: 100; }
+      font-weight: bold; }
     .page_container #NAV .RETURN {
       display: none;
       position: absolute;
-      right: -30%;
+      right: -20%;
       top: 0;
       bottom: 0;
       width: 30%; }
-
-.img_background {
-  position: absolute;
-  height: 100%;
-  display: block;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  opacity: 0.3; }
 
 /*
  *
@@ -156,6 +128,55 @@ section.main {
   bottom: 0;
   background: rgba(0, 0, 0, 0.8); }
 
+.loader,
+.loader:before,
+.loader:after {
+  background: #FFF;
+  -webkit-animation: load1 1s infinite ease-in-out;
+  animation: load1 1s infinite ease-in-out;
+  width: 1em;
+  height: 4em; }
+
+.loader:before,
+.loader:after {
+  position: absolute;
+  top: 0;
+  content: ''; }
+
+.loader:before {
+  left: -1.5em; }
+
+.loader {
+  text-indent: -9999em;
+  margin: 8em auto;
+  position: relative;
+  font-size: 11px;
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s; }
+
+.loader:after {
+  left: 1.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s; }
+
+@-webkit-keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0 #FFF;
+    height: 4em; }
+  40% {
+    box-shadow: 0 -2em #ffffff;
+    height: 5em; } }
+@keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0 #FFF;
+    height: 4em; }
+  40% {
+    box-shadow: 0 -2em #ffffff;
+    height: 5em; } }
 /*
  * Framework Core SCSS Partial
  * 
@@ -202,70 +223,59 @@ section.page {
 section#news {
   height: 100%;
   position: relative; }
-  section#news header {
-    background: orange; }
   section#news .news_container {
     overflow-y: scroll;
-    height: 100%; }
+    height: 100%;
+    padding: 15px; }
     section#news .news_container img {
       width: 100%;
       height: auto; }
+  section#news .news_article {
+    position: absolute;
+    top: 90px;
+    left: 15px;
+    right: 15px;
+    padding: 15px;
+    height: 100%;
+    display: none;
+    background: white; }
   section#news ul.article_list {
-    background: white;
+    min-height: 100%;
     padding: 0;
     margin: 0;
     list-style: none; }
-    section#news ul.article_list li a {
+    section#news ul.article_list li h1,
+    section#news ul.article_list li h2,
+    section#news ul.article_list li h3,
+    section#news ul.article_list li h4,
+    section#news ul.article_list li h5,
+    section#news ul.article_list li h6,
+    section#news ul.article_list li p {
+      margin: 0; }
+    section#news ul.article_list li {
       background: white;
       padding: 10px;
+      margin-bottom: 10px;
       display: block;
       color: inherit;
       text-decoration: none; }
-      section#news ul.article_list li a h4 {
+      section#news ul.article_list li h4 {
         margin: 0;
         font-size: 30px; }
-      section#news ul.article_list li a time {
+      section#news ul.article_list li time {
         text-transform: uppercase;
         font-size: 0.8em;
         color: #666;
         margin: 0; }
-      section#news ul.article_list li a p {
+      section#news ul.article_list li p {
         margin: 0; }
+    section#news ul.article_list .more-link {
+      display: none; }
 
 section#profile {
-  position: relative;
   position: relative; }
   section#profile nav {
     background: rgba(0, 0, 0, 0.5); }
-  section#profile .player {
-    float: left;
-    position: relative;
-    height: 100%;
-    width: 50%;
-    padding: 20px; }
-    section#profile .player .player_container {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      margin-left: -40%;
-      bottom: 0; }
-      section#profile .player .player_container img {
-        width: 150%;
-        height: auto;
-        bottom: 0;
-        display: block;
-        margin-top: 90%; }
-  section#profile .info {
-    padding-right: 10px;
-    z-index: 10000;
-    float: right;
-    width: 50%;
-    color: white;
-    text-align: right; }
-    section#profile .info ul {
-      list-style: none;
-      padding: 0;
-      margin: 0; }
 
 section#stats {
   background: rgba(0, 0, 0, 0.5); }
@@ -298,8 +308,11 @@ section#stats {
 
 section#about {
   background: white; }
-  section#about nav {
-    background: #a9c322; }
   section#about .main img {
     width: 50%;
     margin: 0 25%; }
+
+section#settings section.main {
+  font-family: "Consolas", monospace;
+  padding: 15px;
+  color: white; }

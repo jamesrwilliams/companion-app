@@ -23,18 +23,10 @@
    
 	<div class="page_container">
 		
-   
-		<!--<section class="page" id="INTRO">
+		<section id="NAV" class="master_nav">
 			
-			<video id="videoTrailer" src="//player.vimeo.com/video/118273310?title=0&byline=0&portrait=0" webkit-playsinline="webkit-playsinline">Your browser does not support the <code>video</code> element.</video>
-			
-		</section>-->
-		
-		<section id="NAV">
-			
-			<a class="button" href="#profile" 	onclick="closeNav()">Profile</a>
-			<a class="button" href="#stats" 	onclick="closeNav()">Statistics</a>
-			<a class="button" href="#lore" 		onclick="closeNav()">Game Guide</a>
+			<a class="button" href="#player" 	onclick="closeNav()">Player</a>
+			<a class="button" href="#gameguide" onclick="closeNav()">Game Guide</a>
 			<a class="button" href="#news" 		onclick="closeNav()">News</a>
 			<a class="button" href="#about" 	onclick="closeNav()">About</a>
 			<a class="button" href="#hybrid"	onclick="closeNav()">The Hybrid</a>
@@ -57,16 +49,30 @@
 		
 				
 				<div class="news_container">
-					<ul class="article_list"><!-- News AJAX'd in here! --></ul>
+					
+					<ul class="article_list">
+						
+						<div class="loader">Loading...</div>
+						<!-- News AJAX'd in here! -->
+						</ul>
 				</div>
 				
 				
-				
+				<div class="news_article">
+					
+					<article>
+						
+						<!-NEWS GOES HERE->
+						
+					</article>
+					
+				</div>
 			
 			
 		</section>
 		
-		<section class="page" id="profile">
+				
+		<section class="page" id="player">
 			
 			<nav id="header">
 				<a id="NAVBTN" onclick="openNav()" ><img id="nav_icon" src="hamburger_icon.svg" height="25" width="25" /></a>
@@ -75,120 +81,48 @@
 			
 			<section class="main">
 			
-				<div class="info">
+				<div class="profile_page" id="overview">
 					
-					<h3>[USERNAME]</h3>
-				
-				<ul>
-					
-					<li>Kills: 0</li>
-					<li>Pickups: 0</li>
-					<li>Specials: 0</li>
-					<li>Specials: 0</li>
-					<li>Specials: 0</li>	
-				
-				</ul>
-				
-				
+					<h2>Overview</h2>
 					
 				</div>
 				
-				<div class="player">
+				<div class="profile_page" id="werewolf">
 					
-					<div class="player_container">
-					<img src="player.png" />
-					</div>
+					<h2>Werewolf</h2>
 					
 				</div>
-			
+				
+				<div class="profile_page" id="vampire">
+					
+					<h2>Vampire</h2>
+					
+				</div>
+				
+				<div class="profile_page" id="ghost">
+					
+					<h2>Ghost</h2>
+					
+				</div>
+				
+				<div class="profile_page" id="zombie">
+					
+					<h2>Zombie</h2>
+					
+				</div>
+				
+				<div class="profile_page" id="ots">
+					
+					<h2>OTS</h2>
+					
+				</div>
+							
 			</section>
 
 			
 		</section>
-		
-		<section class="page" id="stats">
-			
-			<nav id="header">
-				<a id="NAVBTN" onclick="openNav()" ><img id="nav_icon" src="hamburger_icon.svg" height="25" width="25" /></a>
-				<h1>Statistics</h1>
-			</nav>
-			
-			<section class="main">
 				
-				<h2>Level 1</h2>
-				
-				<img src="http://placehold.it/350x100" />
-				
-				<ul class="stats_list">
-					
-					<li>
-					
-						<h4>Kills</h4>
-						<p class="value">15326</p>
-					
-					</li>
-					<li>
-					
-						<h4>Precision Kills</h4>
-						<p class="value">5115</p>
-					
-					</li>
-					<li>
-					
-						<h4>Ability Kills</h4>
-						<p class="value">2689</p>
-					
-					</li>
-					<li>
-					
-						<h4>Deaths</h4>
-						<p class="value">27</p>
-					
-					</li>
-					<li>
-					
-						<h4>Activities Entered</h4>
-						<p class="value">127</p>
-					
-					</li>
-					<li>
-					
-						<h4>K/D Ratio</h4>
-						<p class="value">567.63</p>
-					
-					</li>
-					<li>
-					
-						<h4>Best Weapon</h4>
-						<p class="value">Scout Rifle</p>
-					
-					</li>
-					<li>
-					
-						<h4>Resurrections</h4>
-						<p class="value">1</p>
-					
-					</li>
-					<li>
-					
-						<h4>Orbs Dropped</h4>
-						<p class="value">912</p>
-					
-					</li>
-					<li>
-					
-						<h4>Best Single Game Kills</h4>
-						<p class="value">444</p>
-					
-					</li>
-					
-				</ul>
-				
-			</section>
-			
-		</section>
-		
-		<section class="page" id="lore">
+		<section class="page" id="gameguide">
 			
 			<nav id="header">
 				<a id="NAVBTN" onclick="openNav()" ><img id="nav_icon" src="hamburger_icon.svg" height="25" width="25" /></a>
@@ -227,20 +161,7 @@
 			
 		</section>
 		
-		<section class="page" id="settings">
-			
-			<nav>
-			<a id="NAVBTN" onclick="openNav()" ><img id="nav_icon" src="hamburger_icon.svg" height="25" width="25" /></a>
-			<h1>Settings</h1>
-			</nav>
-			
-			<section class="main">
-					
-				<a href="#" onclick="clear_app_data()" class="button red">Clear App Data</a>
-				
-			</section>
 		
-		</section>
 		
 		<section class="page" id="hybrid">
 			
@@ -256,6 +177,28 @@
 			</section>
 		
 		</section>
+		
+		<section class="page" id="settings">
+			
+			<nav>
+			<a id="NAVBTN" onclick="openNav()" ><img id="nav_icon" src="hamburger_icon.svg" height="25" width="25" /></a>
+			<h1>Settings</h1>
+			</nav>
+			
+			<section class="main">
+				
+				
+				
+				<a class="button red clear_app_data">Clear App Data</a>
+							
+				<p id="lastUpdate"></p>
+				<p id="app_version"></p>
+				<p id="network"></p>
+				<p id="connection"></p>
+				
+			</section>
+		
+		</section>
 	
 	</div>
 		       	
@@ -264,7 +207,7 @@
 	<script src="js/min/main-min.js"></script>
 
 	<!-- iOS Production -->
-	<!--<script src="jquery-2.1.1.min.js"></script>
-	<script src="main-min.js"></script>-->
+	<script src="jquery-2.1.1.min.js"></script>
+	<script src="main-min.js"></script>
     </body>
 </html>

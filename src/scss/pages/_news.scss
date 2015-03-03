@@ -9,13 +9,12 @@ section#news {
 	
 	height: 100%;
 	position: relative;
-		
-	header {background: orange;}
 	
 	.news_container {
 	
 		overflow-y: scroll;
 		height: 100%;
+		padding: 15px;
 		
 		img {
 			
@@ -30,20 +29,59 @@ section#news {
 		
 	}
 	
+	// News Article Container
+	
+	.news_article {
+		
+		
+		
+		position: absolute;
+		
+		top: 90px;
+		left: 15px;
+		right: 15px;
+		
+		padding: 15px;
+		height: 100%;
+		display: none;
+		background: white;
+		
+	}
+	
 	ul.article_list {
 		
-		background: white;
+		min-height: 100%;
 		padding: 0;
 		margin: 0;
 		list-style: none;
 		
-		li a {
+		li {
+			
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
+			p {
+				
+				margin: 0;
+				
+			}
+			
+		}
+		
+		li  {
 			background: white;
 			padding: 10px;
+			
+			margin-bottom: 10px;
 			
 			display: block; 
 			color: inherit; 
 			text-decoration: none;
+			
+			
 			
 			h4 {
 				
@@ -69,6 +107,8 @@ section#news {
 			}
 			
 		}
+		
+		.more-link {display: none;}
 		
 	}
 	

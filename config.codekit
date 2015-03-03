@@ -13,15 +13,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/README.html": {
-		"fileType": 8192,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/README.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/README.md": {
 		"enableFootnoteSupport": 0,
 		"enableSmartyPants": 1,
@@ -43,79 +34,13 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/src\/img\/bg\/black_thread.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 783,
-		"inputAbbreviatedPath": "\/src\/img\/bg\/black_thread.png",
-		"outputAbbreviatedPath": "\/src\/img\/bg\/black_thread.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/src\/img\/bg\/black_thread_@2X.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 4593,
-		"inputAbbreviatedPath": "\/src\/img\/bg\/black_thread_@2X.png",
-		"outputAbbreviatedPath": "\/src\/img\/bg\/black_thread_@2X.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/src\/img\/bg\/escheresque_ste.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 493,
-		"inputAbbreviatedPath": "\/src\/img\/bg\/escheresque_ste.png",
-		"outputAbbreviatedPath": "\/src\/img\/bg\/escheresque_ste.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/src\/img\/bg\/escheresque_ste_@2X.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 710,
-		"inputAbbreviatedPath": "\/src\/img\/bg\/escheresque_ste_@2X.png",
-		"outputAbbreviatedPath": "\/src\/img\/bg\/escheresque_ste_@2X.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/src\/img\/bg\/splash_version2.png": {
+	"\/src\/img\/bg\/splash.png": {
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 263185,
-		"inputAbbreviatedPath": "\/src\/img\/bg\/splash_version2.png",
-		"outputAbbreviatedPath": "\/src\/img\/bg\/splash_version2.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/src\/img\/bg\/use_your_illusion.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 1833,
-		"inputAbbreviatedPath": "\/src\/img\/bg\/use_your_illusion.png",
-		"outputAbbreviatedPath": "\/src\/img\/bg\/use_your_illusion.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/src\/img\/bg\/use_your_illusion_@2X.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 2069,
-		"inputAbbreviatedPath": "\/src\/img\/bg\/use_your_illusion_@2X.png",
-		"outputAbbreviatedPath": "\/src\/img\/bg\/use_your_illusion_@2X.png",
+		"inputAbbreviatedPath": "\/src\/img\/bg\/splash.png",
+		"outputAbbreviatedPath": "\/src\/img\/bg\/splash.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -164,17 +89,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/src\/img\/player.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 139632,
-		"inputAbbreviatedPath": "\/src\/img\/player.png",
-		"outputAbbreviatedPath": "\/src\/img\/player.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
 	"\/src\/index.html": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -203,7 +117,7 @@
 		"outputAbbreviatedPath": "\/src\/js\/min\/main-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
+		"outputStyle": 0,
 		"syntaxCheckerStyle": 1
 		},
 	"\/src\/js\/min\/main-min.js": {
@@ -386,6 +300,22 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/src\/scss\/utility\/_helpers.scss",
 		"outputAbbreviatedPath": "\/src\/scss\/css\/_helpers.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
+	"\/src\/scss\/utility\/_loader.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/src\/scss\/utility\/_loader.scss",
+		"outputAbbreviatedPath": "\/src\/scss\/css\/_loader.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,

@@ -16,6 +16,11 @@ var content_array = JSON.parse(ots_news_array);
 var debug_version = 0.1;
 var i, player, story, settings;
 
+
+/* DEBUG VARS */
+var news_hold = false;
+
+
 	/*
 	 *  Get News Function
 	 * 
@@ -29,11 +34,34 @@ var i, player, story, settings;
 	
 		for(i = 0; content_array.length > i; i++){
 	
-			$(".article_list").append("<li><a href='" + content_array[i][1] + "'><h4>" + content_array[i][0] + "</h4><time class='meta'>" + content_array[i][3] + "</time><p>"+ content_array[i][2] +"</p></a></li>");
+			$(".article_list").append("<li data-article_number='" + i + "'><h4>" + content_array[i][0] + "</h4><time class='meta'>" + content_array[i][3] + "</time><p>"+ content_array[i][2] +"</p></li>");
 	
 		}
+		
+		$(".article_list li").click(function(){
+		
+			open_news($(this).attr("data-article_number"));
+				
+		});
 	
 	}
+	
+	function open_news(news_number){
+		
+		$(".news_article").html("<a onclick='close_news()'>X</a>" + content_array[news_number][4]);
+		$(".news_article").slideToggle();
+		
+	}
+	
+	function close_news(){
+		
+		$(".news_article").slideToggle();
+		$(".news_article").html("");
+		
+		
+	}
+	
+	
 	
 	/*
 	 * AJAX News Request from WordPress site. 
@@ -42,6 +70,8 @@ var i, player, story, settings;
 	 */		
 	
 	function getNews(){
+		
+		$(".article_list").html("<div class='loader'>Loading...</div>");
 		
 		if(navigator.onLine === true){
 			
@@ -59,42 +89,46 @@ var i, player, story, settings;
 			         */
 		             
 		            $(".article_list").html("");
-	
-		            
-		            var $XML = $(data);
-				    $XML.find("item").each(function() {
-				    
-				        var $this = $(this),
-				            item = {
-				                title:       $this.find("title").text(),
-				                link:        $this.find("link").text(),
-				                description: $this.find("description").text(),
-				                pubDate:     $this.find("pubDate").text(),
-	                            content:	 $this.find("encoded").text(),
-				            };
-				        /*
-				         * 0 = Title
-				         * 1 = Link
-				         * 2 = Description
-				         * 3 = Date
-				         * 4 = Content
-				         */
+											
+						var $XML = $(data);
+						$XML.find("item").each(function() {
+						
+						var $this = $(this),
+						item = {
+						    title:       $this.find("title").text(),
+						    link:        $this.find("link").text(),
+						    description: $this.find("description").text(),
+						    pubDate:     $this.find("pubDate").text(),
+						    content:	 $this.find("encoded").text(),
+						};
+						/*
+						* 0 = Title
+						* 1 = Link
+						* 2 = Description
+						* 3 = Date
+						* 4 = Content
+						*/
 						var temp_array = [item.title,item.link,item.description,item.pubDate.substring(0, 16),item.content]; 
 						
 						content_array.push(temp_array);
-
+						
 						var temp_string = JSON.stringify(content_array);
 						window.localStorage.setItem("ots_news_array",temp_string);
-					
-					
-				            				            		        
+					 				            		        
 				    });
 		            
 		            render_news();
+		          
 		            
 		        },
 		        // error: function(xhr, status) { rednder_news(); }
-			    error: function(){ render_news(); }    
+			    error: function(){ 
+				
+					$(".article_list").html("<div class='loader'>Loading...</div>");
+				    
+				    render_news();
+				    
+				}    
 			});	
 			
 		} else {
@@ -103,20 +137,7 @@ var i, player, story, settings;
 			
 		}
 		
-	}	
-	
-	
-	/*
-	 *  
-	 *	
-	 *  @returns null
-	 */		
-	 
-	function writeDebug(){
-		
-		$(".version").html("Version: " + debug_version);
-		
-	}	
+	}		
 	
 	/*
 	 * Utility Function that closes the navigation pane. 
@@ -126,7 +147,7 @@ var i, player, story, settings;
 	
 	function closeNav(){
 		
-		$('#NAV').animate({"left": '-80%'});
+		$('#NAV').animate({"left": '-90%'});
 		$(".page").animate({"margin-left":"0"});
 		$('.RETURN').css("display","none");
 		
@@ -141,7 +162,7 @@ var i, player, story, settings;
 	function openNav(){
 		
 		$('#NAV').animate({"left": '0'});
-		$('.page').animate({"margin-left": "80%"});
+		$('.page').animate({"margin-left": "90%"});
 		$('.RETURN').css("display","block");
 		
 	}
@@ -192,6 +213,20 @@ var i, player, story, settings;
 		
 	}
 	
+	function check_system(){
+		
+		var dt = new Date();
+		var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+		
+		// Update Debug Vaules
+		$("#lastUpdate").text("Last Updated: " + time);
+		$("#network").text("Online: " + navigator.onLine);
+		$("#connection").text("Connection Type: " + navigator.connection); 
+		
+		$("#app_version").text("Version: " + debug_version);
+		
+	}
+	
 	/*
 	 * Document Init Function. Runs on page load. 
 	 *	
@@ -200,7 +235,7 @@ var i, player, story, settings;
 	
 	$(document).ready(function(){
 		
-		window.location.href = "#profile";
+		// window.location.href = "#profile";
 		
 		if(content_array === null){
 	
@@ -218,8 +253,40 @@ var i, player, story, settings;
 		$("#NAVBTN").click(function(){openNav();});
 		$("#RETURN").click(function(){closeNav();});
 		
-		writeDebug();
+		check_system();
 		get_user_data();
 		getNews();
+		
+		setInterval(function (){
+			
+			check_system();	
+			
+		}, 10000);	
 				
+	});
+	
+	function connectWebViewJavascriptBridge(callback) {
+	    if (window.WebViewJavascriptBridge) {
+	        callback(WebViewJavascriptBridge)
+	    } else {
+	        document.addEventListener('WebViewJavascriptBridgeReady', function() {
+	            callback(WebViewJavascriptBridge)
+	        }, false)
+	    }
+	}
+	
+	connectWebViewJavascriptBridge(function(bridge) {
+	
+	    /* Init your app here */
+	
+	    bridge.init(function(message, responseCallback) {
+	        alert('Received message: ' + message)   
+	        if (responseCallback) {
+	            responseCallback("Right back atcha")
+	        }
+	    })
+	    bridge.send('Hello from the javascript')
+	    bridge.send('Please respond to this', function responseCallback(responseData) {
+	        console.log("Javascript got its response", responseData)
+	    })
 	});
