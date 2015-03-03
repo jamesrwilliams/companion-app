@@ -17,10 +17,6 @@ var debug_version = 0.1;
 var i, player, story, settings;
 
 
-/* DEBUG VARS */
-var news_hold = false;
-
-
 	/*
 	 *  Get News Function
 	 * 
@@ -267,11 +263,11 @@ var news_hold = false;
 	
 	function connectWebViewJavascriptBridge(callback) {
 	    if (window.WebViewJavascriptBridge) {
-	        callback(WebViewJavascriptBridge)
+	        callback(WebViewJavascriptBridge);
 	    } else {
 	        document.addEventListener('WebViewJavascriptBridgeReady', function() {
-	            callback(WebViewJavascriptBridge)
-	        }, false)
+	            callback(WebViewJavascriptBridge);
+	        }, false);
 	    }
 	}
 	
@@ -280,13 +276,22 @@ var news_hold = false;
 	    /* Init your app here */
 	
 	    bridge.init(function(message, responseCallback) {
-	        alert('Received message: ' + message)   
+		    
+	        alert('Received message: ' + message);   
+	        
 	        if (responseCallback) {
-	            responseCallback("Right back atcha")
+	        
+	            responseCallback("Right back atcha");
+	        
 	        }
-	    })
-	    bridge.send('Hello from the javascript')
+	    });
+	    
+	    bridge.send('Hello from the javascript');
+	    
 	    bridge.send('Please respond to this', function responseCallback(responseData) {
-	        console.log("Javascript got its response", responseData)
-	    })
+	    
+	        console.log("Javascript got its response", responseData);
+	    
+	    });
+	
 	});
