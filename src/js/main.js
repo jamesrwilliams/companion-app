@@ -43,7 +43,7 @@ var i, player, story, settings;
 	}
 	
 	function open_news(news_number){
-		
+		//TODO REMOVE ONLCIK AND USE JQUERY DETECTOR
 		$(".news_article").html("<a onclick='close_news()'>X</a>" + content_array[news_number][4]);
 		$(".news_article").slideToggle();
 		
@@ -217,8 +217,6 @@ var i, player, story, settings;
 		// Update Debug Vaules
 		$("#lastUpdate").text("Last Updated: " + time);
 		$("#network").text("Online: " + navigator.onLine);
-		$("#connection").text("Connection Type: " + navigator.connection); 
-		
 		$("#app_version").text("Version: " + debug_version);
 		
 	}
@@ -258,10 +256,30 @@ var i, player, story, settings;
 			check_system();	
 			
 		}, 10000);	
+	
+		
+		var hammertime = new Hammer(document.getElementById('super_view'));
+			hammertime.on('swipe', function(ev) {
+			    
+			    if(ev.direction === 4){
+				    
+				    openNav();
+				    
+			    }
+			    else if(ev.direction === 2){
+				    
+				    closeNav();
+				    
+			    }
+			   
+		});
 				
 	});
 	
+	
+	
 	function connectWebViewJavascriptBridge(callback) {
+	   
 	    if (window.WebViewJavascriptBridge) {
 	        callback(WebViewJavascriptBridge);
 	    } else {
@@ -269,6 +287,7 @@ var i, player, story, settings;
 	            callback(WebViewJavascriptBridge);
 	        }, false);
 	    }
+	    
 	}
 	
 	connectWebViewJavascriptBridge(function(bridge) {
@@ -277,7 +296,7 @@ var i, player, story, settings;
 	
 	    bridge.init(function(message, responseCallback) {
 		    
-	        alert('Received message: ' + message);   
+	        console.log('Received message: ' + message);   
 	        
 	        if (responseCallback) {
 	        
@@ -291,6 +310,9 @@ var i, player, story, settings;
 	    bridge.send('Please respond to this', function responseCallback(responseData) {
 	    
 	        console.log("Javascript got its response", responseData);
+	        
+	        $("#source_return").text(responseData);
+	        
 	    
 	    });
 	
