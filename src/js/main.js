@@ -115,7 +115,6 @@ var i, player, story, settings;
 		            
 		            render_news();
 		          
-		            
 		        },
 		        // error: function(xhr, status) { rednder_news(); }
 			    error: function(){ 
@@ -244,9 +243,10 @@ var i, player, story, settings;
 		
 		$(".clear_app_data").click(function(){clear_app_data();});
 		
-		$("#NAVBTN").click(function(){openNav();});
 		$("#RETURN").click(function(){closeNav();});
-		$(".master_nav a").click(function(){closeNav();});
+		$("a#NAVBTN").click(function(){openNav();});
+		
+		$("#NAV a").click(function(){closeNav();});
 		
 		check_system();
 		get_user_data();
