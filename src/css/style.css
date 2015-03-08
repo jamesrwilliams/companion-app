@@ -1,6 +1,6 @@
 .page_container {
   overflow-y: hidden;
-  background: url(../img/bg/splash.png), url(splash.png), #19191f;
+  background: url(../img/bg/splash.png), #19191f;
   background-position: center top;
   background-repeat: no-repeat;
   height: 100%;
@@ -239,6 +239,14 @@ section#news {
     height: 100%;
     display: none;
     background: white; }
+  section#news #news_loading_text {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    display: block;
+    color: white;
+    font-size: 3em; }
   section#news ul.article_list {
     min-height: 100%;
     padding: 0;
@@ -313,11 +321,9 @@ section#stats {
       float: left;
       margin-right: 1px; }
 
-section#about {
-  background: white; }
-  section#about .main img {
-    width: 50%;
-    margin: 0 25%; }
+section#about .main img {
+  width: 50%;
+  margin: 0 25%; }
 
 section#settings section.main {
   font-family: "Consolas", monospace;

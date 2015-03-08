@@ -13,8 +13,47 @@
 
 var ots_news_array = window.localStorage.getItem("ots_news_array");
 var content_array = JSON.parse(ots_news_array);
-var debug_version = 0.1;
 var i, player, story, settings;
+
+	/*
+		=============
+		START CORDOVA	
+		=============
+	*/
+	
+	
+	document.addEventListener("deviceready", onDeviceReady, false);
+	function onDeviceReady() {
+		
+	    console.log(device.cordova);
+	    $("#device").html("Device: " + device.model);
+	
+	}
+	
+	function checkConnection() {
+	    var networkState = navigator.connection.type;
+	
+	    var states = {};
+	    states[Connection.UNKNOWN]  = 'Unknown connection';
+	    states[Connection.ETHERNET] = 'Ethernet connection';
+	    states[Connection.WIFI]     = 'WiFi connection';
+	    states[Connection.CELL_2G]  = 'Cell 2G connection';
+	    states[Connection.CELL_3G]  = 'Cell 3G connection';
+	    states[Connection.CELL_4G]  = 'Cell 4G connection';
+	    states[Connection.CELL]     = 'Cell generic connection';
+	    states[Connection.NONE]     = 'No network connection';
+	
+	    alert('Connection type: ' + states[networkState]);
+	    
+	    $("#network").html("Network: " + states[networkState]);
+	}
+	
+	/*
+		===========
+		END CORDOVA	
+		===========
+	*/
+	
 
 	/*
 	 *  Get News Function
@@ -64,9 +103,7 @@ var i, player, story, settings;
 	
 	function getNews(){
 		
-		$(".article_list").html("<div class='loader'>Loading...</div>");
-		
-		if(navigator.onLine === true){
+		$(".article_list").html("<div class='loader'>Loading...</div><p id='news_loading_text'>Hang fire...</p>");
 			
 			content_array.length = 0;
 			
@@ -91,14 +128,6 @@ var i, player, story, settings;
 						    content:	 $this.find("encoded").text(),
 						};
 						
-						/*
-						* 0 = Title
-						* 1 = Link
-						* 2 = Description
-						* 3 = Date
-						* 4 = Content
-						*/
-						
 						var temp_array = [item.title,item.link,item.description,item.pubDate.substring(0, 16),item.content]; 
 						
 						content_array.push(temp_array);
@@ -115,17 +144,11 @@ var i, player, story, settings;
 			    error: function(){ 
 				
 					$(".article_list").html("<div class='loader'>Loading...</div>");
-				    
+				    $("#news_loading_text").html("Well this is shitty");
 				    render_news();
 				    
 				}    
 			});	
-			
-		} else {
-			
-			render_news();	
-			
-		}
 		
 	}		
 	
@@ -210,8 +233,6 @@ var i, player, story, settings;
 		
 		// Update Debug Vaules
 		$("#lastUpdate").text("Last Updated: " + time);
-		$("#network").text("Online: " + navigator.onLine);
-		$("#app_version").text("Version: " + debug_version);
 		
 	}
 	
@@ -234,9 +255,6 @@ var i, player, story, settings;
 			
 		}
 		
-		// DEBUG - iOS Directory search fallback function.
-		$("img").error(function(){$(this).unbind("error").attr("src","img/"+$(this).attr("src"));});
-		
 		$(".clear_app_data").click(function(){clear_app_data();});
 		
 		$("#RETURN").click(function(){closeNav();});
@@ -251,6 +269,8 @@ var i, player, story, settings;
 		check_system();
 		get_user_data();
 		getNews();
+		
+		checkConnection();
 		
 		setInterval(function (){
 			
@@ -287,42 +307,4 @@ var i, player, story, settings;
 		    }
 		);
 				
-	});
-	
-	function connectWebViewJavascriptBridge(callback) {
-	   
-	    if (window.WebViewJavascriptBridge) {
-	        callback(WebViewJavascriptBridge);
-	    } else {
-	        document.addEventListener('WebViewJavascriptBridgeReady', function() {
-	            callback(WebViewJavascriptBridge);
-	        }, false);
-	    }
-	    
-	}
-	
-	connectWebViewJavascriptBridge(function(bridge) {
-	
-	    bridge.init(function(message, responseCallback) {
-		    
-	        console.log('Received message: ' + message);   
-	        
-	        if (responseCallback) {
-	        
-	            responseCallback("Right back atcha");
-	        
-	        }
-	    });
-	    
-	    bridge.send('Hello from the javascript');
-	    
-	    bridge.send('Please respond to this', function responseCallback(responseData) {
-	    
-	        console.log("Javascript got its response", responseData);
-	        
-	        $("#source_return").text(responseData);
-	        
-	    
-	    });
-	
 	});
