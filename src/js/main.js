@@ -301,7 +301,8 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 		
 		$(".clear_app_data").click(	function(){	
 			
-			navigator.notification.alert("Warning 1", clear_app_data, "Warning 2", "Delete");
+			// Need to add a cancel function
+			navigator.notification.prompt("Clearing this will delete all localdata", clear_app_data);
 			
 		});
 		
