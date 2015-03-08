@@ -297,12 +297,9 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 			
 		}
 		
-		// $(".clear_app_data").click(	function(){	alert("test"); });
-		
 		$(".clear_app_data").click(	function(){	
 			
-			// Need to add a cancel function
-			navigator.notification.prompt("Clearing this will delete all localdata", clear_app_data);
+			navigator.notification.confirm("Clearing this will delete all localdata", clear_app_data);
 			
 		});
 		
