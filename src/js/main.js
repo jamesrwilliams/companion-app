@@ -11,7 +11,7 @@
 
 var ots_news_array = window.localStorage.getItem("ots_news_array");
 var content_array = JSON.parse(ots_news_array);
-var i, player, story, settings, hammertime, Hammer, Connection, alert, device;
+var i, player, story, settings, hammertime, Hammer, Connection, device;
 
 	
 	var onSuccess = function(position) {
@@ -198,7 +198,9 @@ var i, player, story, settings, hammertime, Hammer, Connection, alert, device;
 	
 	function clear_app_data(){
 		
-		localStorage.removeItem(ots_news_array);
+		localStorage.removeItem('ots_news_array');
+		
+		console.log("Clear Has Fired");
 		
 	}
 	
@@ -295,12 +297,21 @@ var i, player, story, settings, hammertime, Hammer, Connection, alert, device;
 			
 		}
 		
-		$(".clear_app_data").click(	function(){	clear_app_data();	});
+		// $(".clear_app_data").click(	function(){	alert("test"); });
+		
+		$(".clear_app_data").click(	function(){	
+			
+			navigator.notification.alert("Warning 1", clear_app_data, "Warning 2", "Delete");
+			
+		});
+		
 		$("#RETURN").click(			function(){	closeNav();			});
 		$("a#NAVBTN").click(		function(){	openNav();			});
 		$(".article_close").click(	function(){	close_news();		});
 		$("#SYNC").click(			function(){	getNews();			});
 		$("#NAV a").click(			function(){	closeNav();			});
+		
+		
 		
 		check_system();
 		get_user_data();
