@@ -1,31 +1,33 @@
 /*
  * OTS App Javascript Core File
  * 
- * @version		0.1
- * @package		com.jamesrwilliams.OTS
- * @description	Web interface for a local iOS Game companoion app			
+ * @version		1
+ * @package		com.tap-code.hybridcompanion
+ * @description	The Hybrid Companion Web Application			
  * @author 		James Williams (@James_RWilliams)
- * @copyright 	Copyright (c) 29/02/2015
+ * @copyright 	Copyright (c) 08/03/2015
  *
- */		
-
-// TODO - http://stackoverflow.com/questions/9473582/ios-javascript-bridge
+ */
 
 var ots_news_array = window.localStorage.getItem("ots_news_array");
 var content_array = JSON.parse(ots_news_array);
-var i, player, story, settings;
+var i, player, story, settings, hammertime, Hammer, Connection, alert, device;
 
+	
+	var onSuccess = function(position) {
+	    
+	    $("#lat").text("Latitude: " + position.coords.latitude);
+	    $("#long").text("Longitude: " + position.coords.longitude);
+	};
+	
 	/*
-		=============
-		START CORDOVA	
-		=============
-	*/
+	 *  
+	 *	
+	 * 
+	 */		
 	
-	
-	document.addEventListener("deviceready", onDeviceReady, false);
 	function onDeviceReady() {
 		
-	    console.log(device.cordova);
 	    $("#device").html("Device: " + device.model);
 	    checkConnection();
 	    
@@ -33,51 +35,49 @@ var i, player, story, settings;
 	
 	}
 	
-	function checkConnection() {
-	    var networkState = navigator.connection.type;
-	
-	    var states = {};
-	    states[Connection.UNKNOWN]  = 'Unknown connection';
-	    states[Connection.ETHERNET] = 'Ethernet connection';
-	    states[Connection.WIFI]     = 'WiFi connection';
-	    states[Connection.CELL_2G]  = 'Cell 2G connection';
-	    states[Connection.CELL_3G]  = 'Cell 3G connection';
-	    states[Connection.CELL_4G]  = 'Cell 4G connection';
-	    states[Connection.CELL]     = 'Cell generic connection';
-	    states[Connection.NONE]     = 'No network connection';
-	    
-	    $("#network").html("Network: " + states[networkState]);
-	}
-	
-	// onSuccess Callback
-	// This method accepts a Position object, which contains the
-	// current GPS coordinates
-	//
-	var onSuccess = function(position) {
-	    
-	    $("#lat").text("Latitude: " + position.coords.latitude);
-	    $("#long").text("Longitude: " + position.coords.longitude);
-	};
-	
-	// onError Callback receives a PositionError object
-	//
+	/*
+	 *  
+	 *	
+	 * 
+	 */		
+
 	function onError(error) {
 	    alert('code: '    + error.code    + '\n' +
 	          'message: ' + error.message + '\n');
 	}
 	
 	/*
-		===========
-		END CORDOVA	
-		===========
-	*/
+	 *  
+	 *	
+	 * 
+	 */		
 	
-
+	function open_news(news_number){
+		
+		$(".news_article").html("<a class='article_close'>X</a>" + content_array[news_number][4]);
+		$(".news_article").slideToggle();
+		
+	}
+	
+	/*
+	 *  
+	 *	
+	 * 
+	 */		
+	
+	function close_news(){
+		
+		$(".news_article").slideToggle();
+		$(".news_article").html("");
+		
+		
+	}
+	
 	/*
 	 *  Get News Function
 	 * 
 	 *	
-	 *  @returns null
+	 * 
 	 */
 	 
 	function render_news(){
@@ -98,83 +98,77 @@ var i, player, story, settings;
 	
 	}
 	
-	function open_news(news_number){
-		
-		$(".news_article").html("<a class='article_close'>X</a>" + content_array[news_number][4]);
-		$(".news_article").slideToggle();
-		
-	}
-	
-	function close_news(){
-		
-		$(".news_article").slideToggle();
-		$(".news_article").html("");
-		
-		
-	}
-	
-	/*
-	 * AJAX News Request from WordPress site. 
+	/**
 	 *	
-	 *  @returns null
-	 */		
+	 *	AJAX Request to get game news from a server then rendering it behind a loader. 	
+	 *
+	 * 	1. Adds Loader anmation to the list. 
+	 *
+	 * 	2. AJAX request to the server that returns the xml
+	 *
+	 *	3. On suscessful AJAX finds the listed elemetns of
+	 *	   the feed and saves them to the localstorage string.
+	 *
+	 * 	4. (Fallback) If the AJAX is unsucessful it loads the perviously loaded content to the list.
+	 */			
 	
 	function getNews(){
 		
-		$(".article_list").html("<div class='loader'>Loading...</div><p id='news_loading_text'>Hang fire...</p>");
+		/* 1 */
+		$(".article_list").html("<div class='loader'>Loading...</div><p id='news_loading_text'></p>");
+		content_array.length = 0;
+		
+		$.ajax({
+		    
+		    /* 2 */   
+	        type: "get",
+	        url: "http://wearekiwikiwi.co.uk/feed/",
+	        dataType: "xml",
+	        success: function(data) {
+	            
+	            /* 3 */ 
+	            $(".article_list").html("");
+										
+					var $XML = $(data);
+					$XML.find("item").each(function() {
+					
+					var $this = $(this),
+					item = {
+					    title:       $this.find("title").text(),
+					    link:        $this.find("link").text(),
+					    description: $this.find("description").text(),
+					    pubDate:     $this.find("pubDate").text(),
+					    content:	 $this.find("encoded").text(),
+					};
+					
+					var temp_array = [item.title,item.link,item.description,item.pubDate.substring(0, 16),item.content]; 
+					
+					content_array.push(temp_array);
+					
+					var temp_string = JSON.stringify(content_array);
+					window.localStorage.setItem("ots_news_array",temp_string);
+				 				            		        
+			    });
+	            
+	            render_news();
+	          
+	        },
+		    error: function(){ 
 			
-			content_array.length = 0;
-			
-			$.ajax({
-			        
-		        type: "get",
-		        url: "http://wearekiwikiwi.co.uk/feed/",
-		        dataType: "xml",
-		        success: function(data) {
-		             
-		            $(".article_list").html("");
-											
-						var $XML = $(data);
-						$XML.find("item").each(function() {
-						
-						var $this = $(this),
-						item = {
-						    title:       $this.find("title").text(),
-						    link:        $this.find("link").text(),
-						    description: $this.find("description").text(),
-						    pubDate:     $this.find("pubDate").text(),
-						    content:	 $this.find("encoded").text(),
-						};
-						
-						var temp_array = [item.title,item.link,item.description,item.pubDate.substring(0, 16),item.content]; 
-						
-						content_array.push(temp_array);
-						
-						var temp_string = JSON.stringify(content_array);
-						window.localStorage.setItem("ots_news_array",temp_string);
-					 				            		        
-				    });
-		            
-		            render_news();
-		          
-		        },
-		        // error: function(xhr, status) { rednder_news(); }
-			    error: function(){ 
-				
-					$(".article_list").html("<div class='loader'>Loading...</div>");
-				    $("#news_loading_text").html("Well this is shitty");
-				    render_news();
-				    
-				}    
-			});	
+				/* 4 */
+				$(".article_list").html("<div class='loader'>Loading...</div>");
+			    $("#news_loading_text").html("Cannot Load News");
+			    render_news();
+			    
+			}    
+		});	
 		
 	}		
 	
-	/*
-	 * Utility Function that closes the navigation pane. 
-	 *	
-	 *  @returns null
-	 */			
+	/**
+	 * Animates the closing of the navigation pane. 	
+	 * 
+	 */				
 	
 	function closeNav(){
 		
@@ -184,11 +178,10 @@ var i, player, story, settings;
 		
 	}
 	
-	/*
-	 * Opens the navigation pane. 
-	 *	
-	 *  @returns null
-	 */		
+	/**
+	 * Aniamtes the opening of the navigation pane. 	
+	 * 
+	 */				
 	 
 	function openNav(){
 		
@@ -198,17 +191,21 @@ var i, player, story, settings;
 		
 	}
 	
-	/*
-	 *	Clears the localStorage object.   
-	 *	
-	 *  @returns null
-	 */		
+	/**
+	 * Clears the localstorage element used by the news storage. 	
+	 * 
+	 */				
 	
 	function clear_app_data(){
 		
 		localStorage.removeItem(ots_news_array);
 		
 	}
+	
+	/**
+	 *  	
+	 * 
+	 */				
 	
 	function render_user_data(){
 		
@@ -217,11 +214,10 @@ var i, player, story, settings;
 		
 	}
 	
-	/*
-	 *  Ajax the game api for player data.
+	/**
 	 *	
-	 *  @returns null
-	 */		
+	 * 
+	 */			
 
 	function get_user_data(){
 		
@@ -244,6 +240,11 @@ var i, player, story, settings;
 		
 	}
 	
+	/**
+	 *	
+	 * 
+	 */			
+	
 	function check_system(){
 		
 		var dt = new Date();
@@ -254,16 +255,37 @@ var i, player, story, settings;
 		
 	}
 	
-	/*
-	 * Document Init Function. Runs on page load. 
+	/**
 	 *	
-	 *  @returns null
-	 */		
+	 * 
+	 */			
+	
+	function checkConnection() {
+	    var networkState = navigator.connection.type;
+	
+	    var states = {};
+	    states[Connection.UNKNOWN]  = 'Unknown connection';
+	    states[Connection.ETHERNET] = 'Ethernet connection';
+	    states[Connection.WIFI]     = 'WiFi connection';
+	    states[Connection.CELL_2G]  = 'Cell 2G connection';
+	    states[Connection.CELL_3G]  = 'Cell 3G connection';
+	    states[Connection.CELL_4G]  = 'Cell 4G connection';
+	    states[Connection.CELL]     = 'Cell generic connection';
+	    states[Connection.NONE]     = 'No network connection';
+	    
+	    $("#network").html("Network: " + states[networkState]);
+	}
+	
+	/**
+	 *	
+	 * 
+	 */			
 	
 	$(document).ready(function(){
 		
-		// Set the First Window Location (If Different from source order)
-		// window.location.href = "#profile";
+		document.addEventListener("deviceready", onDeviceReady, false);
+		
+		var hammertime = new Hammer(document.getElementById('super_view'));
 		
 		if(content_array === null){
 	
@@ -273,16 +295,12 @@ var i, player, story, settings;
 			
 		}
 		
-		$(".clear_app_data").click(function(){clear_app_data();});
-		
-		$("#RETURN").click(function(){closeNav();});
-		$("a#NAVBTN").click(function(){openNav();});
-		
-		$(".article_close").click(function(){close_news()});
-		
-		$("#SYNC").click(function(){getNews()});
-		
-		$("#NAV a").click(function(){closeNav();});
+		$(".clear_app_data").click(	function(){	clear_app_data();	});
+		$("#RETURN").click(			function(){	closeNav();			});
+		$("a#NAVBTN").click(		function(){	openNav();			});
+		$(".article_close").click(	function(){	close_news();		});
+		$("#SYNC").click(			function(){	getNews();			});
+		$("#NAV a").click(			function(){	closeNav();			});
 		
 		check_system();
 		get_user_data();
@@ -290,39 +308,21 @@ var i, player, story, settings;
 		
 		checkConnection();
 		
-		setInterval(function (){
-			
-			check_system();	
-			
-		}, 10000);	
-	
+		setInterval(function (){ 	check_system();}, 			10000);	
 		
-		var hammertime = new Hammer(document.getElementById('super_view'));
-			hammertime.on('swipe', function(ev) {
+		hammertime.on('swipe', function(ev) {
+		    
+		    if(ev.direction === 4){
 			    
-			    if(ev.direction === 4){
-				    
-				    openNav();
-				    
-			    }
-			    else if(ev.direction === 2){
-				    
-				    closeNav();
-				    
-			    }
-			   
-		});
-		
-		 $('#reader').html5_qrcode(function(data){
-		        
-		        console.log(data);
-		        
-		    },
-		    function(error){
-		        //show read errors 
-		    }, function(videoError){
-		        //the video stream could be opened
+			    openNav();
+			    
 		    }
-		);
-				
-	});
+		    else if(ev.direction === 2){
+			    
+			    closeNav();
+			    
+		    }
+		   
+	});				
+
+});
