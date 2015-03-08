@@ -17,6 +17,29 @@ var debug_version = 0.1;
 var i, player, story, settings;
 
 	/*
+		
+		START CORDOVA	
+		
+	*/
+	
+	
+	document.addEventListener("deviceready", onDeviceReady, false);
+	function onDeviceReady() {
+		
+	    console.log(device.cordova);
+	    $("#device").html("Device: " + device.model);
+	    $("#uuid").html("UUID: " + device.uuid);
+	
+	}
+	
+	/*
+		
+		END CORDOVA	
+		
+	*/
+	
+
+	/*
 	 *  Get News Function
 	 * 
 	 *	
