@@ -5,8 +5,6 @@
         versionCode = "10" 
         version     = "1.0.0" >
 
-    <!-- versionCode is optional and Android only -->
-
     <name>The Hybrid</name>
 
     <description>
@@ -16,16 +14,16 @@
     <author href="https://jamesrwilliams.co.uk" email="hello@jamesrwilliams.co.uk">
         James R. Williams
     </author>
-        
-    
        
     <preference name="webviewbounce"              value="false" />     
     <preference name="ios-statusbarstyle"         value="black-opaque" />  
     <preference name="stay-in-webview"            value="false" />
     
-    <preference name="phonegap-version" value="3.7.0" />  
+    <preference name="phonegap-version" value="3.7.0" />
     
-    <!-- Core plugins -->
+    <preference name="orientation" value="portrait" />
+    <preference name="target-device" value="handset" />
+    
     <gap:plugin name="org.apache.cordova.battery-status" />
     <gap:plugin name="org.apache.cordova.camera" />
     <gap:plugin name="org.apache.cordova.media-capture" />
@@ -47,8 +45,14 @@
     
     <access origin="*"/>
     
-    <icon src="res/icon.png" />
+    <icon src="icon.png" />
     
-    <icon src="res/ios/icon-60@3x.png"		 gap:platform="ios"			width="180" height="180" />
+    <icon src="res/ios/icon-60@3x.png"		 		gap:platform="ios"		  width="180" height="180" />
+   
+    <icon src="res/icon/ios/icon-72-2x.png"         gap:platform="ios"        width="144" height="144" />
+    <icon src="res/icon/ios/icon-57-2x.png"         gap:platform="ios"        width="114" height="114" />
+    
+    <icon src="res/icon/ios/icon-72.png"            gap:platform="ios"        width="72" height="72" />
+    <icon src="res/icon/ios/icon-57.png"            gap:platform="ios"        width="57" height="57" />
 
 </widget>
