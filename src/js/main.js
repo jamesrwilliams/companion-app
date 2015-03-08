@@ -234,9 +234,6 @@ var i, player, story, settings;
 			
 		}
 		
-		// DEBUG - iOS Directory search fallback function.
-		$("img").error(function(){$(this).unbind("error").attr("src","img/"+$(this).attr("src"));});
-		
 		$(".clear_app_data").click(function(){clear_app_data();});
 		
 		$("#RETURN").click(function(){closeNav();});
@@ -287,42 +284,4 @@ var i, player, story, settings;
 		    }
 		);
 				
-	});
-	
-	function connectWebViewJavascriptBridge(callback) {
-	   
-	    if (window.WebViewJavascriptBridge) {
-	        callback(WebViewJavascriptBridge);
-	    } else {
-	        document.addEventListener('WebViewJavascriptBridgeReady', function() {
-	            callback(WebViewJavascriptBridge);
-	        }, false);
-	    }
-	    
-	}
-	
-	connectWebViewJavascriptBridge(function(bridge) {
-	
-	    bridge.init(function(message, responseCallback) {
-		    
-	        console.log('Received message: ' + message);   
-	        
-	        if (responseCallback) {
-	        
-	            responseCallback("Right back atcha");
-	        
-	        }
-	    });
-	    
-	    bridge.send('Hello from the javascript');
-	    
-	    bridge.send('Please respond to this', function responseCallback(responseData) {
-	    
-	        console.log("Javascript got its response", responseData);
-	        
-	        $("#source_return").text(responseData);
-	        
-	    
-	    });
-	
 	});
