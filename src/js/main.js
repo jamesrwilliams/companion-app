@@ -104,8 +104,6 @@ var i, player, story, settings;
 	function getNews(){
 		
 		$(".article_list").html("<div class='loader'>Loading...</div><p id='news_loading_text'>Hang fire...</p>");
-		
-		if(navigator.onLine === true){
 			
 			content_array.length = 0;
 			
@@ -151,12 +149,6 @@ var i, player, story, settings;
 				    
 				}    
 			});	
-			
-		} else {
-			
-			render_news();	
-			
-		}
 		
 	}		
 	
