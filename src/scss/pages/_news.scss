@@ -46,6 +46,18 @@ section#news {
 		
 	}
 	
+	#news_loading_text {
+		
+		position: absolute;
+		top:50%;
+		width: 100%;
+		text-align: center;
+		display: block;
+		color: white;
+		font-size: 3em;
+		
+	}
+	
 	ul.article_list {
 		
 		min-height: 100%;

@@ -103,7 +103,7 @@ var i, player, story, settings;
 	
 	function getNews(){
 		
-		$(".article_list").html("<div class='loader'>Loading...</div>");
+		$(".article_list").html("<div class='loader'>Loading...</div><p id='news_loading_text'>Hang fire...</p>");
 		
 		if(navigator.onLine === true){
 			
@@ -130,14 +130,6 @@ var i, player, story, settings;
 						    content:	 $this.find("encoded").text(),
 						};
 						
-						/*
-						* 0 = Title
-						* 1 = Link
-						* 2 = Description
-						* 3 = Date
-						* 4 = Content
-						*/
-						
 						var temp_array = [item.title,item.link,item.description,item.pubDate.substring(0, 16),item.content]; 
 						
 						content_array.push(temp_array);
@@ -154,7 +146,7 @@ var i, player, story, settings;
 			    error: function(){ 
 				
 					$(".article_list").html("<div class='loader'>Loading...</div>");
-				    
+				    $("#news_loading_text").html("Well this is shitty");
 				    render_news();
 				    
 				}    
@@ -250,8 +242,6 @@ var i, player, story, settings;
 		// Update Debug Vaules
 		$("#lastUpdate").text("Last Updated: " + time);
 		
-		checkConnection();
-		
 	}
 	
 	/*
@@ -287,6 +277,8 @@ var i, player, story, settings;
 		check_system();
 		get_user_data();
 		getNews();
+		
+		checkConnection();
 		
 		setInterval(function (){
 			
