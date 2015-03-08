@@ -45,8 +45,6 @@ var i, player, story, settings;
 	    states[Connection.CELL_4G]  = 'Cell 4G connection';
 	    states[Connection.CELL]     = 'Cell generic connection';
 	    states[Connection.NONE]     = 'No network connection';
-	
-	    alert('Connection type: ' + states[networkState]);
 	    
 	    $("#network").html("Network: " + states[networkState]);
 	}
@@ -56,9 +54,9 @@ var i, player, story, settings;
 	// current GPS coordinates
 	//
 	var onSuccess = function(position) {
-	    alert('Latitude: '          + position.coords.latitude          + '\n' +
-	          'Longitude: '         + position.coords.longitude         + '\n' +
-	          'Timestamp: '         + position.timestamp                + '\n');
+	    
+	    $("#lat").text("Latitude: " + position.coords.latitude);
+	    $("#long").text("Longitude: " + position.coords.longitude);
 	};
 	
 	// onError Callback receives a PositionError object
