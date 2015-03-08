@@ -15,9 +15,10 @@
         James R. Williams
     </author>
        
-    <preference name="webviewbounce"              value="false" />     
-    <preference name="ios-statusbarstyle"         value="black-opaque" />  
-    <preference name="stay-in-webview"            value="false" />
+    <preference name="webviewbounce"              	value="false" />     
+    <preference name="ios-statusbarstyle"         	value="lightcontent" /> 
+    <preference name="StatusBarOverlaysWebView" 	value="true" /> 
+    <preference name="stay-in-webview"            	value="false" />
     
     <preference name="phonegap-version" value="3.7.0" />
     
