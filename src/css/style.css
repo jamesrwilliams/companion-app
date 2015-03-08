@@ -271,6 +271,13 @@ section#news {
         margin: 0; }
     section#news ul.article_list .more-link {
       display: none; }
+  section#news .article_close {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background: blue; }
 
 section#profile {
   position: relative; }

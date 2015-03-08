@@ -27,6 +27,7 @@
 			
 			<a class="button" href="#player" 	> Player</a>
 			<a class="button" href="#gameguide" > Game Guide</a>
+			<a class="button" href="#infection" > Infection</a>
 			<a class="button" href="#news" 		> News</a>
 			<a class="button" href="#about" 	> About</a>
 			<a class="button" href="#hybrid"	> The Hybrid</a>
@@ -44,7 +45,7 @@
 			<nav id="header">
 				<a id="NAVBTN"><img id="nav_icon" src="hamburger_icon.svg" height="25" width="25" /></a>
 				<h1>News</h1>
-				<a id="NAVBTN" onclick="getNews()"><img id="nav_icon" src="cycle.svg" height="25" width="25" /></a>
+				<a id="SYNC" onclick="getNews()"><img id="nav_icon" src="cycle.svg" height="25" width="25" /></a>
 			</nav>
 		
 				
@@ -68,6 +69,23 @@
 					
 				</div>
 			
+			
+		</section>
+		
+		<section class="page" id="infection">
+			
+			<nav id="header">
+				<a id="NAVBTN"><img id="nav_icon" src="hamburger_icon.svg" height="25" width="25" /></a>
+				<h1>Infection</h1>
+			</nav>
+			
+			<section class="main">
+				
+				<h1>Infection</h1>
+				
+				 <div id="reader" style="width:300px;height:250px"></div>
+				
+			</section>
 			
 		</section>
 		
@@ -131,7 +149,7 @@
 			
 			<section class="main">
 				
-				
+				<h3>Bosh.</h3>			
 				
 			</section>
 			
@@ -202,13 +220,17 @@
 	</div>
 		       	
 	<!-- Local Production Tests -->
-	<script src="js/min/jquery-2.1.1.min.js"></script>
+	<script src="js/vendor/jquery-2.1.1.min.js"></script>
+	<script src="js/vendor/hammer-min.js"></script>
+	<script src="js/vendor/html5-qrcode.min.js"></script>
 	<script src="js/min/main-min.js"></script>
-	<script src="js/min/hammer-min.js"></script>
+	
 
 	<!-- iOS Production -->
 	<script src="jquery-2.1.1.min.js"></script>
-	<script src="main-min.js"></script>
 	<script src="hammer-min.js"></script>
+	<script src="html5-qrcode.js"></script>
+	<script src="main-min.js"></script>
+	
     </body>
 </html>

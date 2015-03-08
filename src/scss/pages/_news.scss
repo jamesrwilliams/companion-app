@@ -33,8 +33,6 @@ section#news {
 	
 	.news_article {
 		
-		
-		
 		position: absolute;
 		
 		top: 90px;
@@ -109,6 +107,17 @@ section#news {
 		}
 		
 		.more-link {display: none;}
+		
+	}
+	
+	.article_close {
+		
+		display: inline-block;
+		position: absolute;
+		right: 0;
+		width: 30px;
+		height: 30px;
+		background: blue;
 		
 	}
 	

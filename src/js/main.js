@@ -16,7 +16,6 @@ var content_array = JSON.parse(ots_news_array);
 var debug_version = 0.1;
 var i, player, story, settings;
 
-
 	/*
 	 *  Get News Function
 	 * 
@@ -43,8 +42,8 @@ var i, player, story, settings;
 	}
 	
 	function open_news(news_number){
-		//TODO REMOVE ONLCIK AND USE JQUERY DETECTOR
-		$(".news_article").html("<a onclick='close_news()'>X</a>" + content_array[news_number][4]);
+		
+		$(".news_article").html("<a class='article_close'>X</a>" + content_array[news_number][4]);
 		$(".news_article").slideToggle();
 		
 	}
@@ -56,8 +55,6 @@ var i, player, story, settings;
 		
 		
 	}
-	
-	
 	
 	/*
 	 * AJAX News Request from WordPress site. 
@@ -79,10 +76,6 @@ var i, player, story, settings;
 		        url: "http://wearekiwikiwi.co.uk/feed/",
 		        dataType: "xml",
 		        success: function(data) {
-			        
-		            /*
-			         * AJAX Connection Successful
-			         */
 		             
 		            $(".article_list").html("");
 											
@@ -97,6 +90,7 @@ var i, player, story, settings;
 						    pubDate:     $this.find("pubDate").text(),
 						    content:	 $this.find("encoded").text(),
 						};
+						
 						/*
 						* 0 = Title
 						* 1 = Link
@@ -104,6 +98,7 @@ var i, player, story, settings;
 						* 3 = Date
 						* 4 = Content
 						*/
+						
 						var temp_array = [item.title,item.link,item.description,item.pubDate.substring(0, 16),item.content]; 
 						
 						content_array.push(temp_array);
@@ -228,6 +223,7 @@ var i, player, story, settings;
 	
 	$(document).ready(function(){
 		
+		// Set the First Window Location (If Different from source order)
 		// window.location.href = "#profile";
 		
 		if(content_array === null){
@@ -245,6 +241,10 @@ var i, player, story, settings;
 		
 		$("#RETURN").click(function(){closeNav();});
 		$("a#NAVBTN").click(function(){openNav();});
+		
+		$(".article_close").click(function(){close_news()});
+		
+		$("#SYNC").click(function(){getNews()});
 		
 		$("#NAV a").click(function(){closeNav();});
 		
@@ -274,10 +274,20 @@ var i, player, story, settings;
 			    }
 			   
 		});
+		
+		 $('#reader').html5_qrcode(function(data){
+		        
+		        console.log(data);
+		        
+		    },
+		    function(error){
+		        //show read errors 
+		    }, function(videoError){
+		        //the video stream could be opened
+		    }
+		);
 				
 	});
-	
-	
 	
 	function connectWebViewJavascriptBridge(callback) {
 	   
@@ -292,8 +302,6 @@ var i, player, story, settings;
 	}
 	
 	connectWebViewJavascriptBridge(function(bridge) {
-	
-	    /* Init your app here */
 	
 	    bridge.init(function(message, responseCallback) {
 		    
