@@ -17,8 +17,7 @@
     
     <icon src="icon.png" />
     
-    <preference name="webviewbounce"              	value="false" />  
-    <preference name="auto-hide-splash-screen"    	value="false" />    
+    <preference name="webviewbounce"              	value="false" />   
     <preference name="fullscreen"                 	value="true"  /> 
     <preference name="stay-in-webview"            	value="false" />
     <preference name="show-splash-screen-spinner" 	value="false" /> 

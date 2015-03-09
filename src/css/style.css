@@ -65,29 +65,52 @@
     .page_container .page .nav_icon {
       margin-top: 20px; }
   .page_container #NAV {
-    padding-top: 61px;
     -webkit-box-shadow: inset -2px 0px 5px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: inset -2px 0px 5px 0px rgba(0, 0, 0, 0.75);
     box-shadow: inset -2px 0px 5px 0px rgba(0, 0, 0, 0.75);
-    background: rgba(0, 0, 0, 0.7);
+    background: white;
     border-right: 1px solid black;
-    color: white;
+    color: black;
     z-index: 100000;
     position: fixed;
     width: 90%;
     top: 0;
     left: -90%;
     bottom: 0; }
+    .page_container #NAV .navigation_list {
+      height: 100%;
+      background: gray; }
+    .page_container #NAV .navigation_list:after {
+      content: "";
+      display: block;
+      clear: both; }
+    .page_container #NAV h1 {
+      height: 65px;
+      background: red;
+      line-height: 65px;
+      text-align: center; }
     .page_container #NAV h2 {
       padding-left: 5px; }
-    .page_container #NAV a {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      border-top: 1px solid black;
-      color: #FFF;
-      padding: 10px;
+    .page_container #NAV div.button {
+      position: relative;
+      width: 50%;
+      height: 25%;
+      float: left;
+      text-align: center;
+      cursor: hand !important;
+      border: 1px solid rgba(0, 0, 0, 0.2);
       display: block;
       text-decoration: none;
       font-weight: bold; }
+      .page_container #NAV div.button .item_img {
+        width: 50%;
+        height: 50%;
+        position: absolute;
+        left: 25%;
+        top: 25%;
+        fill: white; }
+    .page_container #NAV div.button:nth-of-type(5) {
+      width: 100%; }
     .page_container #NAV .RETURN {
       display: none;
       position: absolute;
@@ -326,6 +349,5 @@ section#about .main img {
   margin: 0 25%; }
 
 section#settings section.main {
-  font-family: "Consolas", monospace;
   padding: 15px;
   color: white; }

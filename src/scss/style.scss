@@ -1,4 +1,5 @@
 .page_container {
+	
 	overflow-y: hidden;
 	
 	// Fallback to iOS Default
@@ -115,16 +116,38 @@
 	}
 	
 	#NAV {
+				
+		.navigation_list {
+			
+			height: 100%;
+			background: gray;
+			
+		}
 		
-		padding-top: 61px;
+		.navigation_list:after {
+			
+			content: "";
+			display: block;
+			clear: both;
+			
+		}
+		
+		h1 {
+			
+			height: 65px;
+			background: red;
+			line-height: 65px;
+			text-align: center;
+			
+		}
 		
 		-webkit-box-shadow: inset -2px 0px 5px 0px rgba(0,0,0,0.75);
 		-moz-box-shadow: inset -2px 0px 5px 0px rgba(0,0,0,0.75);
 		box-shadow: inset -2px 0px 5px 0px rgba(0,0,0,0.75);
 		
-		background: rgba(0,0,0,0.7);
+		background: white;
 		border-right: 1px solid black;
-		color: white;
+		color: black;
 		
 		z-index: 100000;
 		position: fixed;
@@ -140,17 +163,40 @@
 			
 		}
 		
-		a {
+		div.button {
 			
-			border-bottom: 	1px solid rgba(255,255,255,0.1);
-			border-top: 	1px solid rgba(0,0,0,1);
-			color: #FFF;
-			padding: 10px;
+			
+			position: relative;
+			
+			width: 50%;
+			height: 25%;
+			float: left;
+			text-align: center;
+			
+			cursor: hand !important;
+			
+			border: 1px solid rgba(0,0,0,0.2);
+
 			display: block;
 			text-decoration: none;
 			font-weight: bold;
 			
+			.item_img {
+				
+				width: 50%;
+				height: 50%;
+				
+				position: absolute;
+				left: 25%;
+				top: 25%;
+				
+				fill: white;
+				
+			}
+			
 		}
+		
+		div.button:nth-of-type(5) { width: 100%;}
 		
 		.RETURN {
 			

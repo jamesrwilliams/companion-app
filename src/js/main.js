@@ -15,11 +15,10 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 	
 	
 	
-	/*
-	 *  
+	/**
 	 *	
 	 * 
-	 */		
+	 */				
 	
 	function open_news(news_number){
 		
@@ -28,11 +27,10 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 		
 	}
 	
-	/*
-	 *  
+	/**
 	 *	
 	 * 
-	 */		
+	 */				
 	
 	function close_news(){
 		
@@ -42,12 +40,10 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 		
 	}
 	
-	/*
-	 *  Get News Function
-	 * 
+	/**
 	 *	
 	 * 
-	 */
+	 */		
 	 
 	function render_news(){
 		
@@ -55,7 +51,12 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 	
 		for(i = 0; content_array.length > i; i++){
 	
-			$(".article_list").append("<li data-article_number='" + i + "'><h4>" + content_array[i][0] + "</h4><time class='meta'>" + content_array[i][3] + "</time><p>"+ content_array[i][2] +"</p></li>");
+			$(".article_list").append(
+			
+				"<li data-article_number='" + i + "'><h4>" + 
+				content_array[i][0] + "</h4><time class='meta'>" 
+				+ content_array[i][3] + "</time><p>" + content_array[i][2] +
+				"</p></li>");
 	
 		}
 		
@@ -241,9 +242,6 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 	function onDeviceReady() {
 		
 	    $("#device").html("Device: " + device.model);
-	    
-	    
-	    navigator.splashscreen.hide();	
 	
 	}
 	
@@ -257,33 +255,6 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 		document.addEventListener("deviceready", onDeviceReady, false);
 		
 		var hammertime = new Hammer(document.body);
-		
-		if(content_array === null){
-	
-			ots_news_array = [["","","","",""]];
-			var str = JSON.stringify(ots_news_array);
-			window.localStorage.setItem("ots_news_array",str);
-			
-		}
-		
-		$(".clear_app_data").click(	function(){	
-			
-			navigator.notification.confirm("Clearing this will delete all localdata", clear_app_data);
-			
-		});
-		
-		$("#RETURN").click(			function(){	closeNav();			});
-		$("a#NAVBTN").click(		function(){	openNav();			});
-		$(".article_close").click(	function(){	close_news();		});
-		$("#SYNC").click(			function(){	getNews();			});
-		$("#NAV a").click(			function(){	closeNav();			});
-		
-		get_user_data();
-		getNews();
-		
-		checkConnection();
-		
-		setInterval(function (){ 	check_system();}, 			10000);	
 		
 		hammertime.on('swipe', function(ev) {
 		    
@@ -299,6 +270,41 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 		    }
 		   
 		});
+		
+		if(content_array === null){
+	
+			ots_news_array = [["","","","",""]];
+			var str = JSON.stringify(ots_news_array);
+			window.localStorage.setItem("ots_news_array",str);
+			
+		}
+		
+		$(".clear_app_data").click(	function(){	
+			
+			navigator.notification.confirm("Clearing this will delete all localdata", clear_app_data);
+			
+		});
+		
+		// Click Detectors (Non Nav)
+		
+		$("#RETURN").click(			function(){	closeNav();			});
+		$("a#NAVBTN").click(		function(){	openNav();			});
+		$(".article_close").click(	function(){	close_news();		});
+		$("#SYNC").click(			function(){	getNews();			});
+		$("#NAV a").click(			function(){	closeNav();			});
+		
+		// Navigation Click Detectors
+		
+		$("#news_button").click(		function(){window.location.href="#news"; 		closeNav()});
+		$("#gameguide_button").click(	function(){window.location.href="#gameguide"; 	closeNav()});
+		$("#player_button").click(	function(){window.location.href="#player"; 	closeNav()});
+		$("#about_button").click(	function(){window.location.href="#about"; 	closeNav()});
+		$("#settings_button").click(	function(){window.location.href="#settings"; 	closeNav()});
+		
+		get_user_data();
+		getNews();
+		
+		
 		
 			
 
