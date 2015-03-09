@@ -209,22 +209,7 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 	    render_user_data();
 		
 	}
-	
-	/**
-	 *	
-	 * 
-	 */			
-	
-	function check_system(){
-		
-		var dt = new Date();
-		var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
-		
-		// Update Debug Vaules
-		$("#lastUpdate").text("Last Updated: " + time);
-		
-	}
-	
+
 	/**
 	 *	
 	 * 
@@ -257,6 +242,8 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 		
 	    $("#device").html("Device: " + device.model);
 	    
+	    
+	    navigator.splashscreen.hide();	
 	
 	}
 	
@@ -291,9 +278,6 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 		$("#SYNC").click(			function(){	getNews();			});
 		$("#NAV a").click(			function(){	closeNav();			});
 		
-		
-		
-		check_system();
 		get_user_data();
 		getNews();
 		
@@ -316,6 +300,6 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 		   
 		});
 		
-		navigator.splashscreen.hide();		
+			
 
 });
