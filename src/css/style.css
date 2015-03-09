@@ -78,27 +78,31 @@
     left: -90%;
     bottom: 0; }
     .page_container #NAV .navigation_list {
-      height: 100%;
-      background: gray; }
+      height: 100%; }
+    .page_container #NAV .nav_filler_img {
+      height: 30%;
+      width: 100%;
+      background: url(../img/game_logo.png) no-repeat center center;
+      background-size: contain; }
     .page_container #NAV .navigation_list:after {
       content: "";
       display: block;
       clear: both; }
     .page_container #NAV h1 {
       height: 65px;
-      background: red;
       line-height: 65px;
       text-align: center; }
     .page_container #NAV h2 {
       padding-left: 5px; }
     .page_container #NAV div.button {
+      background: rgba(0, 0, 0, 0.1);
       position: relative;
       width: 50%;
       height: 25%;
       float: left;
       text-align: center;
       cursor: hand !important;
-      border: 1px solid rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(0, 0, 0, 0.1);
       display: block;
       text-decoration: none;
       font-weight: bold; }
@@ -109,8 +113,14 @@
         left: 25%;
         top: 25%;
         fill: white; }
+      .page_container #NAV div.button p {
+        position: absolute;
+        top: 75%;
+        text-align: center;
+        width: 100%; }
     .page_container #NAV div.button:nth-of-type(5) {
-      width: 100%; }
+      width: 100%;
+      height: 15%; }
     .page_container #NAV .RETURN {
       display: none;
       position: absolute;
