@@ -12,39 +12,8 @@
 var ots_news_array = window.localStorage.getItem("ots_news_array");
 var content_array = JSON.parse(ots_news_array);
 var i, player, story, settings, hammertime, Hammer, Connection, device;
-
 	
-	var onSuccess = function(position) {
-	    
-	    $("#lat").text("Latitude: " + position.coords.latitude);
-	    $("#long").text("Longitude: " + position.coords.longitude);
-	};
 	
-	/*
-	 *  
-	 *	
-	 * 
-	 */		
-	
-	function onDeviceReady() {
-		
-	    $("#device").html("Device: " + device.model);
-	    checkConnection();
-	    
-	    navigator.geolocation.getCurrentPosition(onSuccess, onError);
-	
-	}
-	
-	/*
-	 *  
-	 *	
-	 * 
-	 */		
-
-	function onError(error) {
-	    alert('code: '    + error.code    + '\n' +
-	          'message: ' + error.message + '\n');
-	}
 	
 	/*
 	 *  
@@ -200,7 +169,6 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 		
 		localStorage.removeItem('ots_news_array');
 		
-		console.log("Clear Has Fired");
 		
 	}
 	
@@ -263,6 +231,7 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 	 */			
 	
 	function checkConnection() {
+		
 	    var networkState = navigator.connection.type;
 	
 	    var states = {};
@@ -279,6 +248,19 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 	}
 	
 	/**
+	 *	PhoneGap onDevice Ready
+	 * 
+	 *	Function fires once phonegap has init the application. 
+	 */			
+	
+	function onDeviceReady() {
+		
+	    $("#device").html("Device: " + device.model);
+	    
+	
+	}
+	
+	/**
 	 *	
 	 * 
 	 */			
@@ -287,7 +269,7 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 		
 		document.addEventListener("deviceready", onDeviceReady, false);
 		
-		var hammertime = new Hammer(document.getElementById('super_view'));
+		var hammertime = new Hammer(document.body);
 		
 		if(content_array === null){
 	
@@ -332,6 +314,8 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 			    
 		    }
 		   
-	});				
+		});
+		
+		navigator.splashscreen.hide();		
 
 });
