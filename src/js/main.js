@@ -166,7 +166,6 @@ var i, player, story, settings, Hammer, device;
 		
 		localStorage.removeItem('ots_news_array');
 		
-		
 	}
 	
 	/**
