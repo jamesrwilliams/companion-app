@@ -11,7 +11,7 @@
 
 var ots_news_array = window.localStorage.getItem("ots_news_array");
 var content_array = JSON.parse(ots_news_array);
-var i, player, story, settings, hammertime, Hammer, Connection, device;
+var i, player, story, settings, Hammer, device;
 	
 	
 	
@@ -23,7 +23,7 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 	function open_news(news_number){
 		
 		$(".news_article").html("");
-		$(".news_article").html("<div onclick='close_news()' id='close_button'></div>" + "<article><h2>" + content_array[news_number][0] + "</h2>" + content_array[news_number][4] + "</article>");
+		$(".news_article").html("<div onclick='close_news()' id='close_button'></div><article><h2>" + content_array[news_number][0] + "</h2>" + content_array[news_number][4] + "</article>");
 		$(".news_article").delay(600).slideToggle();
 		
 	}
@@ -52,10 +52,7 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 	
 			$(".article_list").append(
 			
-				"<li data-article_number='" + i + "'><h4>" + 
-				content_array[i][0] + "</h4><time class='meta'>" 
-				+ content_array[i][3] + "</time><p>" + content_array[i][2] +
-				"</p></li>");
+				"<li data-article_number='" + i + "'><h4>" + content_array[i][0] + "</h4><time class='meta'>" + content_array[i][3] + "</time><p>" + content_array[i][2] + "</p></li>");
 	
 		}
 		
@@ -231,9 +228,6 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 		
 		document.addEventListener("deviceready", onDeviceReady, false);
 		
-		get_user_data();
-		getNews();
-		
 		var hammertime = new Hammer(document.body);
 		
 		if(content_array === null){
@@ -281,6 +275,9 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 		    }
 		   
 		});
+		
+		get_user_data();
+		getNews();
 			
 
 });
