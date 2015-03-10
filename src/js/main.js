@@ -23,8 +23,8 @@ var i, player, story, settings, Hammer, device;
 	function open_news(news_number){
 		
 		$(".news_article").html("");
-		$(".news_article").html("<div onclick='close_news()' id='close_button'></div><article><h2>" + content_array[news_number][0] + "</h2>" + content_array[news_number][4] + "</article>");
-		$(".news_article").delay(600).slideToggle();
+		$(".news_article").html("</div><article><h2>" + content_array[news_number][0] + "</h2>" + content_array[news_number][4] + "</article><div onclick='close_news()' id='close_button'>");
+		$(".news_article").delay(1000).slideToggle();
 		
 	}
 	
@@ -138,7 +138,7 @@ var i, player, story, settings, Hammer, device;
 	
 	function closeNav(){
 		
-		$('#NAV').animate({"left": '-90%'});
+		$('#NAV').animate({"left": '-80%'});
 		$(".page").animate({"margin-left":"0"});
 		$('.RETURN').css("display","none");
 		
@@ -152,7 +152,7 @@ var i, player, story, settings, Hammer, device;
 	function openNav(){
 		
 		$('#NAV').animate({"left": '0'});
-		$('.page').animate({"margin-left": "90%"});
+		$('.page').animate({"margin-left": "80%"});
 		$('.RETURN').css("display","block");
 		
 	}
@@ -244,11 +244,7 @@ var i, player, story, settings, Hammer, device;
 		$("#SYNC").click(			function(){	getNews();			});
 		$("#NAV a").click(			function(){	closeNav();			});
 		
-		$(".clear_app_data").click(	function(){	
-			
-			navigator.notification.confirm("Clearing this will delete all localdata", clear_app_data);
-			
-		});
+		
 		
 		// Navigation Click Detectors
 		
@@ -277,6 +273,12 @@ var i, player, story, settings, Hammer, device;
 		
 		get_user_data();
 		getNews();
+		
+		$(".clear_app_data").click(	function(){	
+			
+			navigator.notification.confirm("Clearing this will delete all localdata", clear_app_data);
+			
+		});
 			
 
 });

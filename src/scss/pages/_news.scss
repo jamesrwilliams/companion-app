@@ -141,12 +141,16 @@ section#news {
 		display: block;
 		height: 65px;
 		background: #3E3C3D;
+		position: fixed;
+		bottom: 0;
+		width: 100%;
 		
 	}
 	
 	#close_button:after {
 		
 		content: "CLOSE";
+		
 		display: block;
 		line-height: 65px;
 		width: 100%;
