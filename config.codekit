@@ -56,46 +56,13 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/src\/img\/Icon_180x2.png": {
+	"\/src\/img\/game_logo.png": {
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 6587,
-		"inputAbbreviatedPath": "\/src\/img\/Icon_180x2.png",
-		"outputAbbreviatedPath": "\/src\/img\/Icon_180x2.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/src\/img\/Icon_60x2.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 12668,
-		"inputAbbreviatedPath": "\/src\/img\/Icon_60x2.png",
-		"outputAbbreviatedPath": "\/src\/img\/Icon_60x2.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/src\/img\/Icon_60x3.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 17370,
-		"inputAbbreviatedPath": "\/src\/img\/Icon_60x3.png",
-		"outputAbbreviatedPath": "\/src\/img\/Icon_60x3.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/src\/img\/OTS.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 25434,
-		"inputAbbreviatedPath": "\/src\/img\/OTS.png",
-		"outputAbbreviatedPath": "\/src\/img\/OTS.png",
+		"initialSize": 766229,
+		"inputAbbreviatedPath": "\/src\/img\/game_logo.png",
+		"outputAbbreviatedPath": "\/src\/img\/game_logo.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -595,9 +562,9 @@
 	},
 "projectAttributes": {
 	"bowerAbbreviatedPath": "",
-	"displayValue": "web",
-	"displayValueWasSetByUser": 0,
-	"iconImageName": "pencil_brown"
+	"displayValue": "Hybrid Companion App",
+	"displayValueWasSetByUser": 1,
+	"iconImageName": "meme-grumpy"
 	},
 "projectSettings": {
 	"alwaysUseExternalServer": 0,

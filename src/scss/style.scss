@@ -3,7 +3,7 @@
 	overflow-y: hidden;
 	
 	// Fallback to iOS Default
-	background: url(../img/bg/splash.png), #19191f;
+	// background: url(../img/bg/splash.png), #19191f;
 	background-position: center top;
 	background-repeat: no-repeat;
 	
@@ -116,10 +116,12 @@
 	}
 	
 	#NAV {
+		
 				
 		.navigation_list {
 			
 			height: 100%;
+			background: #3E3C3D;
 			
 		}
 		
@@ -128,7 +130,7 @@
 			height: 30%;
 			width: 100%;
 			
-			background: url(../img/game_logo.png) no-repeat center center;
+			background: url(../img/game_logo.png) no-repeat center center #3E3C3D;
 			background-size: contain;
 			
 		}
@@ -146,15 +148,12 @@
 			height: 65px;
 			line-height: 65px;
 			text-align: center;
+			background: #3E3C3D;
 			
 		}
 		
-		-webkit-box-shadow: inset -2px 0px 5px 0px rgba(0,0,0,0.75);
-		-moz-box-shadow: inset -2px 0px 5px 0px rgba(0,0,0,0.75);
-		box-shadow: inset -2px 0px 5px 0px rgba(0,0,0,0.75);
-		
 		background: white;
-		border-right: 1px solid black;
+		border-right: 1px solid white;
 		color: black;
 		
 		z-index: 100000;
@@ -173,8 +172,6 @@
 		
 		div.button {
 			
-			background: rgba(0,0,0,0.1);
-			
 			position: relative;
 			
 			width: 50%;
@@ -184,7 +181,7 @@
 			
 			cursor: hand !important;
 			
-			border: 1px solid rgba(0,0,0,0.1);
+			border: 1px solid rgba(255,255,255,0.2);
 
 			display: block;
 			text-decoration: none;

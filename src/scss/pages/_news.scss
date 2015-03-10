@@ -34,15 +34,21 @@ section#news {
 	.news_article {
 		
 		position: absolute;
+
+		top:0;
+		width: 100%;
 		
-		top: 90px;
-		left: 15px;
-		right: 15px;
-		
-		padding: 15px;
+		background: #ccc;
 		height: 100%;
 		display: none;
-		background: white;
+		
+		article {
+			
+			padding: 0 20px;
+			font-size: 16px;
+			line-height: 1.5em;
+			
+		}
 		
 	}
 	
@@ -82,10 +88,10 @@ section#news {
 		}
 		
 		li  {
-			background: white;
-			padding: 10px;
 			
-			margin-bottom: 10px;
+			padding-bottom: 10px;
+			
+			background: white;
 			
 			display: block; 
 			color: inherit; 
@@ -95,26 +101,34 @@ section#news {
 			
 			h4 {
 				
-				margin: 0;
-				font-size: 30px;
+				margin-top: 0;
+				margin-bottom: 10px;
+				font-size: 1.3em;
 			
 				
 			}
 			
 			time {
 				
-				text-transform: uppercase;
 				font-size: 0.8em;
+				
 				color: #666;
-				margin: 0;
+				margin-bottom: 10px;
 				
 			}
 			
-			p {
-				
-				margin: 0;
-				
-			}
+			p {line-height: 1.5em;}
+			
+		}
+		
+		li:after {
+			
+			content: "";
+			display: block;
+			width: 80%;
+			border-bottom: 1px solid #3E3C3D;
+			padding-top: 10px;
+			margin-bottom: 10px;
 			
 		}
 		
@@ -122,14 +136,23 @@ section#news {
 		
 	}
 	
-	.article_close {
+	#close_button {
 		
-		display: inline-block;
-		position: absolute;
-		right: 0;
-		width: 30px;
-		height: 30px;
-		background: blue;
+		display: block;
+		height: 65px;
+		background: #3E3C3D;
+		
+	}
+	
+	#close_button:after {
+		
+		content: "CLOSE";
+		display: block;
+		line-height: 65px;
+		width: 100%;
+		text-align: center;
+		color: white;
+		
 		
 	}
 	

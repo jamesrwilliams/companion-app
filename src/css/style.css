@@ -1,6 +1,5 @@
 .page_container {
   overflow-y: hidden;
-  background: url(../img/bg/splash.png), #19191f;
   background-position: center top;
   background-repeat: no-repeat;
   height: 100%;
@@ -65,11 +64,8 @@
     .page_container .page .nav_icon {
       margin-top: 20px; }
   .page_container #NAV {
-    -webkit-box-shadow: inset -2px 0px 5px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: inset -2px 0px 5px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: inset -2px 0px 5px 0px rgba(0, 0, 0, 0.75);
     background: white;
-    border-right: 1px solid black;
+    border-right: 1px solid white;
     color: black;
     z-index: 100000;
     position: fixed;
@@ -78,11 +74,12 @@
     left: -90%;
     bottom: 0; }
     .page_container #NAV .navigation_list {
-      height: 100%; }
+      height: 100%;
+      background: #3E3C3D; }
     .page_container #NAV .nav_filler_img {
       height: 30%;
       width: 100%;
-      background: url(../img/game_logo.png) no-repeat center center;
+      background: url(../img/game_logo.png) no-repeat center center #3E3C3D;
       background-size: contain; }
     .page_container #NAV .navigation_list:after {
       content: "";
@@ -91,18 +88,18 @@
     .page_container #NAV h1 {
       height: 65px;
       line-height: 65px;
-      text-align: center; }
+      text-align: center;
+      background: #3E3C3D; }
     .page_container #NAV h2 {
       padding-left: 5px; }
     .page_container #NAV div.button {
-      background: rgba(0, 0, 0, 0.1);
       position: relative;
       width: 50%;
       height: 25%;
       float: left;
       text-align: center;
       cursor: hand !important;
-      border: 1px solid rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       display: block;
       text-decoration: none;
       font-weight: bold; }
@@ -141,25 +138,13 @@
   clear: both; }
 
 .red {
-  background: red !important; }
+  background: #E7363B !important; }
 
 section.main {
   position: relative;
   margin: 0;
   height: 95%;
   overflow: hidden; }
-
-.modal {
-  position: absolute;
-  z-index: 100000000;
-  text-align: center;
-  width: 100%;
-  top: 0;
-  line-height: 70vh;
-  color: white;
-  font-size: 3em;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8); }
 
 .loader,
 .loader:before,
@@ -228,7 +213,8 @@ html,
 body {
   width: 100%;
   height: 100%;
-  font-size: 16px; }
+  font-size: 16px;
+  background: white; }
 
 body {
   margin: 0;
@@ -239,7 +225,8 @@ body {
 section.page {
   color: #333; }
   section.page nav {
-    color: white; }
+    background: #E0E1E1;
+    border-bottom: 1px solid #B7B7B7; }
 
 .version {
   font-family: monospace;
@@ -265,13 +252,15 @@ section#news {
       height: auto; }
   section#news .news_article {
     position: absolute;
-    top: 90px;
-    left: 15px;
-    right: 15px;
-    padding: 15px;
+    top: 0;
+    width: 100%;
+    background: #ccc;
     height: 100%;
-    display: none;
-    background: white; }
+    display: none; }
+    section#news .news_article article {
+      padding: 0 20px;
+      font-size: 16px;
+      line-height: 1.5em; }
   section#news #news_loading_text {
     position: absolute;
     top: 50%;
@@ -294,31 +283,41 @@ section#news {
     section#news ul.article_list li p {
       margin: 0; }
     section#news ul.article_list li {
+      padding-bottom: 10px;
       background: white;
-      padding: 10px;
-      margin-bottom: 10px;
       display: block;
       color: inherit;
       text-decoration: none; }
       section#news ul.article_list li h4 {
-        margin: 0;
-        font-size: 30px; }
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 1.3em; }
       section#news ul.article_list li time {
-        text-transform: uppercase;
         font-size: 0.8em;
         color: #666;
-        margin: 0; }
+        margin-bottom: 10px; }
       section#news ul.article_list li p {
-        margin: 0; }
+        line-height: 1.5em; }
+    section#news ul.article_list li:after {
+      content: "";
+      display: block;
+      width: 80%;
+      border-bottom: 1px solid #3E3C3D;
+      padding-top: 10px;
+      margin-bottom: 10px; }
     section#news ul.article_list .more-link {
       display: none; }
-  section#news .article_close {
-    display: inline-block;
-    position: absolute;
-    right: 0;
-    width: 30px;
-    height: 30px;
-    background: blue; }
+  section#news #close_button {
+    display: block;
+    height: 65px;
+    background: #3E3C3D; }
+  section#news #close_button:after {
+    content: "CLOSE";
+    display: block;
+    line-height: 65px;
+    width: 100%;
+    text-align: center;
+    color: white; }
 
 section#profile {
   position: relative; }

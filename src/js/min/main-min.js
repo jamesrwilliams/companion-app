@@ -22,8 +22,9 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 	
 	function open_news(news_number){
 		
-		$(".news_article").html("<a class='article_close'>X</a>" + content_array[news_number][4]);
-		$(".news_article").slideToggle();
+		$(".news_article").html("");
+		$(".news_article").html("<div onclick='close_news()' id='close_button'></div>" + "<article><h2>" + content_array[news_number][0] + "</h2>" + content_array[news_number][4] + "</article>");
+		$(".news_article").delay(600).slideToggle();
 		
 	}
 	
@@ -34,9 +35,7 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 	
 	function close_news(){
 		
-		$(".news_article").slideToggle();
-		$(".news_article").html("");
-		
+		$(".news_article").slideToggle().delay(500);
 		
 	}
 	
@@ -209,30 +208,8 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 	    
 	    render_user_data();
 		
-	}
+	}		
 
-	/**
-	 *	
-	 * 
-	 */			
-	
-	function checkConnection() {
-		
-	    var networkState = navigator.connection.type;
-	
-	    var states = {};
-	    states[Connection.UNKNOWN]  = 'Unknown connection';
-	    states[Connection.ETHERNET] = 'Ethernet connection';
-	    states[Connection.WIFI]     = 'WiFi connection';
-	    states[Connection.CELL_2G]  = 'Cell 2G connection';
-	    states[Connection.CELL_3G]  = 'Cell 3G connection';
-	    states[Connection.CELL_4G]  = 'Cell 4G connection';
-	    states[Connection.CELL]     = 'Cell generic connection';
-	    states[Connection.NONE]     = 'No network connection';
-	    
-	    $("#network").html("Network: " + states[networkState]);
-	}
-	
 	/**
 	 *	PhoneGap onDevice Ready
 	 * 
@@ -254,7 +231,41 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 		
 		document.addEventListener("deviceready", onDeviceReady, false);
 		
+		get_user_data();
+		getNews();
+		
 		var hammertime = new Hammer(document.body);
+		
+		if(content_array === null){
+	
+			ots_news_array = [["","","","",""]];
+			var str = JSON.stringify(ots_news_array);
+			window.localStorage.setItem("ots_news_array",str);
+			
+		}
+		
+		// Click Detectors (Non Nav)
+		
+		$("#RETURN").click(			function(){	closeNav();			});
+		$("a#NAVBTN").click(		function(){	openNav();			});
+		$("#SYNC").click(			function(){	getNews();			});
+		$("#NAV a").click(			function(){	closeNav();			});
+		
+		$(".clear_app_data").click(	function(){	
+			
+			navigator.notification.confirm("Clearing this will delete all localdata", clear_app_data);
+			
+		});
+		
+		// Navigation Click Detectors
+		
+		$("#news_button").click(		function(){window.location.href="#news"; 		closeNav();});
+		$("#gameguide_button").click(	function(){window.location.href="#gameguide"; 	closeNav();});
+		$("#player_button").click(	function(){window.location.href="#player"; 			closeNav();});
+		$("#about_button").click(	function(){window.location.href="#about"; 			closeNav();});
+		$("#settings_button").click(	function(){window.location.href="#settings"; 	closeNav();});
+		
+		
 		
 		hammertime.on('swipe', function(ev) {
 		    
@@ -270,42 +281,6 @@ var i, player, story, settings, hammertime, Hammer, Connection, device;
 		    }
 		   
 		});
-		
-		if(content_array === null){
-	
-			ots_news_array = [["","","","",""]];
-			var str = JSON.stringify(ots_news_array);
-			window.localStorage.setItem("ots_news_array",str);
-			
-		}
-		
-		$(".clear_app_data").click(	function(){	
-			
-			navigator.notification.confirm("Clearing this will delete all localdata", clear_app_data);
-			
-		});
-		
-		// Click Detectors (Non Nav)
-		
-		$("#RETURN").click(			function(){	closeNav();			});
-		$("a#NAVBTN").click(		function(){	openNav();			});
-		$(".article_close").click(	function(){	close_news();		});
-		$("#SYNC").click(			function(){	getNews();			});
-		$("#NAV a").click(			function(){	closeNav();			});
-		
-		// Navigation Click Detectors
-		
-		$("#news_button").click(		function(){window.location.href="#news"; 		closeNav()});
-		$("#gameguide_button").click(	function(){window.location.href="#gameguide"; 	closeNav()});
-		$("#player_button").click(	function(){window.location.href="#player"; 	closeNav()});
-		$("#about_button").click(	function(){window.location.href="#about"; 	closeNav()});
-		$("#settings_button").click(	function(){window.location.href="#settings"; 	closeNav()});
-		
-		get_user_data();
-		getNews();
-		
-		
-		
 			
 
 });
