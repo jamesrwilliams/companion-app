@@ -35,14 +35,22 @@ section#news {
 		
 		position: absolute;
 
-		top:0;
+		top:65px;
 		width: 100%;
 		
-		background: #ccc;
+		background: white;
 		height: 100%;
 		display: none;
 		
+		overflow-x: scroll;
+		
 		article {
+			
+			h2 {
+				
+				margin-top: 20px;
+				
+			}
 			
 			padding: 0 20px;
 			font-size: 16px;
@@ -141,7 +149,7 @@ section#news {
 		display: block;
 		height: 65px;
 		background: #3E3C3D;
-		position: fixed;
+		position: absolute;
 		bottom: 0;
 		width: 100%;
 		
