@@ -139,9 +139,9 @@ section.page {
   background: #262321;
   z-index: 100000;
   position: fixed;
-  width: 25%;
+  width: 50%;
   top: 0;
-  left: -25%;
+  left: -50%;
   bottom: 0; }
   #NAV .navigation_list {
     padding-top: 64px;
@@ -163,8 +163,9 @@ section.page {
   #NAV h2 {
     padding-left: 5px; }
   #NAV div.button {
+    padding: 25px;
     position: relative;
-    height: 110px;
+    height: 50px;
     text-align: center;
     cursor: hand !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -172,29 +173,29 @@ section.page {
     display: block;
     text-decoration: none;
     font-weight: bold;
-    background-size: contain;
-    background-size: auto; }
+    background-size: contain; }
     #NAV div.button p {
       position: absolute;
-      bottom: 10px;
-      margin: 0;
+      top: 50%;
+      margin-top: -9px;
       width: 100%;
-      text-align: center;
+      text-align: left;
+      padding-left: 25%;
       color: white; }
   #NAV div.button:nth-child(1) {
-    background: url("../img/navigation/profile.svg") no-repeat center top; }
+    background: url("../img/navigation/profile.svg") no-repeat left center; }
   #NAV div.button:nth-child(2) {
-    background: url("../img/navigation/guide.svg") no-repeat center top; }
+    background: url("../img/navigation/guide.svg") no-repeat left center; }
   #NAV div.button:nth-child(3) {
-    background: url("../img/navigation/news.svg") no-repeat center top; }
+    background: url("../img/navigation/news.svg") no-repeat left center; }
   #NAV div.button:nth-child(4) {
-    background: url("../img/navigation/about.svg") no-repeat center top; }
+    background: url("../img/navigation/about.svg") no-repeat left center; }
   #NAV div.button:nth-child(5) {
-    background: url("../img/navigation/settings.svg") no-repeat center top; }
+    background: url("../img/navigation/settings.svg") no-repeat left center; }
   #NAV .RETURN {
     display: none;
     position: fixed;
-    left: 25%;
+    left: 50%;
     top: 0;
     bottom: 0;
     width: 100%; }
@@ -321,10 +322,25 @@ section#news {
     text-align: center;
     color: white; }
 
-section#profile {
+section#player {
   position: relative; }
-  section#profile nav {
-    background: rgba(0, 0, 0, 0.5); }
+  section#player .tab {
+    border: 1px solid red;
+    height: 50%;
+    width: 50%;
+    float: left; }
+  section#player .badge {
+    width: 300px;
+    background: #ccc;
+    height: 300px;
+    border-radius: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -150px; }
+  section#player .vampire h1 {
+    text-align: right; }
 
 section#stats {
   background: rgba(0, 0, 0, 0.5); }
