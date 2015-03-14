@@ -150,8 +150,6 @@ var i, player, story, settings, Hammer, device, lore;
 	
 	function closeNav(){
 		
-		$("#super_view, div.navigation_list").css("border-top", "0px solid black");
-		
 		$('#NAV').animate({"left": '-25%'}, animation_speed);
 		$(".page").animate({"margin-left":"0"}, animation_speed);
 		$('.RETURN').css("display","none");
@@ -164,8 +162,6 @@ var i, player, story, settings, Hammer, device, lore;
 	 */				
 	 
 	function openNav(){
-		
-		$("#super_view, div.navigation_list").css("border-top", "25px solid black");
 		
 		$('#NAV').animate({"left": '0'}, animation_speed);
 		$('.page').animate({"margin-left": "25%"}, animation_speed);
