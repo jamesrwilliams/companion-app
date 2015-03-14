@@ -183,8 +183,6 @@ section.page {
   #NAV .RETURN {
     display: none;
     position: fixed;
-    background: red;
-    opacity: 0.5;
     left: 25%;
     top: 0;
     bottom: 0;

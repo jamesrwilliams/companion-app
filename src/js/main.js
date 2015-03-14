@@ -13,6 +13,8 @@ var ots_news_array = window.localStorage.getItem("ots_news_array");
 var content_array = JSON.parse(ots_news_array);
 
 var news_open = true;
+var animation_speed = 300;
+
 
 var i, player, story, settings, Hammer, device, lore;
 	
@@ -26,7 +28,6 @@ var i, player, story, settings, Hammer, device, lore;
 		$("#flyout article").html("");
 		
 		$("#flyout .header h1").text(content_array[news_number][3]);
-		
 		$("#flyout article").html("</div><article><h2>" + content_array[news_number][0] + "</h2>" + content_array[news_number][4] + "</article><div onclick='close_news()' id='close_button'>");
 		
 		$('#flyout').animate({"right": '0'});
@@ -149,8 +150,8 @@ var i, player, story, settings, Hammer, device, lore;
 	
 	function closeNav(){
 		
-		$('#NAV').animate({"left": '-25%'});
-		$(".page").animate({"margin-left":"0"});
+		$('#NAV').animate({"left": '-25%'}, animation_speed);
+		$(".page").animate({"margin-left":"0"}, animation_speed);
 		$('.RETURN').css("display","none");
 		
 	}
@@ -162,8 +163,8 @@ var i, player, story, settings, Hammer, device, lore;
 	 
 	function openNav(){
 		
-		$('#NAV').animate({"left": '0'},500);
-		$('.page').animate({"margin-left": "25%"}, 500);
+		$('#NAV').animate({"left": '0'}, animation_speed);
+		$('.page').animate({"margin-left": "25%"}, animation_speed);
 		$('.RETURN').css("display","block");
 		
 	}
@@ -218,7 +219,7 @@ var i, player, story, settings, Hammer, device, lore;
 	}
 	
 	/**
-	 *	
+	 *	Take Lore Data from the data object and render it on user display.
 	 * 
 	 */
 	 
@@ -232,7 +233,7 @@ var i, player, story, settings, Hammer, device, lore;
 	 }
 	
 	/**
-	 *	
+	 *	Pul in local lore test data
 	 * 
 	 */
 	
@@ -295,7 +296,7 @@ var i, player, story, settings, Hammer, device, lore;
 		$("#SYNC").click(			function(){	getNews();			});
 		$("#NAV a").click(			function(){	closeNav();			});
 		
-		$("#close_btn").click(function() { close_news(); console.log("close fired");});
+		$("#close_btn").click(function() { close_news(); });
 		
 		// Navigation Click Detectors
 		
