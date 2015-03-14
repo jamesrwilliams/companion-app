@@ -27,7 +27,7 @@
     <preference name="orientation" value="portrait" />
     <preference name="target-device" value="handset" />
 	
-	<gap:plugin name="com.telerik.plugins.wkwebview" />
+	<gap:plugin name="com.telerik.plugins.wkwebview" version="0.2.5" />
 	
     <gap:plugin name="org.apache.cordova.battery-status" />
     <gap:plugin name="org.apache.cordova.camera" />
