@@ -181,7 +181,7 @@ var i, player, story, settings, Hammer, device, lore;
 	}
 	
 	/**
-	 *  	
+	 *	
 	 * 
 	 */				
 	
@@ -226,7 +226,6 @@ var i, player, story, settings, Hammer, device, lore;
 	 function render_lore_data(){
 		 
 		 $(".lore").text(lore.meta.version);
-		 
 		 $(".lore").append(lore.ots.name);
 		 
 		 
@@ -243,7 +242,7 @@ var i, player, story, settings, Hammer, device, lore;
 		   
 	        'async': false,
 	        'global': false,
-	        'url': "game_guide.json",
+	        'url': "assets/lore/game_guide.json",
 	        'dataType': "json",
 	        'success': function (temp_data) {
 	            
