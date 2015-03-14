@@ -145,7 +145,7 @@ var i, player, story, settings, Hammer, device, lore;
 	
 	function closeNav(){
 		
-		$('#NAV').animate({"left": '-80%'});
+		$('#NAV').animate({"left": '-25%'});
 		$(".page").animate({"margin-left":"0"});
 		$('.RETURN').css("display","none");
 		
@@ -159,7 +159,7 @@ var i, player, story, settings, Hammer, device, lore;
 	function openNav(){
 		
 		$('#NAV').animate({"left": '0'});
-		$('.page').animate({"margin-left": "80%"});
+		$('.page').animate({"margin-left": "25%"});
 		$('.RETURN').css("display","block");
 		
 	}
