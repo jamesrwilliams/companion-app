@@ -106,3 +106,57 @@
 	}
 
 }
+
+/*
+ * Page Headers
+ *
+ */
+ 
+ .header {
+
+			position: relative;
+			background: #E0E1E1;
+			border-bottom: 1px solid #B7B7B7;
+			height: 65px;
+			font-weight: 100;
+			padding-top: 35px;
+			text-align: center;
+			padding-bottom: 5px;
+			
+			h1 {
+				
+				font-weight: 500;
+				display: inline-block;
+				
+			}
+			
+			a {
+				
+				position: absolute;
+				line-height: 60px;
+				top:10px;
+				
+				font-size: 18px;
+				
+				color: white;
+				font-weight: 100;
+				width: 60px;
+				height: 60px;
+
+			}
+			
+			a:nth-child(1){
+				
+				top:20px;
+				left: -10px;
+			
+			}
+			
+			a:nth-child(3){
+				
+				top:20px;
+				right: 0px;
+			
+			}
+			
+		}

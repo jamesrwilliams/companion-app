@@ -11,7 +11,7 @@
 
 var ots_news_array = window.localStorage.getItem("ots_news_array");
 var content_array = JSON.parse(ots_news_array);
-var i, player, story, settings, Hammer, device;
+var i, player, story, settings, Hammer, device, lore;
 	
 	
 	
@@ -22,9 +22,16 @@ var i, player, story, settings, Hammer, device;
 	
 	function open_news(news_number){
 		
-		$(".news_article").html("");
-		$(".news_article").html("</div><article><h2>" + content_array[news_number][0] + "</h2>" + content_array[news_number][4] + "</article><div onclick='close_news()' id='close_button'>");
-		$(".news_article").delay(1000).slideToggle();
+		$("#flyout article").html("");
+		
+		$("#flyout .header h1").text(content_array[news_number][0]);
+		
+		$("#flyout article").html("</div><article><h2>" + content_array[news_number][0] + "</h2>" + content_array[news_number][4] + "</article><div onclick='close_news()' id='close_button'>");
+		
+		
+		
+		$('#flyout').animate({"right": '0'});
+		$('body').animate("margin","50px");
 		
 	}
 	
@@ -35,7 +42,7 @@ var i, player, story, settings, Hammer, device;
 	
 	function close_news(){
 		
-		$(".news_article").slideToggle().delay(500);
+		$('#flyout').animate({"right": '-100%'});
 		
 	}
 	
@@ -191,7 +198,7 @@ var i, player, story, settings, Hammer, device;
 		   
 	        'async': false,
 	        'global': false,
-	        'url': "test_data.json",
+	        'url': "player_test_data.json",
 	        'dataType': "json",
 	        'success': function (temp_data) {
 	            
@@ -203,6 +210,46 @@ var i, player, story, settings, Hammer, device;
 	    });
 	    
 	    render_user_data();
+		
+	}
+	
+	/**
+	 *	
+	 * 
+	 */
+	 
+	 function render_lore_data(){
+		 
+		 $(".lore").text(lore.meta.version);
+		 
+		 $(".lore").append(lore.ots.name);
+		 
+		 
+	 }
+	
+	/**
+	 *	
+	 * 
+	 */
+	
+	function get_lore_data(){
+		
+		$.ajax({
+		   
+	        'async': false,
+	        'global': false,
+	        'url': "game_guide.json",
+	        'dataType': "json",
+	        'success': function (temp_data) {
+	            
+	            lore = temp_data;
+	            
+	            console.log(lore);
+	            
+	        }
+	    });
+	    
+	    render_lore_data();
 		
 	}		
 
@@ -244,11 +291,12 @@ var i, player, story, settings, Hammer, device;
 		$("#SYNC").click(			function(){	getNews();			});
 		$("#NAV a").click(			function(){	closeNav();			});
 		
-		
+		$("#close_btn").click(function() { close_news(); console.log("close fired");});
 		
 		// Navigation Click Detectors
 		
 		$("#news_button").click(		function(){window.location.href="#news"; 		closeNav();});
+		
 		$("#gameguide_button").click(	function(){window.location.href="#gameguide"; 	closeNav();});
 		$("#player_button").click(	function(){window.location.href="#player"; 			closeNav();});
 		$("#about_button").click(	function(){window.location.href="#about"; 			closeNav();});
@@ -271,6 +319,7 @@ var i, player, story, settings, Hammer, device;
 		   
 		});
 		
+		get_lore_data();
 		get_user_data();
 		getNews();
 		

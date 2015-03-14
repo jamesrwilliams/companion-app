@@ -1,0 +1,33 @@
+{
+	"meta":{
+		"version":"Version: 1",
+		"writer":"James"
+	},
+	"places":{
+		"name":"Hello"
+	},
+	"species":{
+		"vampire":{
+			"name":"",
+			"bio":""
+		},
+		"werewolf":{
+			"name":"",
+			"bio":""
+		},
+		"ghost":{  
+			"name":"",
+			"bio":""
+		},
+		"zombie":{  
+			"name":"",
+			"bio":""
+		}
+	},
+	"ots":{
+		"name":"OTS",
+		"bio":""
+	}
+	
+	
+}

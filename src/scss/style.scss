@@ -8,55 +8,7 @@
 	width: 100%;
 	
 	.page {
-		
-		nav {
-
-			position: relative;
-
-			height: 65px;
-			font-weight: 100;
-			padding-top: 35px;
-			text-align: center;
-			padding-bottom: 5px;
-			
-			h1 {
 				
-				font-weight: 500;
-				display: inline-block;
-				
-			}
-			
-			a {
-				
-				position: absolute;
-				line-height: 60px;
-				top:10px;
-				
-				font-size: 18px;
-				
-				color: white;
-				font-weight: 100;
-				width: 60px;
-				height: 60px;
-
-			}
-			
-			a:nth-child(1){
-				
-				top:20px;
-				left: -10px;
-			
-			}
-			
-			a:nth-child(3){
-				
-				top:20px;
-				right: 0px;
-			
-			}
-			
-		}
-		
 		a.button {
 			
 			display: block;
@@ -74,16 +26,6 @@
 			background: black;
 			height: 100%;
 			width: 100%;
-			
-		}
-		
-		textarea.localstorage_test {
-			margin: 5px;
-			border: 0;
-			padding: 5px;
-			font-size: 2em;
-			resize: vertical;
-			border: 1px solid #f6f6f6;
 			
 		}
 		
@@ -105,15 +47,13 @@
 		
 	}
 	
-	
-	
-	
 }
 
 @import "utility/helpers";
 @import "utility/loader";
 @import "core/core";
 @import "core/navigation";
+@import "core/flyout";
 
 @import "pages/news";
 @import "pages/profile";
