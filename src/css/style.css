@@ -130,8 +130,11 @@ section.page {
   height: 100%;
   width: 100%; }
 
+#super_view,
+.navigation_list {
+  -webkit-transition: border 0.3s linear; }
+
 #NAV {
-  border-right: 1px solid #262321;
   color: black;
   background: #262321;
   z-index: 100000;
@@ -141,7 +144,7 @@ section.page {
   left: -25%;
   bottom: 0; }
   #NAV .navigation_list {
-    margin-top: 64px;
+    padding-top: 64px;
     height: 100%;
     background: #262321; }
   #NAV .nav_filler_img {

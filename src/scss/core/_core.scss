@@ -42,3 +42,10 @@ section.page {
 	width: 100%;
 	
 }
+// Animation Controls
+#super_view,
+.navigation_list {
+	
+	-webkit-transition: border 0.3s linear;
+	
+}

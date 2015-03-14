@@ -1,8 +1,7 @@
 $colour_background: #262321;
 
 #NAV {
-	
-	border-right: 1px solid $colour_background;
+
 	color: black;
 	
 	background: #262321;
@@ -18,7 +17,7 @@ $colour_background: #262321;
 			
 	.navigation_list {
 		
-		margin-top: 64px;
+		padding-top: 64px;
 		height: 100%;
 		background: $colour_background;
 		
