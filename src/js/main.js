@@ -24,14 +24,14 @@ var i, player, story, settings, Hammer, device, lore;
 		
 		$("#flyout article").html("");
 		
-		$("#flyout .header h1").text(content_array[news_number][0]);
+		$("#flyout .header h1").text(content_array[news_number][3]);
 		
 		$("#flyout article").html("</div><article><h2>" + content_array[news_number][0] + "</h2>" + content_array[news_number][4] + "</article><div onclick='close_news()' id='close_button'>");
 		
 		
 		
 		$('#flyout').animate({"right": '0'});
-		$('body').animate("margin","50px");
+		$('body').animate("padding","50px");
 		
 	}
 	
