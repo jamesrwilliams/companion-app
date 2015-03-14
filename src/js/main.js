@@ -11,11 +11,12 @@
 
 var ots_news_array = window.localStorage.getItem("ots_news_array");
 var content_array = JSON.parse(ots_news_array);
+
+var news_open = true;
+
 var i, player, story, settings, Hammer, device, lore;
 	
-	
-	
-	/**
+	/** 
 	 *	
 	 * 
 	 */				
@@ -28,10 +29,11 @@ var i, player, story, settings, Hammer, device, lore;
 		
 		$("#flyout article").html("</div><article><h2>" + content_array[news_number][0] + "</h2>" + content_array[news_number][4] + "</article><div onclick='close_news()' id='close_button'>");
 		
-		
-		
 		$('#flyout').animate({"right": '0'});
+		
 		$('body').animate("padding","50px");
+		
+		news_open = true;
 		
 	}
 	
@@ -43,6 +45,8 @@ var i, player, story, settings, Hammer, device, lore;
 	function close_news(){
 		
 		$('#flyout').animate({"right": '-100%'});
+		
+		news_open = false;
 		
 	}
 	
@@ -158,8 +162,8 @@ var i, player, story, settings, Hammer, device, lore;
 	 
 	function openNav(){
 		
-		$('#NAV').animate({"left": '0'});
-		$('.page').animate({"margin-left": "25%"});
+		$('#NAV').animate({"left": '0'},500);
+		$('.page').animate({"margin-left": "25%"}, 500);
 		$('.RETURN').css("display","block");
 		
 	}
@@ -296,23 +300,35 @@ var i, player, story, settings, Hammer, device, lore;
 		// Navigation Click Detectors
 		
 		$("#news_button").click(		function(){window.location.href="#news"; 		closeNav();});
-		
 		$("#gameguide_button").click(	function(){window.location.href="#gameguide"; 	closeNav();});
-		$("#player_button").click(	function(){window.location.href="#player"; 			closeNav();});
-		$("#about_button").click(	function(){window.location.href="#about"; 			closeNav();});
+		$("#player_button").click(		function(){window.location.href="#player"; 		closeNav();});
+		$("#about_button").click(		function(){window.location.href="#about"; 		closeNav();});
 		$("#settings_button").click(	function(){window.location.href="#settings"; 	closeNav();});
 		
 		
 		
 		hammertime.on('swipe', function(ev) {
 		    
+		    
+		    
 		    if(ev.direction === 4){
 			    
-			    openNav();
+			    // Swipe Left => Right
+				if(news_open){
+				
+					close_news();
+				
+				}else {
+				
+					openNav();
+				
+				}
+			    
 			    
 		    }
 		    else if(ev.direction === 2){
 			    
+			    // Swipe Right => Left
 			    closeNav();
 			    
 		    }

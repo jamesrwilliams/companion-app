@@ -180,16 +180,15 @@ section.page {
       text-align: center;
       color: rgba(0, 0, 0, 0.5);
       width: 100%; }
-  #NAV div.button:nth-of-type(5) {
-    width: 100%;
-    height: 15%; }
   #NAV .RETURN {
     display: none;
-    position: absolute;
-    right: -25%;
+    position: fixed;
+    background: red;
+    opacity: 0.5;
+    left: 25%;
     top: 0;
     bottom: 0;
-    width: 25%; }
+    width: 100%; }
 
 /*
  * Page Headers
