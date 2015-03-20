@@ -37,21 +37,15 @@ body {
 section.page {
 	
 	color: #333;
-	
-	nav {
-		
-		background: #E0E1E1;
-		border-bottom: 1px solid #B7B7B7;
-		
-	}
+	overflow-y: hidden;
+	height: 100%;
+	width: 100%;
 	
 }
-
-.version {
+// Animation Controls
+#super_view,
+.navigation_list {
 	
-	font-family: monospace;
-	position: absolute;
-	bottom: 0;
-	left: 20px;
+	-webkit-transition: border 0.3s linear;
 	
 }

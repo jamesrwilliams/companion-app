@@ -1,40 +1,11 @@
 .page_container {
   overflow-y: hidden;
-  background-position: center top;
-  background-repeat: no-repeat;
   height: 100%;
   width: 100%; }
   .page_container h1 {
     margin: 0; }
   .page_container .page {
-    overflow-y: hidden;
-    height: 100%;
-    width: 100%; }
-    .page_container .page nav {
-      position: relative;
-      height: 65px;
-      font-weight: 100;
-      padding-top: 35px;
-      text-align: center;
-      padding-bottom: 5px; }
-      .page_container .page nav h1 {
-        font-weight: 500;
-        display: inline-block; }
-      .page_container .page nav a {
-        position: absolute;
-        line-height: 60px;
-        top: 10px;
-        font-size: 18px;
-        color: white;
-        font-weight: 100;
-        width: 60px;
-        height: 60px; }
-      .page_container .page nav a:nth-child(1) {
-        top: 20px;
-        left: -10px; }
-      .page_container .page nav a:nth-child(3) {
-        top: 20px;
-        right: 0px; }
+    overflow-y: hidden; }
     .page_container .page a.button {
       display: block;
       max-width: 100%;
@@ -48,13 +19,6 @@
       background: black;
       height: 100%;
       width: 100%; }
-    .page_container .page textarea.localstorage_test {
-      margin: 5px;
-      border: 0;
-      padding: 5px;
-      font-size: 2em;
-      resize: vertical;
-      border: 1px solid #f6f6f6; }
     .page_container .page article.main {
       height: 100%;
       padding: 10px;
@@ -63,68 +27,6 @@
       overflow-y: scroll; }
     .page_container .page .nav_icon {
       margin-top: 20px; }
-  .page_container #NAV {
-    background: white;
-    border-right: 1px solid white;
-    color: black;
-    z-index: 100000;
-    position: fixed;
-    width: 90%;
-    top: 0;
-    left: -90%;
-    bottom: 0; }
-    .page_container #NAV .navigation_list {
-      height: 100%;
-      background: #3E3C3D; }
-    .page_container #NAV .nav_filler_img {
-      height: 30%;
-      width: 100%;
-      background: url(../img/game_logo.png) no-repeat center center #3E3C3D;
-      background-size: contain; }
-    .page_container #NAV .navigation_list:after {
-      content: "";
-      display: block;
-      clear: both; }
-    .page_container #NAV h1 {
-      height: 65px;
-      line-height: 65px;
-      text-align: center;
-      background: #3E3C3D; }
-    .page_container #NAV h2 {
-      padding-left: 5px; }
-    .page_container #NAV div.button {
-      position: relative;
-      width: 50%;
-      height: 25%;
-      float: left;
-      text-align: center;
-      cursor: hand !important;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      display: block;
-      text-decoration: none;
-      font-weight: bold; }
-      .page_container #NAV div.button .item_img {
-        width: 50%;
-        height: 50%;
-        position: absolute;
-        left: 25%;
-        top: 25%;
-        fill: white; }
-      .page_container #NAV div.button p {
-        position: absolute;
-        top: 75%;
-        text-align: center;
-        width: 100%; }
-    .page_container #NAV div.button:nth-of-type(5) {
-      width: 100%;
-      height: 15%; }
-    .page_container #NAV .RETURN {
-      display: none;
-      position: absolute;
-      right: -20%;
-      top: 0;
-      bottom: 0;
-      width: 30%; }
 
 /*
  *
@@ -149,7 +51,7 @@ section.main {
 .loader,
 .loader:before,
 .loader:after {
-  background: #FFF;
+  background: #CCC;
   -webkit-animation: load1 1s infinite ease-in-out;
   animation: load1 1s infinite ease-in-out;
   width: 1em;
@@ -223,22 +125,131 @@ body {
   font-family: sans-serif; }
 
 section.page {
-  color: #333; }
-  section.page nav {
-    background: #E0E1E1;
-    border-bottom: 1px solid #B7B7B7; }
+  color: #333;
+  overflow-y: hidden;
+  height: 100%;
+  width: 100%; }
 
-.version {
-  font-family: monospace;
-  position: absolute;
-  bottom: 0;
-  left: 20px; }
+#super_view,
+.navigation_list {
+  -webkit-transition: border 0.3s linear; }
+
+#NAV {
+  color: black;
+  background: #262321;
+  z-index: 100000;
+  position: fixed;
+  width: 50%;
+  top: 0;
+  left: -50%;
+  bottom: 0; }
+  #NAV .navigation_list {
+    padding-top: 64px;
+    height: 100%;
+    background: #262321; }
+  #NAV .nav_filler_img {
+    height: 20%;
+    width: 100%;
+    background: url(../img/game_logo.png) no-repeat center center #262321;
+    background-size: contain; }
+  #NAV .navigation_list:after {
+    content: "";
+    display: block;
+    clear: both; }
+  #NAV h1 {
+    height: 65px;
+    line-height: 65px;
+    text-align: center; }
+  #NAV h2 {
+    padding-left: 5px; }
+  #NAV div.button {
+    padding: 25px;
+    position: relative;
+    height: 50px;
+    text-align: center;
+    cursor: hand !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid black;
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    background-size: contain; }
+    #NAV div.button p {
+      position: absolute;
+      top: 50%;
+      margin-top: -9px;
+      width: 100%;
+      text-align: left;
+      padding-left: 25%;
+      color: white; }
+  #NAV div.button:nth-child(1) {
+    background: url("../img/navigation/profile.svg") no-repeat left center; }
+  #NAV div.button:nth-child(2) {
+    background: url("../img/navigation/guide.svg") no-repeat left center; }
+  #NAV div.button:nth-child(3) {
+    background: url("../img/navigation/news.svg") no-repeat left center; }
+  #NAV div.button:nth-child(4) {
+    background: url("../img/navigation/about.svg") no-repeat left center; }
+  #NAV div.button:nth-child(5) {
+    background: url("../img/navigation/settings.svg") no-repeat left center; }
+  #NAV .RETURN {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 100%; }
 
 /*
+ * Page Headers
  *
- * 
- *
- *
+ */
+.header {
+  position: relative;
+  background: #E0E1E1;
+  border-bottom: 1px solid #B7B7B7;
+  height: 65px;
+  font-weight: 100;
+  padding-top: 35px;
+  text-align: center;
+  padding-bottom: 5px; }
+  .header h1 {
+    font-weight: 500;
+    display: inline-block; }
+  .header a {
+    position: absolute;
+    line-height: 60px;
+    top: 10px;
+    font-size: 18px;
+    color: white;
+    font-weight: 100;
+    width: 60px;
+    height: 60px; }
+  .header a:nth-child(1) {
+    top: 20px;
+    left: -10px; }
+  .header a:nth-child(3) {
+    top: 20px;
+    right: 0px; }
+
+#flyout {
+  z-index: 1000000;
+  position: fixed;
+  background: white;
+  width: 100%;
+  top: 0;
+  right: -100%;
+  bottom: 0;
+  overflow-x: scroll; }
+  #flyout article {
+    padding: 0 10px;
+    font-size: 16px;
+    line-height: 1.5em; }
+    #flyout article h2 {
+      margin-top: 20px; }
+
+/*
+ * _news.scss
  */
 section#news {
   height: 100%;
@@ -250,17 +261,6 @@ section#news {
     section#news .news_container img {
       width: 100%;
       height: auto; }
-  section#news .news_article {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    background: #ccc;
-    height: 100%;
-    display: none; }
-    section#news .news_article article {
-      padding: 0 20px;
-      font-size: 16px;
-      line-height: 1.5em; }
   section#news #news_loading_text {
     position: absolute;
     top: 50%;
@@ -310,7 +310,10 @@ section#news {
   section#news #close_button {
     display: block;
     height: 65px;
-    background: #3E3C3D; }
+    background: #3E3C3D;
+    position: fixed;
+    bottom: 0;
+    width: 100%; }
   section#news #close_button:after {
     content: "CLOSE";
     display: block;
@@ -319,10 +322,25 @@ section#news {
     text-align: center;
     color: white; }
 
-section#profile {
+section#player {
   position: relative; }
-  section#profile nav {
-    background: rgba(0, 0, 0, 0.5); }
+  section#player .tab {
+    border: 1px solid red;
+    height: 50%;
+    width: 50%;
+    float: left; }
+  section#player .badge {
+    width: 300px;
+    background: #ccc;
+    height: 300px;
+    border-radius: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -150px; }
+  section#player .vampire h1 {
+    text-align: right; }
 
 section#stats {
   background: rgba(0, 0, 0, 0.5); }

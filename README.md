@@ -43,4 +43,5 @@ Current plan is to release the geolocation based game "Infection" with v1.1 of t
 ## Credits
 
 Hammer.js (MIT) https://github.com/hammerjs/hammer.js
+Chart.js  (MIT)	https://github.com/nnnick/Chart.js
 

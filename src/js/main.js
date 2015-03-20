@@ -11,20 +11,77 @@
 
 var ots_news_array = window.localStorage.getItem("ots_news_array");
 var content_array = JSON.parse(ots_news_array);
-var i, player, story, settings, Hammer, device;
-	
-	
-	
+
+var news_open = true;
+var animation_speed = 300;
+
+
+var i, player, story, settings, Hammer, device, lore;
+
 	/**
+	 *	Chart JS Redner
+	 * 
+	 */	
+	 
+	 function load_chart(){
+		 
+		 
+		/**
+		 * Chart.js Init
+		 *
+		 *
+		 */
+		 
+		 var doughnutData = [
+				{
+					value: player.xp.xp_vampire,
+					color:"#F7464A",
+					highlight: "#FF5A5E",
+					label: "xp_vampire"
+				},
+				{
+					value: player.xp.xp_werewolf,
+					color: "#46BFBD",
+					highlight: "#5AD3D1",
+					label: "xp_werewolf"
+				},
+				{
+					value: player.xp.xp_ghosts,
+					color: "#FDB45C",
+					highlight: "#FFC870",
+					label: "xp_ghosts"
+				},
+				{
+					value: player.xp.xp_zombie,
+					color: "#949FB1",
+					highlight: "#A8B3C5",
+					label: "xp_zombie"
+				}
+
+			];
+		
+		var ctx = document.getElementById("myChart").getContext("2d");
+		window.myDoughnut = new Chart(ctx).Doughnut(doughnutData, {animation: false, responsive : true, segmentStrokeWidth : 0, percentageInnerCutout : 80,});	
+		 
+	 }
+	
+	/** 
 	 *	
 	 * 
 	 */				
 	
 	function open_news(news_number){
 		
-		$(".news_article").html("");
-		$(".news_article").html("<div onclick='close_news()' id='close_button'></div><article><h2>" + content_array[news_number][0] + "</h2>" + content_array[news_number][4] + "</article>");
-		$(".news_article").delay(600).slideToggle();
+		$("#flyout article").html("");
+		
+		$("#flyout .header h1").text(content_array[news_number][3]);
+		$("#flyout article").html("</div><article><h2>" + content_array[news_number][0] + "</h2>" + content_array[news_number][4] + "</article><div onclick='close_news()' id='close_button'>");
+		
+		$('#flyout').animate({"right": '0'});
+		
+		$('body').animate("padding","50px");
+		
+		news_open = true;
 		
 	}
 	
@@ -35,7 +92,9 @@ var i, player, story, settings, Hammer, device;
 	
 	function close_news(){
 		
-		$(".news_article").slideToggle().delay(500);
+		$('#flyout').animate({"right": '-100%'});
+		
+		news_open = false;
 		
 	}
 	
@@ -138,8 +197,8 @@ var i, player, story, settings, Hammer, device;
 	
 	function closeNav(){
 		
-		$('#NAV').animate({"left": '-90%'});
-		$(".page").animate({"margin-left":"0"});
+		$('#NAV').animate({"left": '-50%'}, animation_speed);
+		$(".page").animate({"margin-left":"0"}, animation_speed);
 		$('.RETURN').css("display","none");
 		
 	}
@@ -151,8 +210,8 @@ var i, player, story, settings, Hammer, device;
 	 
 	function openNav(){
 		
-		$('#NAV').animate({"left": '0'});
-		$('.page').animate({"margin-left": "90%"});
+		$('#NAV').animate({"left": '0'}, animation_speed);
+		$('.page').animate({"margin-left": "50%"}, animation_speed);
 		$('.RETURN').css("display","block");
 		
 	}
@@ -166,11 +225,10 @@ var i, player, story, settings, Hammer, device;
 		
 		localStorage.removeItem('ots_news_array');
 		
-		
 	}
 	
 	/**
-	 *  	
+	 *	
 	 * 
 	 */				
 	
@@ -192,7 +250,7 @@ var i, player, story, settings, Hammer, device;
 		   
 	        'async': false,
 	        'global': false,
-	        'url': "test_data.json",
+	        'url': "player_test_data.json",
 	        'dataType': "json",
 	        'success': function (temp_data) {
 	            
@@ -204,6 +262,45 @@ var i, player, story, settings, Hammer, device;
 	    });
 	    
 	    render_user_data();
+		
+	}
+	
+	/**
+	 *	Take Lore Data from the data object and render it on user display.
+	 * 
+	 */
+	 
+	 function render_lore_data(){
+		 
+		 $(".lore").text(lore.meta.version);
+		 $(".lore").append(lore.ots.name);
+		 
+		 
+	 }
+	
+	/**
+	 *	Pul in local lore test data
+	 * 
+	 */
+	
+	function get_lore_data(){
+		
+		$.ajax({
+		   
+	        'async': false,
+	        'global': false,
+	        'url': "assets/lore/game_guide.json",
+	        'dataType': "json",
+	        'success': function (temp_data) {
+	            
+	            lore = temp_data;
+	            
+	            console.log(lore);
+	            
+	        }
+	    });
+	    
+	    render_lore_data();
 		
 	}		
 
@@ -245,39 +342,57 @@ var i, player, story, settings, Hammer, device;
 		$("#SYNC").click(			function(){	getNews();			});
 		$("#NAV a").click(			function(){	closeNav();			});
 		
-		$(".clear_app_data").click(	function(){	
-			
-			navigator.notification.confirm("Clearing this will delete all localdata", clear_app_data);
-			
-		});
+		$("#close_btn").click(function() { close_news(); });
 		
 		// Navigation Click Detectors
 		
 		$("#news_button").click(		function(){window.location.href="#news"; 		closeNav();});
 		$("#gameguide_button").click(	function(){window.location.href="#gameguide"; 	closeNav();});
-		$("#player_button").click(	function(){window.location.href="#player"; 			closeNav();});
-		$("#about_button").click(	function(){window.location.href="#about"; 			closeNav();});
+		$("#player_button").click(		function(){window.location.href="#player"; 		closeNav();});
+		$("#about_button").click(		function(){window.location.href="#about"; 		closeNav();});
 		$("#settings_button").click(	function(){window.location.href="#settings"; 	closeNav();});
 		
 		
 		
 		hammertime.on('swipe', function(ev) {
 		    
+		    
+		    
 		    if(ev.direction === 4){
 			    
-			    openNav();
+			    // Swipe Left => Right
+				if(news_open){
+				
+					close_news();
+				
+				}else {
+				
+					openNav();
+				
+				}
+			    
 			    
 		    }
 		    else if(ev.direction === 2){
 			    
+			    // Swipe Right => Left
 			    closeNav();
 			    
 		    }
 		   
 		});
 		
+		get_lore_data();
 		get_user_data();
 		getNews();
+		load_chart();
+			
+		
+		$(".clear_app_data").click(	function(){	
+			
+			navigator.notification.confirm("Clearing this will delete all localdata", clear_app_data);
+			
+		});
 			
 
 });

@@ -16,62 +16,53 @@
 		
 		<section id="NAV" class="master_nav">
 			
-			<h1>{USERNAME}</h1>
-			
-			<div class="nav_filler_img">&nbsp;</div>
-			
 			<div class="navigation_list">
 			
 				<div class="button" id="player_button">
 				
-					<img class="item_img" src="img/profile.svg" />
-				
 					<p>Player</p>
-					
 					
 				</div>
 				<div class="button" id="gameguide_button">
-				
-					<img class="item_img" class="item_img" src="img/guide.svg" />
 					
-					<p>Game Guide</p>
+					<p>Guide</p>
 					
 				</div>
 				<div class="button" id="news_button">
-				
-					<img class="item_img" src="img/news.svg" />
 					
 					<p>News</p>
 					
 				</div>
 				<div class="button" id="about_button">
-				
-					<img class="item_img" src="img/kiwi.svg" />
 					
 					<p>About</p>
 					
 				</div>
 				<div class="button" id="settings_button">
 					
-					<img class="item_img" src="img/gear.svg" />
-					
 					<p>Settings</p>
 				
 				</div>
 			
-			<!--
-			
-				<a class="button" href="#player" 	> Player</a>
-				<a class="button" href="#gameguide" > Game Guide</a>
-				<a class="button" href="#news" 		> News</a>
-				<a class="button" href="#about" 	> About</a>
-				<a class="button" href="#settings" 	> Settings</a>
-			
-			-->
-			
 			</div>
 			
 			<div id="RETURN" class="RETURN"></div>
+			
+		</section>
+		
+		<section id="flyout">
+			
+			<nav class="header">
+				
+				<a id="close_btn"><img id="nav_icon" src="img/left_arrow.svg" height="25" width="25"/></a>
+				<h1>Article</h1>
+				
+			</nav>
+			
+			<article>
+				
+				
+			</article>
 			
 		</section>
 		
@@ -83,7 +74,7 @@
 		
 		<section class="page" id="news">
 			
-			<nav id="header">
+			<nav class="header">
 				<a id="NAVBTN"><img id="nav_icon" src="img/hamburger_icon.svg" height="25" width="25" /></a>
 				<h1>News</h1>
 				<a id="SYNC" onclick="getNews()"><img id="nav_icon" src="img/cycle.svg" height="25" width="25" /></a>
@@ -102,11 +93,7 @@
 				
 				<div class="news_article">
 					
-					<article>
-						
-						<!--NEWS GOES HERE-->>
-						
-					</article>
+					<article><!--NEWS ARTICLE GOES HERE--></article>
 					
 				</div>
 			
@@ -121,52 +108,49 @@
 						
 		<section class="page" id="player">
 			
-			<nav id="header">
+			<nav class="header">
 				<a id="NAVBTN"><img id="nav_icon" src="img/hamburger_icon.svg" height="25" width="25" /></a>
 				<h1>Profile</h1>
 			</nav>
 			
 			<section class="main">
-			
-				<div class="profile_page" id="overview">
 					
-					<h2>Overview</h2>
+					<div class="tab zombie">
+						
+						<h1>XP:</h1>
+						
+						<div class="draw"></div>
+						
+					</div>
+					<div class="tab wearwolf">
+						
+						<h1>XP:</h1>
+						
+						<div class="draw"></div>
+						
+					</div>
+					<div class="tab ghost">
+						
+						<h1>XP:</h1>
+						
+						<div class="draw"></div>
+						
+					</div>
+					<div class="tab vampire">
+						
+						<h1>XP:</h1>
+						
+						<div class="draw"></div>
+						
+					</div>
 					
-				</div>
-				
-				<div class="profile_page" id="werewolf">
-					
-					<h2>Werewolf</h2>
-					
-				</div>
-				
-				<div class="profile_page" id="vampire">
-					
-					<h2>Vampire</h2>
-					
-				</div>
-				
-				<div class="profile_page" id="ghost">
-					
-					<h2>Ghost</h2>
-					
-				</div>
-				
-				<div class="profile_page" id="zombie">
-					
-					<h2>Zombie</h2>
-					
-				</div>
-				
-				<div class="profile_page" id="ots">
-					
-					<h2>OTS</h2>
-					
-				</div>
+					<div class="badge">
+						
+						<canvas id="myChart" width="400" height="400"></canvas>
+						
+					</div>
 							
-			</section>
-
-			
+			</section>		
 		</section>
 		
 		<!-- So this is a page break. A visual one ofc.
@@ -177,16 +161,12 @@
 				
 		<section class="page" id="gameguide">
 			
-			<nav id="header">
+			<nav class="header">
 				<a id="NAVBTN"><img id="nav_icon" src="img/hamburger_icon.svg" height="25" width="25" /></a>
 				<h1>Game Guide</h1>
 			</nav>
 			
-			<section class="main">
-				
-				<h3>Bosh.</h3>			
-				
-			</section>
+			<section class="main lore"></section>
 			
 		</section>
 		
@@ -198,15 +178,12 @@
 		
 		<section class="page" id="about">
 			
-			<nav>
-			<a id="NAVBTN"><img id="nav_icon" src="img/hamburger_icon.svg" height="25" width="25" /></a>
-			<h1>About</h1>
+			<nav class="header">
+				<a id="NAVBTN"><img id="nav_icon" src="img/hamburger_icon.svg" height="25" width="25" /></a>
+				<h1>About</h1>
 			</nav>
 			
-			<section class="main">
-
-						
-				<img src="img/kiwi.svg">		
+			<section class="main">	
 							
 				<h3>We are KiwiKiwi</h3>
 											
@@ -227,22 +204,14 @@
 		
 		<section class="page" id="settings">
 			
-			<nav>
-			<a id="NAVBTN"><img id="nav_icon" src="img/hamburger_icon.svg" height="25" width="25" /></a>
-			<h1>Settings</h1>
+			<nav class="header">
+				<a id="NAVBTN"><img id="nav_icon" src="img/hamburger_icon.svg" height="25" width="25" /></a>
+				<h1>Settings</h1>
 			</nav>
 			
 			<section class="main">
 				
 				<a class="button red clear_app_data">Clear App Data</a>
-				
-				<p id="ls_length"></p>
-							
-				<p id="lastUpdate"></p>
-				<p id="device">Device: {NULL}</p>
-				<p id="network">Network: {NULL}</p>
-				<p id="long">Longitude: {NULL}</p>
-				<p id="lat">Latitude: {NULL}</p>
 				
 			</section>
 		
@@ -256,10 +225,11 @@
 	
 	</div>
 	
-	<!--<script src="phonegap.js"></script>-->
+	<script src="phonegap.js"></script>
 
 	<script src="js/vendor/jquery-2.1.1.min.js"></script>
 	<script src="js/vendor/hammer-min.js"></script>
+	<script src="js/vendor/chart.min.js"></script>
 	<script src="js/min/main-min.js"></script>
 	
 	

@@ -1,0 +1,161 @@
+$colour_background: #262321;
+
+#NAV {
+
+	color: black;
+	
+	background: #262321;
+	
+	z-index: 100000;
+	position: fixed;
+	
+	width: 50%;
+	top:0;
+	left: -50%;
+	bottom: 0;
+	
+			
+	.navigation_list {
+		
+		padding-top: 64px;
+		height: 100%;
+		background: $colour_background;
+		
+	}
+	
+	.nav_filler_img {
+		
+		height: 20%;
+		width: 100%;
+		
+		background: url(../img/game_logo.png) no-repeat center center $colour_background;
+		background-size: contain;
+		
+	}
+	
+	.navigation_list:after {
+		
+		content: "";
+		display: block;
+		clear: both;
+		
+	}
+	
+	h1 {
+		
+		height: 65px;
+		line-height: 65px;
+		text-align: center;
+		
+	}
+	
+	h2 {
+		
+		padding-left: 5px;
+		
+	}
+	
+	div.button {
+		padding: 25px;
+		
+		position: relative;
+		height: 50px;
+		text-align: center;
+
+		cursor: hand !important;
+		
+		border-bottom: 1px solid rgba(255,255,255,0.1);
+		border-top: 1px solid rgba(0,0,0,1);
+
+		display: block;
+		text-decoration: none;
+		font-weight: bold;
+		
+		background-size: contain;
+		
+		p {
+			
+			position: absolute;
+			top: 50%;
+			margin-top: -9px;
+			width: 100%;
+			text-align: left;
+			padding-left: 25%;
+			color: white;
+			
+		}
+		
+	}
+	
+	div.button:nth-child(1){ background: url("../img/navigation/profile.svg") no-repeat left center;}
+	div.button:nth-child(2){ background: url("../img/navigation/guide.svg") no-repeat left center;}
+	div.button:nth-child(3){ background: url("../img/navigation/news.svg") no-repeat left center;}
+	div.button:nth-child(4){ background: url("../img/navigation/about.svg") no-repeat left center;}
+	div.button:nth-child(5){ background: url("../img/navigation/settings.svg") no-repeat left center;}
+	
+	.RETURN {
+		
+		display: none;
+		position: fixed;
+		left: 50%;
+		top:0;
+		bottom:0;
+		width: 100%;
+
+	}
+
+}
+
+/*
+ * Page Headers
+ *
+ */
+ 
+ .header {
+
+			position: relative;
+			background: #E0E1E1;
+			border-bottom: 1px solid #B7B7B7;
+			height: 65px;
+			font-weight: 100;
+			padding-top: 35px;
+			text-align: center;
+			padding-bottom: 5px;
+			
+			h1 {
+				
+				font-weight: 500;
+				display: inline-block;
+				
+			}
+			
+			a {
+				
+				position: absolute;
+				line-height: 60px;
+				top:10px;
+				
+				font-size: 18px;
+				
+				color: white;
+				font-weight: 100;
+				width: 60px;
+				height: 60px;
+
+			}
+			
+			a:nth-child(1){
+				
+				top:20px;
+				left: -10px;
+			
+			}
+			
+			a:nth-child(3){
+				
+				top:20px;
+				right: 0px;
+			
+			}
+			
+		}
