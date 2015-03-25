@@ -265,14 +265,6 @@ var i, player, story, settings, Hammer, device, lore, beacons;
 	
 	    var c = Math.pow(a, 2) + Math.pow(b, 2);
 	
-		if(Math.sqrt(c) > 0){
-			
-			// TODO
-			
-			return true;
-			
-		}
-	
 	    return distance = Math.sqrt(c);
 	
 	}
@@ -387,7 +379,6 @@ var i, player, story, settings, Hammer, device, lore, beacons;
 		
 	    $("#device").html("Device: " + device.model);
 	    
-	    
 	
 	}
 	
@@ -441,7 +432,7 @@ var i, player, story, settings, Hammer, device, lore, beacons;
 			});
 
 			map.panTo(playerMarker.getPosition());
-			
+
 		});
 		
 		$("#button_2").click(function(){
