@@ -2,7 +2,7 @@
 
 #map-canvas {
 	
-	background: black;
+	//background: black;
 	position: absolute;
 	top:0;
 	left: 0;
@@ -12,8 +12,7 @@
 }
 
 #btn_box {
-	
-	opacity: 0.5;
+
 	z-index: 10000;
 	position: absolute;
 	width: 100%;
@@ -23,8 +22,9 @@
 	
 	button {
 		
-		width: 50%;
-		float: left;
+		border: 1px solid black;
+		width: 45%;
+		
 		height: 100%;
 		border: 0;
 		
@@ -32,8 +32,17 @@
 	
 	#button_1 {
 		
+		float: left;
 		background: green;
 		
 	}
+ 	
+ 	
+ 	#button_2 {
+	 	
+	 	float: right;
+	 	background: black;
+	 	
+ 	}
  	
 }

@@ -19,7 +19,8 @@ var user_latitude, user_longitude;
 
 var map;
 var position;
-var i, player, story, settings, Hammer, device, lore;
+
+var i, player, story, settings, Hammer, device, lore, beacons;
 
 	// 
 	
@@ -38,9 +39,33 @@ var i, player, story, settings, Hammer, device, lore;
 		    var mapOptions = {
 				    zoom: 17,
 				    center: park,
+				    disableDefaultUI: true
 				    }
 			
 			map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+			
+			$.each(game_data.beacons, function(index, value){
+			
+				console.log(value);	
+				
+			});
+			
+			var populationOptions = {
+				
+				strokeColor: '#FF0000',
+				strokeOpacity: 0.8,
+				strokeWeight: 2,
+				fillColor: '#FF0000',
+				fillOpacity: 0.35,
+				map: map,
+				center: park,
+				radius: 20
+			};
+			
+			console.log(game_data.beacons);
+			
+			// Add the circle for this city to the map.
+			cityCircle = new google.maps.Circle(populationOptions);
 			
 			
 			
@@ -246,7 +271,7 @@ var i, player, story, settings, Hammer, device, lore;
 	
 		if(Math.sqrt(c) > 0){
 			
-			
+			// TODO
 			
 			return true;
 			
@@ -310,6 +335,7 @@ var i, player, story, settings, Hammer, device, lore;
 	            settings = temp_data.settings;
 	            player = temp_data.player;
 	            story  = temp_data.story;
+
 	            
 	        }
 	    });
@@ -325,8 +351,8 @@ var i, player, story, settings, Hammer, device, lore;
 	 
 	 function render_lore_data(){
 		 
-		 $(".lore").text(lore.meta.version);
-		 $(".lore").append(lore.ots.name);
+		 $(".lore").text(game_data.meta.version);
+		 $(".lore").append(game_data.ots.name);
 		 
 		 
 	 }
@@ -342,13 +368,11 @@ var i, player, story, settings, Hammer, device, lore;
 		   
 	        'async': false,
 	        'global': false,
-	        'url': "assets/lore/game_guide.json",
+	        'url': "assets/game_data.json",
 	        'dataType': "json",
 	        'success': function (temp_data) {
 	            
-	            lore = temp_data;
-	            
-	            console.log(lore);
+	            game_data = temp_data;
 	            
 	        }
 	    });
@@ -414,13 +438,13 @@ var i, player, story, settings, Hammer, device, lore;
 		
 		$("#button_1").click(function(){
 			
-			// navigator.notification.alert("Added Location");
-			
-			var marker = new google.maps.Marker({
+			var playerMarker = new google.maps.Marker({
 				position: new google.maps.LatLng(user_latitude, user_longitude),
 				map: map,
 				title: 'Hello World!'
 			});
+			
+			map.setCenter(playerMarker.getPosition());
 
 			
 		});
