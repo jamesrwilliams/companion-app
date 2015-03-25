@@ -367,8 +367,7 @@ var i, player, story, settings, Hammer, device, lore;
 		
 	    $("#device").html("Device: " + device.model);
 	    
-		console.log( navigator.geolocation);
-	    console.log("navigator.geolocation works well");
+	    navigator.geolocation.getCurrentPosition(onSuccess, onError);
 	
 	}
 	
@@ -379,7 +378,7 @@ var i, player, story, settings, Hammer, device, lore;
 	
 	$(document).ready(function(){
 		
-		navigator.geolocation.getCurrentPosition(onSuccess, onError);
+		
 		
 		document.addEventListener("deviceready", onDeviceReady, false);
 		
