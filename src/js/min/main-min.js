@@ -45,20 +45,6 @@ var i, player, story, settings, Hammer, device, lore;
 	
 	};
 	
-	
-	//
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	/**
 	 *	Chart JS Redner
 	 * 
@@ -418,7 +404,7 @@ var i, player, story, settings, Hammer, device, lore;
 		
 		$("#button_1").click(function(){
 			
-			console.log("Added Location");
+			navigator.notification.alert("Added Location");
 			
 			var marker = new google.maps.Marker({
 				position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
@@ -433,7 +419,7 @@ var i, player, story, settings, Hammer, device, lore;
 			
 			console.log("Check Distance");
 			
-			console.log(check_distance(51.887533, -2.088750, position.coords.latitude,position.coords.longitude));
+			navigator.notification.alert(check_distance(51.887533, -2.088750, position.coords.latitude,position.coords.longitude));
 			
 		});
 		
