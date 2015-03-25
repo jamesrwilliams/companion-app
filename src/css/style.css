@@ -379,7 +379,7 @@ section#settings section.main {
   padding: 15px;
   color: white; }
 
-.google_map {
+#map-canvas {
   background: black;
   position: absolute;
   top: 0;

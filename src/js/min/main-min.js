@@ -18,6 +18,43 @@ var animation_speed = 300;
 
 var i, player, story, settings, Hammer, device, lore;
 
+	// 
+	
+	function onError(error) {
+		    alert('code: '    + error.code    + '\n' +
+		          'message: ' + error.message + '\n');
+	}
+	
+	var onSuccess = function(position) {
+		
+			var chicago = new google.maps.LatLng(51.887533, -2.088750);
+		    
+		    console.log(position.coords.latitude);
+		    console.log(position.coords.longitude);
+		    
+		    var mapOptions = {
+				    zoom: 20,
+				    center: chicago,
+				    }
+			
+			map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+	
+	};
+	
+	
+	//
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 *	Chart JS Redner
 	 * 
@@ -243,36 +280,6 @@ var i, player, story, settings, Hammer, device, lore;
 		
 	}
 	
-	function map(){
-		
-		navigator.geolocation.getCurrentPosition(function(){
-			
-			var longitude = position.coords.longitude;
-			var latitude = position.coords.latitude;
-			var latLong = new google.maps.LatLng(latitude, longitude);
-			
-			var mapOptions = {
-				
-				center: latLong,
-				zoom: 16,
-				mapTypeId: google.maps.MapTypeId.ROADMAP
-				
-			};
-			
-			var view = $(".google_maps");
-		
-			var map = new google.maps.Map(view, mapOptions);
-
-			
-		},
-		
-			console.log("Geo Error")
-		
-		);
-		
-				
-	}
-	
 	/**
 	 *	
 	 * 
@@ -323,11 +330,11 @@ var i, player, story, settings, Hammer, device, lore;
 		 
 		 
 	 }
-	
-	/**
-	 *	Pul in local lore test data
-	 * 
-	 */
+		
+		/**
+		 *	Pul in local lore test data
+		 * 
+		 */
 	
 	function get_lore_data(){
 		
@@ -359,6 +366,9 @@ var i, player, story, settings, Hammer, device, lore;
 	function onDeviceReady() {
 		
 	    $("#device").html("Device: " + device.model);
+	    
+		console.log( navigator.geolocation);
+	    console.log("navigator.geolocation works well");
 	
 	}
 	
@@ -368,6 +378,8 @@ var i, player, story, settings, Hammer, device, lore;
 	 */			
 	
 	$(document).ready(function(){
+		
+		navigator.geolocation.getCurrentPosition(onSuccess, onError);
 		
 		document.addEventListener("deviceready", onDeviceReady, false);
 		
@@ -397,7 +409,7 @@ var i, player, story, settings, Hammer, device, lore;
 		$("#player_button").click(		function(){window.location.href="#player"; 		closeNav();});
 		$("#about_button").click(		function(){window.location.href="#about"; 		closeNav();});
 		$("#settings_button").click(	function(){window.location.href="#settings"; 	closeNav();});
-		$("#infection_button").click(	function(){window.location.href="#infection";  map();	closeNav();});
+		$("#infection_button").click(	function(){window.location.href="#infection";   closeNav();});
 		
 		
 		
@@ -438,7 +450,8 @@ var i, player, story, settings, Hammer, device, lore;
 			navigator.notification.confirm("Clearing this will delete all localdata", clear_app_data);
 			
 		});
-			
+		
+		
 
 });
 
