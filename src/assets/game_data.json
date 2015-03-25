@@ -5,8 +5,9 @@
 	},
 	"beacons":{
 		
-		"vamp_hq":{
+		"0":{
 			
+			"Name":"Vampire HQ",
 			"x":"51.887569",
 			"y":"-2.088631",
 			"marker":{
@@ -16,7 +17,24 @@
 				"strokeWeight":"2",
 				"fillColor":"#FF0000",
 				"fillOpacity":"0.35",
-				"radius":"100"
+				"radius":"20"
+				
+			}
+			
+		},
+		"1":{
+			
+			"Name":"OTS HQ",
+			"x":"51.886993",
+			"y":"-2.087321",
+			"marker":{
+				
+				"strokeColor":"#FFFF00",
+				"strokeOpacity": "0.8",
+				"strokeWeight":"2",
+				"fillColor":"#FF0000",
+				"fillOpacity":"0.35",
+				"radius":"50"
 				
 			}
 			

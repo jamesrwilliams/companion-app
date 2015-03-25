@@ -44,31 +44,27 @@ var i, player, story, settings, Hammer, device, lore, beacons;
 			
 			map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 			
-			$.each(game_data.beacons, function(index, value){
-			
-				console.log(value);	
-				
-			});
-			
-			var populationOptions = {
-				
-				strokeColor: '#FF0000',
-				strokeOpacity: 0.8,
-				strokeWeight: 2,
-				fillColor: '#FF0000',
-				fillOpacity: 0.35,
-				map: map,
-				center: park,
-				radius: 20
-			};
-			
 			console.log(game_data.beacons);
 			
-			// Add the circle for this city to the map.
-			cityCircle = new google.maps.Circle(populationOptions);
-			
-			
-			
+			$.each(game_data.beacons, function(index, value){
+				
+				var options = {
+					
+					strokeColor: game_data.beacons[index].marker.strokeColor,
+					strokeOpacity: game_data.beacons[index].marker.strokeOpacity,
+					strokeWeight: game_data.beacons[index].marker.strokeWeight,
+					fillColor: game_data.beacons[index].marker.fillColor,
+					fillOpacity: game_data.beacons[index].marker.fillOpacity,
+					map: map,
+					center: new google.maps.LatLng(game_data.beacons[index].x, game_data.beacons[index].y),
+					radius: parseFloat(game_data.beacons[index].marker.radius)
+				};
+
+				// Add the circle for this city to the map.
+				cityCircle = new google.maps.Circle(options);
+				
+				
+			});	
 	
 	};
 	
@@ -443,9 +439,8 @@ var i, player, story, settings, Hammer, device, lore, beacons;
 				map: map,
 				title: 'Hello World!'
 			});
-			
-			map.setCenter(playerMarker.getPosition());
 
+			map.panTo(playerMarker.getPosition());
 			
 		});
 		
