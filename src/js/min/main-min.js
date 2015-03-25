@@ -15,6 +15,8 @@ var content_array = JSON.parse(ots_news_array);
 var news_open = true;
 var animation_speed = 300;
 
+var user_latitude, user_longitude;
+
 var map;
 var position;
 var i, player, story, settings, Hammer, device, lore;
@@ -28,14 +30,14 @@ var i, player, story, settings, Hammer, device, lore;
 	
 	var onSuccess = function(position) {
 		
-			var chicago = new google.maps.LatLng(51.887533, -2.088750);
+			var park = new google.maps.LatLng(51.887533, -2.088750);
 		    
-		    console.log(position.coords.latitude);
-		    console.log(position.coords.longitude);
+		    user_latitude = position.coords.latitude;
+		    user_longitude = position.coords.longitude;
 		    
 		    var mapOptions = {
 				    zoom: 20,
-				    center: chicago,
+				    center: park,
 				    }
 			
 			map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
@@ -357,7 +359,7 @@ var i, player, story, settings, Hammer, device, lore;
 		
 	    $("#device").html("Device: " + device.model);
 	    
-	    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+	    
 	
 	}
 	
@@ -368,7 +370,7 @@ var i, player, story, settings, Hammer, device, lore;
 	
 	$(document).ready(function(){
 		
-		
+		navigator.geolocation.getCurrentPosition(onSuccess, onError);
 		
 		document.addEventListener("deviceready", onDeviceReady, false);
 		
@@ -404,10 +406,10 @@ var i, player, story, settings, Hammer, device, lore;
 		
 		$("#button_1").click(function(){
 			
-			navigator.notification.alert("Added Location");
+			// navigator.notification.alert("Added Location");
 			
 			var marker = new google.maps.Marker({
-				position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
+				position: new google.maps.LatLng(user_latitude, user_longitude),
 				map: map,
 				title: 'Hello World!'
 			});
@@ -419,7 +421,9 @@ var i, player, story, settings, Hammer, device, lore;
 			
 			console.log("Check Distance");
 			
-			navigator.notification.alert(check_distance(51.887533, -2.088750, position.coords.latitude,position.coords.longitude));
+			console.log(check_distance(51.887533, -2.088750, user_latitude, user_longitude));
+			
+			navigator.notification.alert(check_distance(51.887533, -2.088750, user_latitude, user_longitude));
 			
 		});
 		
