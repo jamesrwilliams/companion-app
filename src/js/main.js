@@ -397,7 +397,7 @@ var i, player, story, settings, Hammer, device, lore;
 		$("#player_button").click(		function(){window.location.href="#player"; 		closeNav();});
 		$("#about_button").click(		function(){window.location.href="#about"; 		closeNav();});
 		$("#settings_button").click(	function(){window.location.href="#settings"; 	closeNav();});
-		$("#infection_button").click(	function(){window.location.href="#infection"; 	closeNav();});
+		$("#infection_button").click(	function(){window.location.href="#infection";  map();	closeNav();});
 		
 		
 		
