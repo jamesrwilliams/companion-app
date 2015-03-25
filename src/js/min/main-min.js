@@ -15,7 +15,8 @@ var content_array = JSON.parse(ots_news_array);
 var news_open = true;
 var animation_speed = 300;
 
-
+var map;
+var position;
 var i, player, story, settings, Hammer, device, lore;
 
 	// 
@@ -39,11 +40,8 @@ var i, player, story, settings, Hammer, device, lore;
 			
 			map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 			
-			var marker = new google.maps.Marker({
-				position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
-				map: map,
-				title: 'Hello World!'
-			});
+			
+			
 	
 	};
 	
@@ -416,7 +414,28 @@ var i, player, story, settings, Hammer, device, lore;
 		$("#settings_button").click(	function(){window.location.href="#settings"; 	closeNav();});
 		$("#infection_button").click(	function(){window.location.href="#infection";   closeNav();});
 		
+		// Game Links
 		
+		$("#button_1").click(function(){
+			
+			console.log("Added Location");
+			
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
+				map: map,
+				title: 'Hello World!'
+			});
+
+			
+		});
+		
+		$("#button_2").click(function(){
+			
+			console.log("Check Distance");
+			
+			console.log(check_distance(51.887533, -2.088750, position.coords.latitude,position.coords.longitude));
+			
+		});
 		
 		hammertime.on('swipe', function(ev) {
 		    
