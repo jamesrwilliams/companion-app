@@ -204,6 +204,22 @@ var i, player, story, settings, Hammer, device, lore;
 	}
 	
 	/**
+	 *	Function checks the distance from the device against the beacons in the game world and overlays it on the world map.
+	 * 
+	 */		
+	
+	function check_distance(point_x, point_y, beacon_x, beacon_y) {
+	
+	    var a = Math.abs(point_x - beacon_x);
+	    var b = Math.abs(point_y - beacon_y);
+	
+	    var c = Math.pow(a, 2) + Math.pow(b, 2);
+	
+	    return distance = Math.sqrt(c);
+	
+	}
+	
+	/**
 	 * Aniamtes the opening of the navigation pane. 	
 	 * 
 	 */				
@@ -225,6 +241,36 @@ var i, player, story, settings, Hammer, device, lore;
 		
 		localStorage.removeItem('ots_news_array');
 		
+	}
+	
+	function map(){
+		
+		navigator.geolocation.getCurrentPosition(function(){
+			
+			var longitude = position.coords.longitude;
+			var latitude = position.coords.latitude;
+			var latLong = new google.maps.LatLng(latitude, longitude);
+			
+			var mapOptions = {
+				
+				center: latLong,
+				zoom: 16,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+				
+			};
+			
+			var view = $(".google_maps");
+		
+			var map = new google.maps.Map(view, mapOptions);
+
+			
+		},
+		
+			console.log("Geo Error")
+		
+		);
+		
+				
 	}
 	
 	/**
@@ -351,12 +397,11 @@ var i, player, story, settings, Hammer, device, lore;
 		$("#player_button").click(		function(){window.location.href="#player"; 		closeNav();});
 		$("#about_button").click(		function(){window.location.href="#about"; 		closeNav();});
 		$("#settings_button").click(	function(){window.location.href="#settings"; 	closeNav();});
+		$("#infection_button").click(	function(){window.location.href="#infection"; 	closeNav();});
 		
 		
 		
 		hammertime.on('swipe', function(ev) {
-		    
-		    
 		    
 		    if(ev.direction === 4){
 			    

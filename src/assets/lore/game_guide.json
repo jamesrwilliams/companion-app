@@ -3,6 +3,17 @@
 		"version":"Version: 1",
 		"writer":"James"
 	},
+	"beacons":{
+		
+		"vampires":{
+			
+			"name":"Hello World",
+			"x":"51.887569",
+			"y":"-2.088631"
+			
+		}
+		
+	},
 	"places":{
 		"name":"Hello"
 	},
