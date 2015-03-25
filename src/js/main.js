@@ -36,7 +36,7 @@ var i, player, story, settings, Hammer, device, lore;
 		    user_longitude = position.coords.longitude;
 		    
 		    var mapOptions = {
-				    zoom: 20,
+				    zoom: 17,
 				    center: park,
 				    }
 			
@@ -244,6 +244,14 @@ var i, player, story, settings, Hammer, device, lore;
 	
 	    var c = Math.pow(a, 2) + Math.pow(b, 2);
 	
+		if(Math.sqrt(c) > 0){
+			
+			
+			
+			return true;
+			
+		}
+	
 	    return distance = Math.sqrt(c);
 	
 	}
@@ -423,7 +431,7 @@ var i, player, story, settings, Hammer, device, lore;
 			
 			console.log(check_distance(51.887533, -2.088750, user_latitude, user_longitude));
 			
-			navigator.notification.alert(check_distance(51.887533, -2.088750, user_latitude, user_longitude));
+			alert(check_distance(51.887533, -2.088750, user_latitude, user_longitude));
 			
 		});
 		
