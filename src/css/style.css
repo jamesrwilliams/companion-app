@@ -136,7 +136,7 @@ section.page {
 
 #NAV {
   color: black;
-  background: #262321;
+  background: #222;
   z-index: 100000;
   position: fixed;
   width: 50%;
@@ -146,11 +146,11 @@ section.page {
   #NAV .navigation_list {
     padding-top: 64px;
     height: 100%;
-    background: #262321; }
+    background: #222; }
   #NAV .nav_filler_img {
     height: 20%;
     width: 100%;
-    background: url(../img/game_logo.png) no-repeat center center #262321;
+    background: url(../img/game_logo.png) no-repeat center center #222;
     background-size: contain; }
   #NAV .navigation_list:after {
     content: "";
@@ -324,23 +324,6 @@ section#news {
 
 section#player {
   position: relative; }
-  section#player .tab {
-    border: 1px solid red;
-    height: 50%;
-    width: 50%;
-    float: left; }
-  section#player .badge {
-    width: 300px;
-    background: #ccc;
-    height: 300px;
-    border-radius: 150px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -150px;
-    margin-left: -150px; }
-  section#player .vampire h1 {
-    text-align: right; }
 
 section#stats {
   background: rgba(0, 0, 0, 0.5); }
@@ -349,27 +332,6 @@ section#stats {
     padding: 0; }
     section#stats .stats_list h2 {
       color: white; }
-    section#stats .stats_list li {
-      display: block;
-      width: 49%;
-      list-style: none;
-      background: rgba(255, 255, 255, 0.4);
-      padding: 5px;
-      float: right;
-      margin-bottom: 5px;
-      color: white; }
-      section#stats .stats_list li h4 {
-        font-size: 0.8em;
-        margin: 0;
-        text-transform: uppercase;
-        font-weight: bold; }
-      section#stats .stats_list li p.value {
-        margin: 0;
-        font-size: 2em;
-        font-weight: 100; }
-    section#stats .stats_list li:nth-child(odd) {
-      float: left;
-      margin-right: 1px; }
 
 section#about .main img {
   width: 50%;

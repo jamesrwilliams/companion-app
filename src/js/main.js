@@ -101,53 +101,6 @@ var i, player, story, settings, Hammer, device, alert, Chart, game_data, google;
 	
 	};
 	
-	/**
-	 *	Chart JS Redner
-	 * 
-	 */	
-	 
-	 function load_chart(){
-		 
-		 
-		/**
-		 * Chart.js Init
-		 *
-		 *
-		 */
-		 
-		 var doughnutData = [
-				{
-					value: player.xp.xp_vampire,
-					color:"#F7464A",
-					highlight: "#FF5A5E",
-					label: "xp_vampire"
-				},
-				{
-					value: player.xp.xp_werewolf,
-					color: "#46BFBD",
-					highlight: "#5AD3D1",
-					label: "xp_werewolf"
-				},
-				{
-					value: player.xp.xp_ghosts,
-					color: "#FDB45C",
-					highlight: "#FFC870",
-					label: "xp_ghosts"
-				},
-				{
-					value: player.xp.xp_zombie,
-					color: "#949FB1",
-					highlight: "#A8B3C5",
-					label: "xp_zombie"
-				}
-
-			];
-		
-		var ctx = document.getElementById("myChart").getContext("2d");
-		window.myDoughnut = new Chart(ctx).Doughnut(doughnutData, {animation: false, responsive : true, segmentStrokeWidth : 0, percentageInnerCutout : 80,});	
-		 
-	 }
-	
 	/** 
 	 *	
 	 * 
@@ -506,7 +459,6 @@ var i, player, story, settings, Hammer, device, alert, Chart, game_data, google;
 		get_lore_data();
 		get_user_data();
 		getNews();
-		load_chart();
 		
 		var guide_active = false;
 		var top, bottom;
@@ -527,12 +479,8 @@ var i, player, story, settings, Hammer, device, alert, Chart, game_data, google;
 					
 					// TODO Dynamically Load the content
 					$(this).toggleClass("content_view");
-					
 					$( ".dynm" ).remove();
-					
 					$(this).delay(300).css({
-						
-						
 						
 						"position":"static",
 						"z-index":"0",				
@@ -542,12 +490,9 @@ var i, player, story, settings, Hammer, device, alert, Chart, game_data, google;
 				});
 				
 				guide_active = false;
-				
-				
-				
-			}else {
-				
-				
+
+		
+			} else {
 				
 				top = $(this).position().top;
 				bottom = $(".main").height() - ($(this).height() + $(this).position().top);
@@ -575,8 +520,8 @@ var i, player, story, settings, Hammer, device, alert, Chart, game_data, google;
 					
 				}, function (){
 					
-					// TODO Dynamically Load the content
 					
+					// TODO Dynamically Load the content
 					
 				});
 
@@ -586,14 +531,12 @@ var i, player, story, settings, Hammer, device, alert, Chart, game_data, google;
 			}
 			
 			
-		});
+	});
 		
-		$(".clear_app_data").click(	function(){	
+	$(".clear_app_data").click(	function(){	
 			
-			navigator.notification.confirm("Clearing this will delete all localdata", clear_app_data);
+		navigator.notification.confirm("Clearing this will delete all localdata", clear_app_data);
 			
-		});
-		
-		
+	});
 
 });
