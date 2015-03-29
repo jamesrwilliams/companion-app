@@ -1,0 +1,88 @@
+{
+	"meta":{
+		"version":"Version: 1",
+		"writer":"James"
+	},
+	"beacons":{
+		
+		"0":{
+			
+			"Name":"Vampire HQ",
+			"x":"51.887569",
+			"y":"-2.088631",
+			"marker":{
+				
+				"strokeColor":"#FF0000",
+				"strokeOpacity": "0.8",
+				"strokeWeight":"2",
+				"fillColor":"#FF0000",
+				"fillOpacity":"0.35",
+				"radius":"20"
+				
+			}
+			
+		},
+		"1":{
+			
+			"Name":"OTS HQ",
+			"x":"51.886993",
+			"y":"-2.087321",
+			"marker":{
+				
+				"strokeColor":"rgba(0,0,0,0.2)",
+				"strokeOpacity": "0.8",
+				"strokeWeight":"2",
+				"fillColor":"#e9e9e9",
+				"fillOpacity":"0.35",
+				"radius":"30"
+				
+			}
+			
+		},
+		"2":{
+			
+			"Name":"2 HQ",
+			"x": "51.887789", 
+			"y": "-2.088127",
+			"marker":{
+				
+				"strokeColor":"#FFFF00",
+				"strokeOpacity": "0.8",
+				"strokeWeight":"2",
+				"fillColor":"#FF0000",
+				"fillOpacity":"0.35",
+				"radius":"15"
+				
+			}
+			
+		}
+		
+	},
+	"places":{
+		"name":"Hello"
+	},
+	"species":{
+		"vampire":{
+			"name":"",
+			"bio":""
+		},
+		"werewolf":{
+			"name":"",
+			"bio":""
+		},
+		"ghost":{  
+			"name":"",
+			"bio":""
+		},
+		"zombie":{  
+			"name":"",
+			"bio":""
+		}
+	},
+	"ots":{
+		"name":"OTS",
+		"bio":""
+	}
+	
+	
+}

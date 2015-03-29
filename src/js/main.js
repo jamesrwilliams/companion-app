@@ -15,49 +15,60 @@ var content_array = JSON.parse(ots_news_array);
 var news_open = true;
 var animation_speed = 300;
 
-var map;
-var position;
-var i, player, story, settings, Hammer, device, lore;
+var user_latitude, user_longitude;
 
-	// 
+var map;
+
+var i, player, story, settings, Hammer, device, alert, Chart, game_data, google;
+
+	// GEOLOCATION STUFF
 	
 	function onError(error) {
+		    
 		    alert('code: '    + error.code    + '\n' +
 		          'message: ' + error.message + '\n');
 	}
 	
 	var onSuccess = function(position) {
 		
-			var chicago = new google.maps.LatLng(51.887533, -2.088750);
+			var park = new google.maps.LatLng(51.887533, -2.088750);
 		    
-		    console.log(position.coords.latitude);
-		    console.log(position.coords.longitude);
+		    user_latitude = position.coords.latitude;
+		    user_longitude = position.coords.longitude;
 		    
 		    var mapOptions = {
-				    zoom: 20,
-				    center: chicago,
-				    }
+			    
+			    zoom: 17,
+			    center: park,
+			    disableDefaultUI: true
+			    
+			};
 			
 			map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 			
+			// console.log(game_data.beacons);
 			
-			
+			$.each(game_data.beacons, function(index, value){
+				
+				var options = {
+					
+					strokeColor: game_data.beacons[index].marker.strokeColor,
+					strokeOpacity: game_data.beacons[index].marker.strokeOpacity,
+					strokeWeight: game_data.beacons[index].marker.strokeWeight,
+					fillColor: game_data.beacons[index].marker.fillColor,
+					fillOpacity: game_data.beacons[index].marker.fillOpacity,
+					map: map,
+					center: new google.maps.LatLng(game_data.beacons[index].x, game_data.beacons[index].y),
+					radius: parseFloat(game_data.beacons[index].marker.radius)
+				};
+
+				// Add the circle for this city to the map.
+				var cityCircle = new google.maps.Circle(options);
+				
+				
+			});	
 	
 	};
-	
-	
-	//
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	/**
 	 *	Chart JS Redner
@@ -256,7 +267,9 @@ var i, player, story, settings, Hammer, device, lore;
 	
 	    var c = Math.pow(a, 2) + Math.pow(b, 2);
 	
-	    return distance = Math.sqrt(c);
+		var distance = Math.sqrt(c);
+		
+	    return distance;
 	
 	}
 	
@@ -314,6 +327,7 @@ var i, player, story, settings, Hammer, device, lore;
 	            settings = temp_data.settings;
 	            player = temp_data.player;
 	            story  = temp_data.story;
+
 	            
 	        }
 	    });
@@ -329,8 +343,9 @@ var i, player, story, settings, Hammer, device, lore;
 	 
 	 function render_lore_data(){
 		 
-		 $(".lore").text(lore.meta.version);
-		 $(".lore").append(lore.ots.name);
+		 // console.log(game_data);
+		 
+		 
 		 
 		 
 	 }
@@ -346,13 +361,11 @@ var i, player, story, settings, Hammer, device, lore;
 		   
 	        'async': false,
 	        'global': false,
-	        'url': "assets/lore/game_guide.json",
+	        'url': "assets/game_data.json",
 	        'dataType': "json",
 	        'success': function (temp_data) {
 	            
-	            lore = temp_data;
-	            
-	            console.log(lore);
+	            game_data = temp_data;
 	            
 	        }
 	    });
@@ -371,7 +384,6 @@ var i, player, story, settings, Hammer, device, lore;
 		
 	    $("#device").html("Device: " + device.model);
 	    
-	    navigator.geolocation.getCurrentPosition(onSuccess, onError);
 	
 	}
 	
@@ -382,7 +394,7 @@ var i, player, story, settings, Hammer, device, lore;
 	
 	$(document).ready(function(){
 		
-		
+		navigator.geolocation.getCurrentPosition(onSuccess, onError);
 		
 		document.addEventListener("deviceready", onDeviceReady, false);
 		
@@ -418,23 +430,20 @@ var i, player, story, settings, Hammer, device, lore;
 		
 		$("#button_1").click(function(){
 			
-			console.log("Added Location");
-			
-			var marker = new google.maps.Marker({
-				position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
+			var playerMarker = new google.maps.Marker({
+				position: new google.maps.LatLng(user_latitude, user_longitude),
 				map: map,
 				title: 'Hello World!'
 			});
 
-			
+			map.panTo(playerMarker.getPosition());
+
 		});
 		
 		$("#button_2").click(function(){
-			
-			console.log("Check Distance");
-			
-			console.log(check_distance(51.887533, -2.088750, position.coords.latitude,position.coords.longitude));
-			
+		
+			// TODO Game logic
+					
 		});
 		
 		hammertime.on('swipe', function(ev) {
@@ -468,6 +477,32 @@ var i, player, story, settings, Hammer, device, lore;
 		getNews();
 		load_chart();
 			
+		$(".lore ul li").click(function(){
+			
+			$(this).css({
+				
+				"position":"absolute",
+				"top": $(this).position().top,
+				"bottom": $(".main").height() - ($(this).height() + $(this).position().top),
+				"z-index":"90000",				
+			
+			});
+			
+			$(this).toggleClass("content_view");
+			
+			$(this).delay(500).animate({
+				
+				"top":0,
+				"bottom":0,
+				
+			}, function (){
+				
+				// TODO Dynamically Load the content
+				
+				
+			});
+			
+		});
 		
 		$(".clear_app_data").click(	function(){	
 			

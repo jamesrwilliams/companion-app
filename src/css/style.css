@@ -375,29 +375,51 @@ section#about .main img {
   width: 50%;
   margin: 0 25%; }
 
+.lore ul {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  position: relative;
+  overflow: scroll; }
+  .lore ul li {
+    width: 100%;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    background: gray;
+    overflow: hidden; }
+    .lore ul li h3 {
+      padding: 50px;
+      text-align: center;
+      margin: 0; }
+  .lore ul li.content_view {
+    background: white; }
+
 section#settings section.main {
   padding: 15px;
   color: white; }
 
 #map-canvas {
-  background: black;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 80%; }
+  height: 100%; }
 
 #btn_box {
-  background: gray;
+  z-index: 10000;
   position: absolute;
   width: 100%;
-  bottom: 0;
+  padding: 20px;
   top: 80%;
   height: 20%; }
   #btn_box button {
-    width: 50%;
-    float: left;
+    border: 1px solid black;
+    width: 45%;
     height: 100%;
     border: 0; }
   #btn_box #button_1 {
+    float: left;
     background: green; }
+  #btn_box #button_2 {
+    float: right;
+    background: black; }
