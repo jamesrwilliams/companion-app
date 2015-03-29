@@ -22,7 +22,7 @@ var position;
 
 var i, player, story, settings, Hammer, device, lore, beacons;
 
-	// 
+	// GEOLOCATION STUFF
 	
 	function onError(error) {
 		    alert('code: '    + error.code    + '\n' +
@@ -339,8 +339,9 @@ var i, player, story, settings, Hammer, device, lore, beacons;
 	 
 	 function render_lore_data(){
 		 
-		 $(".lore").text(game_data.meta.version);
-		 $(".lore").append(game_data.ots.name);
+		 console.log(game_data);
+		 
+		 
 		 
 		 
 	 }
@@ -476,6 +477,36 @@ var i, player, story, settings, Hammer, device, lore, beacons;
 		getNews();
 		load_chart();
 			
+		$(".lore ul li").click(function(){
+
+			
+			var position = $(this).position();
+			
+			var height = $(this).position().top+$('#bottom').outerHeight(true);
+			
+			$(this).css({
+				
+				"position":"absolute",
+				"top": position.top,
+				"bottom": position.top,
+				"z-index":"90000",				
+			});
+			
+			$(this).delay(500).animate({
+				
+				"top":0,
+				"bottom":0,
+				
+			}, function (){
+				
+				
+				
+			});
+			
+			
+
+			
+		});
 		
 		$(".clear_app_data").click(	function(){	
 			

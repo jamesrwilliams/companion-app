@@ -375,6 +375,22 @@ section#about .main img {
   width: 50%;
   margin: 0 25%; }
 
+.lore ul {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  position: relative; }
+  .lore ul li {
+    width: 100%;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    background: gray;
+    overflow: hidden; }
+    .lore ul li h3 {
+      padding: 50px;
+      text-align: center;
+      margin: 0; }
+
 section#settings section.main {
   padding: 15px;
   color: white; }
