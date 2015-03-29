@@ -48,10 +48,41 @@ var i, player, story, settings, Hammer, device, alert, Chart, game_data, google;
 			
 			// console.log(game_data.beacons);
 			
+			var whiteCircle = {
+			    
+			    fillOpacity: 1.0,
+			    fillColor: "white",
+			    strokeOpacity: 1.0,
+			    strokeColor: "white",
+			    strokeWeight: 1.0,
+			    scale: 1.0
+			};
+			
 			$.each(game_data.beacons, function(index, value){
+				
+				
+				var marker = new google.maps.Marker({
+					
+					position: new google.maps.LatLng(game_data.beacons[index].x, game_data.beacons[index].y),
+					fillColor: game_data.beacons[index].marker.fillColor,
+					fillOpacity: game_data.beacons[index].marker.fillOpacity,
+					strokeColor: game_data.beacons[index].marker.strokeColor,
+					strokeOpacity: game_data.beacons[index].marker.strokeOpacity,
+					strokeWeight: game_data.beacons[index].marker.strokeWeight,
+					icon: {
+					
+						path: google.maps.SymbolPath.CIRCLE,
+						scale: 20
+						
+					},
+					// draggable: true,
+					map: map
+				});
+			
 				
 				var options = {
 					
+					path: google.maps.SymbolPath.CIRCLE,
 					strokeColor: game_data.beacons[index].marker.strokeColor,
 					strokeOpacity: game_data.beacons[index].marker.strokeOpacity,
 					strokeWeight: game_data.beacons[index].marker.strokeWeight,
@@ -476,31 +507,84 @@ var i, player, story, settings, Hammer, device, alert, Chart, game_data, google;
 		get_user_data();
 		getNews();
 		load_chart();
+		
+		var guide_active = false;
+		var top, bottom;
+		
+		
+		$(".lore ul li").click(function(){	
 			
-		$(".lore ul li").click(function(){
+			if(guide_active){
+				
+				// Close Logic
+				
+				$(this).delay(100).animate({
+					
+					"top":top,
+					"bottom": bottom,
+					
+				}, 500, function (){
+					
+					// TODO Dynamically Load the content
+					$(this).toggleClass("content_view");
+					
+					$( ".dynm" ).remove();
+					
+					$(this).delay(300).css({
+						
+						
+						
+						"position":"static",
+						"z-index":"0",				
+					
+					});	
+						
+				});
+				
+				guide_active = false;
+				
+				
+				
+			}else {
+				
+				
+				
+				top = $(this).position().top;
+				bottom = $(".main").height() - ($(this).height() + $(this).position().top);
+				
+				$(this).before("<li class='dynm'><h3>Item X</h3></li>");
+				
+				// Open Logic
+				$(this).css({
+					
+					"position":"absolute",
+					"top": top,
+					"bottom": bottom,
+					"z-index":"90000",				
+				
+				});
+				
+				$(this).toggleClass("content_view");
+				
+				
+				
+				$(this).delay(100).animate({
+					
+					"top":0,
+					"bottom":0,
+					
+				}, function (){
+					
+					// TODO Dynamically Load the content
+					
+					
+				});
+
+				guide_active = true;
+				
+				
+			}
 			
-			$(this).css({
-				
-				"position":"absolute",
-				"top": $(this).position().top,
-				"bottom": $(".main").height() - ($(this).height() + $(this).position().top),
-				"z-index":"90000",				
-			
-			});
-			
-			$(this).toggleClass("content_view");
-			
-			$(this).delay(500).animate({
-				
-				"top":0,
-				"bottom":0,
-				
-			}, function (){
-				
-				// TODO Dynamically Load the content
-				
-				
-			});
 			
 		});
 		
