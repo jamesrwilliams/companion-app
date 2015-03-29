@@ -6,14 +6,15 @@
 	padding: 0;
 	height: 100%;
 	position: relative;
+	overflow: scroll;
 	
 		li {
 		
-		width: 100%;
-		display: block;
-		border-bottom: 1px solid rgba(0,0,0,0.3);
-		background: gray;
-		overflow: hidden;
+			width: 100%;
+			display: block;
+			border-bottom: 1px solid rgba(0,0,0,0.3);
+			background: gray;
+			overflow: hidden;
 		
 			h3 {
 				
@@ -23,6 +24,12 @@
 				
 			}
 	
+		}
+		
+		li.content_view {
+			
+			background: white;
+			
 		}
 	
 	}

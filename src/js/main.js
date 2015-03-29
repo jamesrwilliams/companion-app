@@ -18,13 +18,13 @@ var animation_speed = 300;
 var user_latitude, user_longitude;
 
 var map;
-var position;
 
-var i, player, story, settings, Hammer, device, lore, beacons;
+var i, player, story, settings, Hammer, device, alert, Chart, game_data, google;
 
 	// GEOLOCATION STUFF
 	
 	function onError(error) {
+		    
 		    alert('code: '    + error.code    + '\n' +
 		          'message: ' + error.message + '\n');
 	}
@@ -37,14 +37,16 @@ var i, player, story, settings, Hammer, device, lore, beacons;
 		    user_longitude = position.coords.longitude;
 		    
 		    var mapOptions = {
-				    zoom: 17,
-				    center: park,
-				    disableDefaultUI: true
-				    }
+			    
+			    zoom: 17,
+			    center: park,
+			    disableDefaultUI: true
+			    
+			};
 			
 			map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 			
-			console.log(game_data.beacons);
+			// console.log(game_data.beacons);
 			
 			$.each(game_data.beacons, function(index, value){
 				
@@ -61,7 +63,7 @@ var i, player, story, settings, Hammer, device, lore, beacons;
 				};
 
 				// Add the circle for this city to the map.
-				cityCircle = new google.maps.Circle(options);
+				var cityCircle = new google.maps.Circle(options);
 				
 				
 			});	
@@ -265,7 +267,9 @@ var i, player, story, settings, Hammer, device, lore, beacons;
 	
 	    var c = Math.pow(a, 2) + Math.pow(b, 2);
 	
-	    return distance = Math.sqrt(c);
+		var distance = Math.sqrt(c);
+		
+	    return distance;
 	
 	}
 	
@@ -339,7 +343,7 @@ var i, player, story, settings, Hammer, device, lore, beacons;
 	 
 	 function render_lore_data(){
 		 
-		 console.log(game_data);
+		 // console.log(game_data);
 		 
 		 
 		 
@@ -437,13 +441,9 @@ var i, player, story, settings, Hammer, device, lore, beacons;
 		});
 		
 		$("#button_2").click(function(){
-			
-			console.log("Check Distance");
-			
-			console.log(check_distance(51.887533, -2.088750, user_latitude, user_longitude));
-			
-			alert(check_distance(51.887533, -2.088750, user_latitude, user_longitude));
-			
+		
+			// TODO Game logic
+					
 		});
 		
 		hammertime.on('swipe', function(ev) {
@@ -478,19 +478,17 @@ var i, player, story, settings, Hammer, device, lore, beacons;
 		load_chart();
 			
 		$(".lore ul li").click(function(){
-
-			
-			var position = $(this).position();
-			
-			var height = $(this).position().top+$('#bottom').outerHeight(true);
 			
 			$(this).css({
 				
 				"position":"absolute",
-				"top": position.top,
-				"bottom": position.top,
+				"top": $(this).position().top,
+				"bottom": $(".main").height() - ($(this).height() + $(this).position().top),
 				"z-index":"90000",				
+			
 			});
+			
+			$(this).toggleClass("content_view");
 			
 			$(this).delay(500).animate({
 				
@@ -499,12 +497,10 @@ var i, player, story, settings, Hammer, device, lore, beacons;
 				
 			}, function (){
 				
+				// TODO Dynamically Load the content
 				
 				
 			});
-			
-			
-
 			
 		});
 		

@@ -379,7 +379,8 @@ section#about .main img {
   margin: 0;
   padding: 0;
   height: 100%;
-  position: relative; }
+  position: relative;
+  overflow: scroll; }
   .lore ul li {
     width: 100%;
     display: block;
@@ -390,6 +391,8 @@ section#about .main img {
       padding: 50px;
       text-align: center;
       margin: 0; }
+  .lore ul li.content_view {
+    background: white; }
 
 section#settings section.main {
   padding: 15px;
