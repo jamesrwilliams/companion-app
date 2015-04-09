@@ -30,11 +30,8 @@ var i, player, story, settings, Hammer, device, alert, game_data, google;
 		    alert('code: '    + error.code    + '\n' +
 		          'message: ' + error.message + '\n');
 		          
-		}catch(e){
-			
-			console.log(e);
-			
-			}
+		}catch(e){}
+		
 	}
 	
 	var onSuccess = function(position) {
@@ -526,7 +523,6 @@ var i, player, story, settings, Hammer, device, alert, game_data, google;
 					
 				}, function (){
 					
-					console.warn("Fired");
 					$(this).find( ".content" ).html("<h1>Hello World</h1>").hide().fadeIn();
 					
 					
