@@ -19,14 +19,22 @@ var user_latitude, user_longitude;
 
 var map;
 
-var i, player, story, settings, Hammer, device, alert, Chart, game_data, google;
+var i, player, story, settings, Hammer, device, alert, game_data, google;
 
 	// GEOLOCATION STUFF
 	
 	function onError(error) {
+		
+		try { 
 		    
 		    alert('code: '    + error.code    + '\n' +
 		          'message: ' + error.message + '\n');
+		          
+		}catch(e){
+			
+			console.log(e);
+			
+			}
 	}
 	
 	var onSuccess = function(position) {
@@ -45,8 +53,6 @@ var i, player, story, settings, Hammer, device, alert, Chart, game_data, google;
 			};
 			
 			map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-			
-			// console.log(game_data.beacons);
 			
 			var whiteCircle = {
 			    
@@ -75,7 +81,6 @@ var i, player, story, settings, Hammer, device, alert, Chart, game_data, google;
 						scale: 20
 						
 					},
-					// draggable: true,
 					map: map
 				});
 			
@@ -325,14 +330,11 @@ var i, player, story, settings, Hammer, device, alert, Chart, game_data, google;
 	 * 
 	 */
 	 
-	 function render_lore_data(){
+	function render_lore_data(){
 		 
-		 // console.log(game_data);
+	
 		 
-		 
-		 
-		 
-	 }
+	}
 		
 		/**
 		 *	Pul in local lore test data
@@ -470,6 +472,8 @@ var i, player, story, settings, Hammer, device, alert, Chart, game_data, google;
 				
 				// Close Logic
 				
+				$(this).find(".content").fadeOut();
+				
 				$(this).delay(100).animate({
 					
 					"top":top,
@@ -478,8 +482,10 @@ var i, player, story, settings, Hammer, device, alert, Chart, game_data, google;
 				}, 500, function (){
 					
 					// TODO Dynamically Load the content
+					
 					$(this).toggleClass("content_view");
 					$( ".dynm" ).remove();
+					
 					$(this).delay(300).css({
 						
 						"position":"static",
@@ -520,8 +526,9 @@ var i, player, story, settings, Hammer, device, alert, Chart, game_data, google;
 					
 				}, function (){
 					
+					console.warn("Fired");
+					$(this).find( ".content" ).html("<h1>Hello World</h1>").hide().fadeIn();
 					
-					// TODO Dynamically Load the content
 					
 				});
 
